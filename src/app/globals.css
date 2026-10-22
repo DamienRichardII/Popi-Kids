@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+/* ───────── Design tokens ─────────
+   Un seul jeu de composants ; le thème change uniquement ces variables.
+   [data-theme="ivory"] = Direction B, [data-theme="midnight"] = Direction A. */
+:root,
+[data-theme="ivory"] {
+  --bg: #faf8f4;
+  --surface: #ffffff;
+  --surface-2: #f1e9dc;
+  --fg: #10233f;
+  --muted: #5d6b7e;
+  --accent: #c6a36c;
+  --accent-strong: #a8854d; /* texte or sur fond clair (contraste AA) */
+  --border: #e4dac9;
+  --primary: #10233f;
+  --primary-fg: #ffffff;
+  --secondary-bg: transparent;
+  --secondary-fg: #10233f;
+  --secondary-border: #10233f;
+  --gold-bg: #c6a36c;
+  --gold-fg: #10233f;
+  --hero-title: #10233f;
+  --overlay: linear-gradient(90deg, rgb(250 248 244 / 0.82), rgb(250 248 244 / 0) 62%);
+  --shadow: 0 8px 30px rgb(16 35 63 / 0.08);
+  color-scheme: light;
+}
+[data-theme="midnight"] {
+  --bg: #06172b;
+  --surface: #0b2038;
+  --surface-2: #0b2038;
+  --fg: #ffffff;
+  --muted: #a9b6c7;
+  --accent: #d7ad70;
+  --accent-strong: #ebcb91;
+  --border: #2a3f58;
+  --primary: #d7ad70;
+  --primary-fg: #06172b;
+  --secondary-bg: #0b2038;
+  --secondary-fg: #ffffff;
+  --secondary-border: #d7ad70;
+  --gold-bg: #d7ad70;
+  --gold-fg: #06172b;
+  --hero-title: #d7ad70;
+  --overlay: linear-gradient(90deg, rgb(6 23 43 / 0.8), rgb(6 23 43 / 0) 62%);
+  --shadow: 0 8px 30px rgb(0 0 0 / 0.35);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-line: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-fg: var(--primary-fg);
+  --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+:focus-visible { outline: 2px solid var(--accent-strong); outline-offset: 3px; border-radius: 4px; }
+
+/* Boutons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
+  min-height: 48px; padding: 0 1.75rem; border-radius: 999px;
+  font-size: .95rem; font-weight: 500; letter-spacing: .01em;
+  border: 1px solid transparent; cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease, opacity .2s;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
+.btn:active { transform: translateY(0) scale(.98); }
+.btn:disabled { opacity: .45; cursor: not-allowed; transform: none; box-shadow: none; }
+.btn-primary { background: var(--primary); color: var(--primary-fg); }
+.btn-secondary { background: var(--secondary-bg); color: var(--secondary-fg); border-color: var(--secondary-border); }
+.btn-gold { background: var(--gold-bg); color: var(--gold-fg); }
+
+.serif { font-family: var(--font-serif); }
+.section-title { font-family: var(--font-serif); font-weight: 500; letter-spacing: -.01em; }
+
+/* Apparition progressive (CSS pur) */
+@keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+.reveal { animation: rise .7s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes shimmer { to { background-position: -200% 0; } }
+.skeleton {
+  background: linear-gradient(90deg, var(--surface-2) 25%, var(--surface) 50%, var(--surface-2) 75%);
+  background-size: 200% 100%; animation: shimmer 1.4s linear infinite;
+}
+
+/* Safe areas iOS */
+.pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+.hide-scroll { scrollbar-width: none; }
+.hide-scroll::-webkit-scrollbar { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important; animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important; scroll-behavior: auto !important;
+  }
+}
