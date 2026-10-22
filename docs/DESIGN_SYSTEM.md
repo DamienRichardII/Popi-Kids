@@ -14,7 +14,7 @@ Tokens CSS dans `src/app/globals.css`, activés par `data-theme` sur `<html>`. L
 | `--accent-strong` (texte or) | #A8854D | #EBCB91 |
 | `--primary` / `--primary-fg` | #10233F / #FFF | #D7AD70 / #06172B |
 
-Palettes ajustées d'après les maquettes : bouton principal marine en Ivory, or en Midnight ; bouton secondaire en contour. Le sélecteur de thème (header) n'apparaît que si `NEXT_PUBLIC_THEME_SWITCHER=true` : à désactiver en production.
+Palettes ajustées d'après les maquettes : bouton principal marine en Ivory, or en Midnight ; bouton secondaire en contour. Le bouton « Mode nuit / Mode jour » du header bascule entre les deux thèmes (choix mémorisé dans le navigateur). Il est visible par défaut ; `NEXT_PUBLIC_THEME_SWITCHER=false` le masque.
 
 ## Typographie
 

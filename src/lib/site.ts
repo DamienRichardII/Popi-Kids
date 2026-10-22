@@ -4,7 +4,7 @@
  */
 export const SITE = {
   name: "POPI KIDS",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "http://localhost:3000"),
   // Relevés sur popikids.com le 22/10/2026 – à valider (incohérence 100 € / 49 € constatée sur le site actuel)
   freeShipping: "Livraison gratuite dès 100 € d'achat",
   contactEmail: "popikids@gmail.com",
