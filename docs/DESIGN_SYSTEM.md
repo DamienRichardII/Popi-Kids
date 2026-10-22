@@ -44,7 +44,8 @@ Voir `src/lib/assets.ts`. Déposer dans `public/assets/` :
 | `logo.svg` | header, footer, admin |
 | `hero-1.jpg`, `hero-2.jpg`, `hero-3.jpg` | hero |
 | `banner-nouvelle-collection.jpg`, `banner-looks-saison.jpg` | bannières |
+| `carte-cadeau-1.jpg`, `carte-cadeau-2.jpg` (fournis) | page /carte-cadeau, accueil |
 | `cat-bebes.jpg`, `cat-filles.jpg`, `cat-garcons.jpg`, `cat-tshirts-polos.jpg`, `cat-sweats-gilets.jpg`, `cat-vestes-manteaux.jpg`, `cat-jeux.jpg`, `cat-accessoires.jpg` | catégories circulaires |
 | `prod-{slug}-{n}.jpg` | photos produit (clé `images` du produit) |
 
-Fichier absent = placeholder « Visuel à fournir ». État actuel : **aucun asset fourni** (le dossier ne contenait que les 2 maquettes).
+Fichier absent = placeholder « Visuel à fournir ». État actuel : seuls les visuels de la carte cadeau sont fournis (redimensionnés en JPG). Le projet lit uniquement `public/assets/`, pas le dossier `assets/` à la racine (réservé aux maquettes et originaux).

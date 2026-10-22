@@ -13,6 +13,8 @@ export const ASSET_MAP: Record<string, { file: string; label: string; used: stri
   "hero-3": { file: "hero-3.jpg", label: "Hero – slide 3", used: "Hero" },
   "banner-new": { file: "banner-nouvelle-collection.jpg", label: "Bannière Nouvelle collection", used: "Bannières" },
   "banner-looks": { file: "banner-looks-saison.jpg", label: "Bannière Looks de saison", used: "Bannières" },
+  "carte-cadeau-1": { file: "carte-cadeau-1.jpg", label: "Carte cadeau – recto", used: "Page /carte-cadeau, accueil" },
+  "carte-cadeau-2": { file: "carte-cadeau-2.jpg", label: "Carte cadeau – verso", used: "Page /carte-cadeau" },
   "cat-bebes": { file: "cat-bebes.jpg", label: "Catégorie Bébés", used: "Catégories" },
   "cat-filles": { file: "cat-filles.jpg", label: "Catégorie Filles", used: "Catégories" },
   "cat-garcons": { file: "cat-garcons.jpg", label: "Catégorie Garçons", used: "Catégories" },

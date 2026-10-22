@@ -71,6 +71,15 @@ export default async function Home() {
         </ul>
       </section>
 
+      <section className="mx-auto mt-16 grid max-w-[1400px] items-center gap-8 px-4 sm:px-6 md:grid-cols-2">
+        <Visual assetKey="carte-cadeau-1" alt="Carte cadeau POPI KIDS et son enveloppe" className="aspect-square w-full rounded-2xl border border-line" sizes="(min-width:768px) 50vw, 100vw" />
+        <div>
+          <h2 className="section-title text-3xl sm:text-4xl">La carte cadeau POPI KIDS</h2>
+          <p className="mt-3 max-w-md text-muted">Pour les petits aventuriers : une idée de cadeau élégante, à offrir sans se tromper de taille.</p>
+          <Link href="/carte-cadeau" className="btn btn-primary mt-6 w-fit">Découvrir <ArrowRight size={16} /></Link>
+        </div>
+      </section>
+
       <section className="mx-auto max-w-[1400px] px-4 pt-16 sm:px-6">
         <h2 className="section-title mb-6 text-3xl sm:text-4xl">Nouveautés</h2>
         <ProductGrid products={news.filter((p) => p.isNew)} cols="lg:grid-cols-4"

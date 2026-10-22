@@ -13,6 +13,7 @@ export default function Footer() {
           <ul className="space-y-2 text-sm text-muted">{CATEGORIES.slice(0, 5).map((c) => <li key={c.slug}><Link className="hover:text-fg" href={`/collections/${c.slug}`}>{c.name}</Link></li>)}</ul></nav>
         <nav aria-label="Informations"><h2 className="serif mb-3 text-xl">Informations</h2>
           <ul className="space-y-2 text-sm text-muted">
+            <li><Link className="hover:text-fg" href="/carte-cadeau">Carte cadeau</Link></li>
             <li><Link className="hover:text-fg" href="/contact-us">Contact</Link></li>
             <li><Link className="hover:text-fg" href="/compte">Mon compte</Link></li>
             {/* Pages légales : contenu à fournir/valider par le client (absentes du site actuel) */}
