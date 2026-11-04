@@ -13,7 +13,7 @@ export default async function Home() {
   return (
     <>
       <Hero slides={["hero-1", "hero-2", "hero-3"].map((k, i) => (
-        <Visual key={k} assetKey={k} alt="Enfants portant des vêtements POPI KIDS" className="h-full w-full" priority={i === 0} sizes="100vw" />
+        <Visual key={k} assetKey={k} alt="Enfants portant des vêtements POPI KIDS" className="h-full w-full" priority={i === 0} sizes="100vw" position="50% 22%" />
       ))} />
 
       {/* Réassurance – libellés à valider avec les conditions réelles */}

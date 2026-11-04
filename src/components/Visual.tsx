@@ -3,14 +3,14 @@ import { resolveAsset } from "@/lib/assets";
 
 /** Affiche l'asset fourni s'il existe dans public/assets, sinon un placeholder identifiable. */
 export default function Visual({
-  assetKey, alt, className = "", sizes = "100vw", priority = false, round = false,
-}: { assetKey: string; alt?: string; className?: string; sizes?: string; priority?: boolean; round?: boolean }) {
+  assetKey, alt, className = "", sizes = "100vw", priority = false, round = false, position,
+}: { assetKey: string; alt?: string; className?: string; sizes?: string; priority?: boolean; round?: boolean; position?: string }) {
   const { src, label } = resolveAsset(assetKey);
   const shape = round ? "rounded-full" : "";
   if (src) {
     return (
       <div className={`relative overflow-hidden ${shape} ${className}`}>
-        <Image src={src} alt={alt ?? label} fill sizes={sizes} priority={priority} className="object-cover" />
+        <Image src={src} alt={alt ?? label} fill sizes={sizes} priority={priority} className="object-cover" style={position ? { objectPosition: position } : undefined} />
       </div>
     );
   }
