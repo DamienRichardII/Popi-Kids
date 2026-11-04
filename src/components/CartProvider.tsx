@@ -11,7 +11,8 @@ type Ctx = {
   favs: string[]; toggleFav: (id: string) => void;
 };
 const CartCtx = createContext<Ctx | null>(null);
-export const lineKey = (l: Pick<CartLine, "productId" | "color" | "size">) => `${l.productId}|${l.color}|${l.size}`;
+export const lineKey = (l: Pick<CartLine, "productId" | "color" | "size" | "custom">) =>
+  `${l.productId}|${l.color}|${l.size}|${l.custom ? `${l.custom.type}:${l.custom.text}` : ""}`;
 
 function load<T>(k: string, fallback: T): T {
   try { return JSON.parse(localStorage.getItem(k) ?? "") as T; } catch { return fallback; }

@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Heart, Minus, Plus } from "lucide-react";
 import { eur, inStock } from "@/lib/commerce";
+import { SITE } from "@/lib/site";
 import type { Product } from "@/lib/types";
 import { useCart } from "./CartProvider";
 
@@ -15,6 +16,8 @@ export default function ProductPurchase({ product: p, gallery }: { product: Prod
   const [qty, setQty] = useState(1);
   const [err, setErr] = useState("");
   const [added, setAdded] = useState(false);
+  const [cType, setCType] = useState<"" | "prenom" | "phrase" | "logo">("");
+  const [cText, setCText] = useState("");
   const fav = favs.includes(p.id);
   const noOptions = p.sizes.length === 0;
   const stock = noOptions ? 10 : p.sizes.find((s) => s.label === size)?.stock ?? 0;
@@ -23,8 +26,9 @@ export default function ProductPurchase({ product: p, gallery }: { product: Prod
   const submit = (then: "cart" | "buy") => {
     if (!noOptions && !size) { setErr("Veuillez choisir une taille."); return; }
     if (stock < 1) { setErr("Cette taille n'est plus disponible."); return; }
+    if (cType && !cText.trim()) { setErr(cType === "prenom" ? "Indiquez le prénom à ajouter." : cType === "phrase" ? "Indiquez la phrase à imprimer." : "Décrivez le logo ou le dessin souhaité."); return; }
     setErr("");
-    add({ productId: p.id, slug: p.slug, name: p.name, price: p.price, color, size, qty: Math.min(qty, stock), image: p.images[0] ?? "" });
+    add({ productId: p.id, slug: p.slug, name: p.name, price: p.price, color, size, qty: Math.min(qty, stock), image: p.images[0] ?? "", ...(cType ? { custom: { type: cType, text: cText.trim() } } : {}) });
     if (then === "buy") router.push("/checkout"); else { setAdded(true); setTimeout(() => setAdded(false), 1800); }
   };
 
@@ -68,6 +72,35 @@ export default function ProductPurchase({ product: p, gallery }: { product: Prod
           <details className="mt-3 text-sm"><summary className="cursor-pointer underline">Guide des tailles</summary>
             <p className="mt-2 text-muted">Guide des tailles (mesures en cm) à fournir par POPI KIDS.</p></details>
         </fieldset>
+        )}
+
+        {p.customizable && (
+          <fieldset className="mt-6 rounded-xl border border-line p-4">
+            <legend className="px-2 text-sm font-medium">Personnalisation</legend>
+            <div className="flex flex-wrap gap-2" role="radiogroup" aria-label="Type de personnalisation">
+              {([["", "Sans"], ["prenom", "Un prénom"], ["phrase", "Une phrase"], ["logo", "Un logo"]] as const).map(([v, l]) => (
+                <button key={v} role="radio" aria-checked={cType === v} onClick={() => { setCType(v); setCText(""); setErr(""); }}
+                  className={`min-h-11 rounded-full border px-4 text-sm ${cType === v ? "border-primary bg-primary text-primary-fg" : "border-line"}`}>{l}</button>
+              ))}
+            </div>
+            {cType === "prenom" && (
+              <label className="mt-3 block text-sm">Prénom (15 caractères max.)
+                <input value={cText} maxLength={15} onChange={(e) => setCText(e.target.value)} className="mt-1 min-h-11 w-full rounded-lg border border-line bg-surface px-3" />
+              </label>
+            )}
+            {cType === "phrase" && (
+              <label className="mt-3 block text-sm">Phrase (40 caractères max.)
+                <input value={cText} maxLength={40} onChange={(e) => setCText(e.target.value)} className="mt-1 min-h-11 w-full rounded-lg border border-line bg-surface px-3" />
+              </label>
+            )}
+            {cType === "logo" && (
+              <label className="mt-3 block text-sm">Décrivez le logo ou le dessin souhaité
+                <textarea value={cText} maxLength={200} rows={3} onChange={(e) => setCText(e.target.value)} className="mt-1 w-full rounded-lg border border-line bg-surface px-3 py-2" />
+              </label>
+            )}
+            {cType === "logo" && <p className="mt-2 text-xs text-muted">Après la commande, envoyez votre fichier à {SITE.contactEmail} en indiquant votre numéro de commande.</p>}
+            <p className="mt-2 text-xs text-muted">Impression DTF (pas de broderie). Supplément éventuel et délai de personnalisation : à confirmer par POPI KIDS.</p>
+          </fieldset>
         )}
 
         <div className="mt-6 inline-flex items-center rounded-full border border-line">

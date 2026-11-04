@@ -108,7 +108,7 @@ const ROWS: Row[] = [
   ["norway-sport", "Norway Sport", 3500, "vetements", "RA5097", 1],
   ["titan", "Titan", 1950, "vetements", "CJ0325", 1],
   ["honey-l-s", "Honey manche longue", 630, "vetements", "BD7202", 1],
-  ["juve", "Juve", 2350, "vetements", "CJ0525", 1],
+  ["juve", "Juve", 2350, "vetements", "CJ0525", 2],
   ["racing", "Racing", 2040, "vetements", "CJ0452", 1],
   ["united", "United", 1610, "vetements", "CJ0457", 1],
   ["america", "America", 3600, "vetements", "PK5072", 1],
@@ -139,7 +139,7 @@ const ROWS: Row[] = [
   ["brenda", "Brenda", 540, "vetements", "CA6535", 1],
   ["akita", "Akita", 440, "vetements", "CA6534", 1],
   ["stafford", "Stafford", 610, "vetements", "CA6681", 1],
-  ["jamaica", "Jamaica", 490, "vetements", "CA6627", 1],
+  ["jamaica", "Jamaica", 490, "vetements", "CA6627", 2],
   ["extreme", "Extreme", 840, "vetements", "CA1217", 1],
   ["bahrain", "Bahrain", 450, "vetements", "CA0407", 1],
   ["honey", "Honey", 580, "vetements", "BD7200", 1],
@@ -160,15 +160,17 @@ const PRODUCTS: Product[] = ROWS.map(([slug, name, price, category, reference, p
   description: "Description à fournir par POPI KIDS.",
   reference,
   available: available !== false,
+  // Références fournisseur CA… (t-shirts), PO… (polos), SU… (sweat-shirts) : à confirmer avec POPI KIDS
+  customizable: category === "vetements" && /^(CA|PO|SU)/.test(reference),
   isDemo: false,
 }));
 
 export const CATEGORIES: Category[] = [
-  { slug: "vetements", name: "Vêtements", description: "", image: "prod-urban-1" },
-  { slug: "jeux", name: "Jeux", description: "", image: "prod-salento-1" },
-  { slug: "lunch-boxes", name: "Lunch boxes", description: "", image: "prod-brena-1" },
-  { slug: "gourdes", name: "Gourdes", description: "", image: "prod-balax-1" },
-  { slug: "sacs", name: "Sacs", description: "", image: "prod-bingo-1" },
+  { slug: "vetements", name: "Vêtements", description: "", image: "cat-vetements" },
+  { slug: "jeux", name: "Jeux", description: "", image: "cat-jeux" },
+  { slug: "lunch-boxes", name: "Lunch boxes", description: "", image: "cat-lunch-boxes" },
+  { slug: "gourdes", name: "Gourdes", description: "", image: "cat-gourdes" },
+  { slug: "sacs", name: "Sacs", description: "", image: "cat-sacs" },
 ].map((c) => ({ ...c, description: "Description de catégorie à fournir." }));
 
 export type Query = {

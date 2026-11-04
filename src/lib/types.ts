@@ -19,6 +19,8 @@ export type Product = {
   reference?: string;
   /** Indicateur de stock du site actuel, utilisé tant que les tailles/stocks réels sont inconnus */
   available?: boolean;
+  /** Personnalisation (prénom ou dessin) proposée : t-shirts, polos et sweat-shirts (impression DTF) */
+  customizable?: boolean;
   /** true tant que le produit vient du jeu d'exemples, pas du catalogue réel */
   isDemo: boolean;
 };
@@ -34,6 +36,8 @@ export type CartLine = {
   size: string;
   qty: number;
   image: string;
+  /** Personnalisation choisie (prénom ou description du dessin) */
+  custom?: { type: "prenom" | "phrase" | "logo"; text: string };
 };
 
 export type AdminStats = {

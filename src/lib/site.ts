@@ -23,9 +23,25 @@ export const NAV = [
   { label: "Contact", href: "/contact-us" },
 ] as const;
 
+/** Atouts relevés sur l'accueil actuel de popikids.com (livraison : seuil 100 € / 49 € à valider). */
 export const REASSURANCE = [
-  { icon: "truck", title: "Livraison rapide", text: "Dès 49 € d'achat" },
   { icon: "leaf", title: "Coton doux", text: "Pour les peaux sensibles" },
-  { icon: "shield", title: "Paiement sécurisé", text: "Carte bancaire" },
-  { icon: "package", title: "Retours gratuits", text: "Sous 30 jours" },
+  { icon: "droplet", title: "Couleurs durables", text: "Lavage après lavage" },
+  { icon: "users", title: "De 6 mois à 16 ans", text: "Pour toutes les étapes" },
+  { icon: "truck", title: "Livraison rapide", text: "Gratuite dès 100 € d'achat" },
+  { icon: "package", title: "Retours gratuits", text: "Dans un délai de 30 jours" },
+] as const;
+
+export const TRUST = [
+  { icon: "truck", title: "Livraison sécurisée" },
+  { icon: "shield", title: "Garantie de 30 jours" },
+  { icon: "leaf", title: "Qualité supérieure" },
+  { icon: "lock", title: "Paiement sécurisé" },
+] as const;
+
+export const FAQ = [
+  { q: "Quels sont vos délais de livraison ?", a: "Nous préparons votre commande avec soin afin de l'expédier dans les meilleurs délais. La livraison est généralement effectuée sous 3 à 7 jours ouvrés, selon votre adresse de livraison. Vous recevrez les informations de suivi dès que votre commande sera expédiée." },
+  { q: "Comment retourner un article ?", a: "Les retours sont possibles dans un délai de 30 jours. Les modalités détaillées seront précisées par POPI KIDS." },
+  { q: "Comment puis-je suivre ma commande ?", a: "Vous recevrez les informations de suivi dès que votre commande sera expédiée." },
+  { q: "Le paiement est-il sécurisé ?", a: "Réponse détaillée à fournir par POPI KIDS." },
 ] as const;

@@ -28,7 +28,9 @@ export default function Hero({ slides }: { slides: React.ReactNode[] }) {
         </div>
         <div className="absolute inset-y-0 left-[6%] hidden flex-col justify-center lg:flex">
           <Logo size="xl" />
-          <div className="mt-10 flex gap-4">
+          <h1 className="serif mt-6 max-w-md text-3xl leading-tight text-[color:var(--hero-title)]">Tout pour accompagner leurs aventures</h1>
+          <p className="mt-2 max-w-md text-muted">Des vêtements de qualité conçus pour grandir, explorer et jouer.</p>
+          <div className="mt-8 flex gap-4">
             <Link href="/shop" className="btn btn-primary">Découvrir les collections <ArrowRight size={18} /></Link>
             <Link href="/shop?sort=populaires" className="btn btn-secondary">Nos best-sellers <ArrowRight size={18} /></Link>
           </div>
@@ -45,6 +47,8 @@ export default function Hero({ slides }: { slides: React.ReactNode[] }) {
         </div>
       </div>
       <div className="flex flex-col gap-3 px-6 py-6 lg:hidden">
+        <h1 className="serif text-3xl leading-tight">Tout pour accompagner leurs aventures</h1>
+        <p className="mb-2 text-muted">Des vêtements de qualité conçus pour grandir, explorer et jouer.</p>
         <Link href="/shop" className="btn btn-primary">Découvrir</Link>
         <Link href="/shop?sort=populaires" className="btn btn-secondary">Nos best-sellers</Link>
       </div>
