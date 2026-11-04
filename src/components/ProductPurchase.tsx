@@ -2,7 +2,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Heart, Minus, Plus } from "lucide-react";
-import { eur } from "@/lib/commerce";
+import { eur, inStock } from "@/lib/commerce";
 import type { Product } from "@/lib/types";
 import { useCart } from "./CartProvider";
 
@@ -16,11 +16,12 @@ export default function ProductPurchase({ product: p, gallery }: { product: Prod
   const [err, setErr] = useState("");
   const [added, setAdded] = useState(false);
   const fav = favs.includes(p.id);
-  const stock = p.sizes.find((s) => s.label === size)?.stock ?? 0;
-  const soldOut = !p.sizes.some((s) => s.stock > 0);
+  const noOptions = p.sizes.length === 0;
+  const stock = noOptions ? 10 : p.sizes.find((s) => s.label === size)?.stock ?? 0;
+  const soldOut = !inStock(p);
 
   const submit = (then: "cart" | "buy") => {
-    if (!size) { setErr("Veuillez choisir une taille."); return; }
+    if (!noOptions && !size) { setErr("Veuillez choisir une taille."); return; }
     if (stock < 1) { setErr("Cette taille n'est plus disponible."); return; }
     setErr("");
     add({ productId: p.id, slug: p.slug, name: p.name, price: p.price, color, size, qty: Math.min(qty, stock), image: p.images[0] ?? "" });
@@ -49,12 +50,15 @@ export default function ProductPurchase({ product: p, gallery }: { product: Prod
         <h1 className="section-title text-4xl sm:text-5xl">{p.name}</h1>
         <p className="mt-2 text-2xl">{eur(p.price)}</p>
 
-        <fieldset className="mt-6"><legend className="mb-2 text-sm font-medium">Couleur : <span className="font-normal text-muted">{color}</span></legend>
+        {p.colors.length > 0 && <fieldset className="mt-6"><legend className="mb-2 text-sm font-medium">Couleur : <span className="font-normal text-muted">{color}</span></legend>
           <div className="flex gap-3">{p.colors.map((c) => (
             <button key={c.name} onClick={() => setColor(c.name)} aria-label={c.name} aria-pressed={color === c.name}
               className={`h-9 w-9 rounded-full border ${color === c.name ? "ring-2 ring-accent-strong ring-offset-2 ring-offset-bg" : "border-line"}`} style={{ background: c.hex }} />
-          ))}</div></fieldset>
+          ))}</div></fieldset>}
 
+        {noOptions ? (
+          <p className="mt-6 rounded-lg border border-dashed border-line p-3 text-sm text-muted">Tailles et couleurs disponibles : à confirmer par POPI KIDS avant l&apos;ouverture de la vente.</p>
+        ) : (
         <fieldset className="mt-6"><legend className="mb-2 text-sm font-medium">Taille</legend>
           <div className="flex flex-wrap gap-2">{p.sizes.map((s) => (
             <button key={s.label} disabled={s.stock === 0} aria-pressed={size === s.label} onClick={() => { setSize(s.label); setErr(""); setQty(1); }}
@@ -64,6 +68,7 @@ export default function ProductPurchase({ product: p, gallery }: { product: Prod
           <details className="mt-3 text-sm"><summary className="cursor-pointer underline">Guide des tailles</summary>
             <p className="mt-2 text-muted">Guide des tailles (mesures en cm) à fournir par POPI KIDS.</p></details>
         </fieldset>
+        )}
 
         <div className="mt-6 inline-flex items-center rounded-full border border-line">
           <button aria-label="Diminuer la quantité" className="flex h-11 w-11 items-center justify-center" onClick={() => setQty((q) => Math.max(1, q - 1))}><Minus size={16} /></button>

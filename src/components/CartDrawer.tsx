@@ -18,7 +18,7 @@ export function CartLines() {
             <div className="flex h-20 w-16 shrink-0 items-center justify-center rounded-lg bg-surface-2 text-[9px] uppercase tracking-wider text-accent-strong">Visuel</div>
             <div className="min-w-0 flex-1 text-sm">
               <Link href={`/product/${l.slug}`} className="serif block truncate text-lg">{l.name}</Link>
-              <p className="text-muted">{l.color} · {l.size}</p>
+              {(l.color || l.size) && <p className="text-muted">{[l.color, l.size].filter(Boolean).join(" · ")}</p>}
               <p className="mt-0.5 font-medium">{eur(l.price)}</p>
               <div className="mt-2 inline-flex items-center rounded-full border border-line">
                 <button aria-label={`Diminuer la quantité de ${l.name}`} className="flex h-9 w-9 items-center justify-center" onClick={() => setQty(k, l.qty - 1)}><Minus size={14} /></button>

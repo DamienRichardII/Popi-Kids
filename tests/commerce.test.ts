@@ -1,26 +1,40 @@
 import { describe, expect, it } from "vitest";
-import { getAdminStats, getProducts, getProduct, inStock, eur } from "@/lib/commerce";
+import { getAdminStats, getBestSellers, getProducts, getProduct, inStock, eur } from "@/lib/commerce";
 
-describe("commerce (fournisseur demo)", () => {
-  it("filtre par catégorie", async () => {
-    const list = await getProducts({ category: "bebes" });
-    expect(list.length).toBeGreaterThan(0);
-    expect(list.every((p) => p.categories.includes("bebes"))).toBe(true);
+describe("catalogue POPI KIDS (fournisseur demo)", () => {
+  it("contient les 132 références fournies", async () => {
+    expect((await getProducts()).length).toBe(132);
   });
-  it("filtre les tailles indisponibles", async () => {
-    const list = await getProducts({ size: ["6-7 ans"] });
-    expect(list.every((p) => p.sizes.some((s) => s.label === "6-7 ans" && s.stock > 0))).toBe(true);
+  it("filtre par catégorie", async () => {
+    const jeux = await getProducts({ category: "jeux" });
+    expect(jeux).toHaveLength(24);
+    expect(jeux.every((p) => p.categories.includes("jeux"))).toBe(true);
+  });
+  it("utilise les prix de la liste fournie (centimes)", async () => {
+    expect((await getProduct("jamaica"))?.price).toBe(490);
+    expect((await getProduct("soccer"))?.price).toBe(520);
+    expect((await getProduct("brisca"))?.price).toBe(350);
   });
   it("trie par prix croissant", async () => {
     const prices = (await getProducts({ sort: "prix-asc" })).map((p) => p.price);
     expect(prices).toEqual([...prices].sort((a, b) => a - b));
   });
-  it("marque tous les produits d'exemple comme démo", async () => {
-    expect((await getProducts()).every((p) => p.isDemo)).toBe(true);
+  it("n'invente ni tailles ni couleurs", async () => {
+    expect((await getProducts()).every((p) => p.sizes.length === 0 && p.colors.length === 0)).toBe(true);
   });
-  it("détecte la rupture de stock", async () => {
-    const p = await getProduct("sweat-essential");
-    expect(p && inStock(p)).toBe(true);
+  it("chaque produit a au moins une photo", async () => {
+    expect((await getProducts()).every((p) => p.images.length > 0)).toBe(true);
+  });
+  it("détecte la rupture de stock du site actuel", async () => {
+    const p = await getProduct("antartida");
+    expect(p && inStock(p)).toBe(false);
+    const q = await getProduct("salento");
+    expect(q && inStock(q)).toBe(true);
+  });
+  it("la sélection ne contient que des produits disponibles", async () => {
+    const s = await getBestSellers();
+    expect(s.length).toBeGreaterThan(0);
+    expect(s.every(inStock)).toBe(true);
   });
   it("n'invente aucune statistique admin", async () => {
     expect(await getAdminStats()).toBeNull();

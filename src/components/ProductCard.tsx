@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Heart, ShoppingBag } from "lucide-react";
 import { motion } from "motion/react";
-import { eur } from "@/lib/commerce";
+import { eur, inStock } from "@/lib/commerce";
 import type { Product } from "@/lib/types";
 import { useCart } from "./CartProvider";
 
@@ -11,7 +11,8 @@ import { useCart } from "./CartProvider";
 export default function ProductCard({ product: p, visual, priority }: { product: Product; visual: React.ReactNode; priority?: boolean }) {
   const { favs, toggleFav, add } = useCart();
   const fav = favs.includes(p.id);
-  const available = p.sizes.some((s) => s.stock > 0);
+  const available = inStock(p);
+  const noOptions = p.sizes.length === 0;
   const [pick, setPick] = useState(false);
   const [color, setColor] = useState(p.colors[0]?.name ?? "");
 
@@ -34,12 +35,12 @@ export default function ProductCard({ product: p, visual, priority }: { product:
         {!available && <span className="absolute left-2.5 top-2.5 rounded-full bg-surface px-3 py-1 text-xs font-medium">Rupture de stock</span>}
         {p.isNew && available && <span className="absolute left-2.5 top-2.5 rounded-full bg-accent px-3 py-1 text-xs font-medium text-[#06172b]">Nouveau</span>}
         {available && (
-          <button onClick={() => setPick((v) => !v)} aria-expanded={pick} aria-label={`Ajout rapide : ${p.name}`}
+          <button onClick={() => (noOptions ? quickAdd("") : setPick((v) => !v))} aria-expanded={noOptions ? undefined : pick} aria-label={`Ajout rapide : ${p.name}`}
             className="absolute bottom-2.5 right-2.5 flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-fg shadow lg:translate-y-2 lg:opacity-0 lg:transition lg:group-hover:translate-y-0 lg:group-hover:opacity-100 lg:focus-visible:translate-y-0 lg:focus-visible:opacity-100">
             <ShoppingBag size={17} />
           </button>
         )}
-        {pick && (
+        {pick && !noOptions && (
           <div className="absolute inset-x-0 bottom-0 bg-surface/95 p-3 backdrop-blur">
             <p className="mb-2 text-xs text-muted">Choisir une taille</p>
             <div className="flex flex-wrap gap-1.5">
@@ -52,12 +53,12 @@ export default function ProductCard({ product: p, visual, priority }: { product:
         )}
       </div>
       <div className="p-3.5">
-        <div className="mb-2 flex gap-1.5" role="group" aria-label="Couleurs">
+        {p.colors.length > 0 && <div className="mb-2 flex gap-1.5" role="group" aria-label="Couleurs">
           {p.colors.map((c) => (
             <button key={c.name} onClick={() => setColor(c.name)} aria-label={c.name} aria-pressed={color === c.name}
               className={`h-4 w-4 rounded-full border ${color === c.name ? "ring-2 ring-accent ring-offset-2 ring-offset-surface" : "border-line"}`} style={{ background: c.hex }} />
           ))}
-        </div>
+        </div>}
         <h3 className="serif text-xl leading-tight">{p.name}</h3>
         <p className="mt-0.5 text-[15px] font-medium">{eur(p.price)}</p>
       </div>

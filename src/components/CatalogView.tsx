@@ -27,7 +27,9 @@ export default async function CatalogView({
   const all = await getProducts(q);
   const pages = Math.max(1, Math.ceil(all.length / PAGE_SIZE));
   const shown = all.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
-  const colors = [...new Set((await getProducts({ category })).flatMap((p) => p.colors.map((c) => c.name)))];
+  const inCat = await getProducts({ category });
+  const colors = [...new Set(inCat.flatMap((p) => p.colors.map((c) => c.name)))];
+  const hasSizes = inCat.some((p) => p.sizes.length > 0);
   const link = (n: number) => {
     const u = new URLSearchParams();
     for (const [k, v] of Object.entries(sp)) for (const x of arr(v)) if (k !== "page") u.append(k, x);
@@ -53,10 +55,10 @@ export default async function CatalogView({
           {q.q && <input type="hidden" name="q" value={q.q} />}
           <details open className="group lg:[&]:open"><summary className="serif cursor-pointer text-xl lg:pointer-events-none">Filtres</summary>
             <div className="mt-4 space-y-6">
-              <fieldset><legend className="mb-2 font-medium">Taille</legend>
-                {SIZES.map((s) => <label key={s} className="flex items-center py-1.5"><input className={chk} type="checkbox" name="taille" value={s} defaultChecked={q.size?.includes(s)} />{s}</label>)}</fieldset>
-              <fieldset><legend className="mb-2 font-medium">Couleur</legend>
-                {colors.map((c) => <label key={c} className="flex items-center py-1.5"><input className={chk} type="checkbox" name="couleur" value={c} defaultChecked={q.color?.includes(c)} />{c}</label>)}</fieldset>
+              {hasSizes && <fieldset><legend className="mb-2 font-medium">Taille</legend>
+                {SIZES.map((s) => <label key={s} className="flex items-center py-1.5"><input className={chk} type="checkbox" name="taille" value={s} defaultChecked={q.size?.includes(s)} />{s}</label>)}</fieldset>}
+              {colors.length > 0 && <fieldset><legend className="mb-2 font-medium">Couleur</legend>
+                {colors.map((c) => <label key={c} className="flex items-center py-1.5"><input className={chk} type="checkbox" name="couleur" value={c} defaultChecked={q.color?.includes(c)} />{c}</label>)}</fieldset>}
               <fieldset><legend className="mb-2 font-medium">Prix (€)</legend>
                 <div className="flex gap-2">
                   <label className="sr-only" htmlFor="min">Prix minimum</label><input id="min" name="min" type="number" min={0} placeholder="Min" defaultValue={q.min} className="h-10 w-full rounded-lg border border-line bg-surface px-3" />

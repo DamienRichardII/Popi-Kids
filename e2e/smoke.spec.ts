@@ -5,14 +5,15 @@ test("pas de débordement horizontal sur l'accueil", async ({ page }) => {
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
 
-test("variante indisponible non achetable + ajout au panier", async ({ page }) => {
-  await page.goto("/product/sweat-essential");
-  await expect(page.getByRole("button", { name: "6-7 ans" })).toBeDisabled();
+test("produit en rupture non achetable", async ({ page }) => {
+  await page.goto("/product/antartida");
+  await expect(page.getByRole("button", { name: "Rupture de stock" })).toBeDisabled();
+});
+
+test("ajout au panier d'un produit disponible", async ({ page }) => {
+  await page.goto("/product/salento");
   await page.getByRole("button", { name: "Ajouter au panier" }).click();
-  await expect(page.getByText("Veuillez choisir une taille.")).toContainText("taille");
-  await page.getByRole("button", { name: "2-3 ans" }).click();
-  await page.getByRole("button", { name: "Ajouter au panier" }).click();
-  await expect(page.getByRole("dialog", { name: "Panier" })).toContainText("Sweat Essential");
+  await expect(page.getByRole("dialog", { name: "Panier" })).toContainText("Salento");
 });
 
 test("filtres synchronisés avec l'URL", async ({ page }) => {

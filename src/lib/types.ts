@@ -15,6 +15,10 @@ export type Product = {
   description: string;
   composition?: string;
   isNew?: boolean;
+  /** Référence fournisseur (SKU) du site actuel */
+  reference?: string;
+  /** Indicateur de stock du site actuel, utilisé tant que les tailles/stocks réels sont inconnus */
+  available?: boolean;
   /** true tant que le produit vient du jeu d'exemples, pas du catalogue réel */
   isDemo: boolean;
 };

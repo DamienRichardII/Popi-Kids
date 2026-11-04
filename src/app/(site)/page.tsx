@@ -34,7 +34,7 @@ export default async function Home() {
 
       <section className="mx-auto max-w-[1400px] px-4 pt-14 sm:px-6">
         <div className="mb-6 flex items-end justify-between gap-4">
-          <h2 className="section-title text-3xl sm:text-4xl">Nos meilleures ventes</h2>
+          <h2 className="section-title text-3xl sm:text-4xl">Notre sélection</h2>
           <Link href="/shop?sort=populaires" className="btn btn-secondary !min-h-11 shrink-0 !px-5 text-sm">Voir toute la boutique <ArrowRight size={16} /></Link>
         </div>
         <ProductGrid products={best.slice(0, 5)} cols="lg:grid-cols-5" />

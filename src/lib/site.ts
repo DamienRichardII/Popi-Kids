@@ -14,11 +14,11 @@ export const SITE = {
 
 export const NAV = [
   { label: "Accueil", href: "/" },
-  { label: "Filles", href: "/collections/filles" },
-  { label: "Garçons", href: "/collections/garcons" },
-  { label: "Bébés", href: "/collections/bebes" },
+  { label: "Vêtements", href: "/collections/vetements" },
+  { label: "Jeux", href: "/collections/jeux" },
   { label: "Collections", href: "/shop", mega: true },
-  { label: "Accessoires", href: "/collections/accessoires" },
+  { label: "Lunch boxes", href: "/collections/lunch-boxes" },
+  { label: "Gourdes", href: "/collections/gourdes" },
   { label: "Nos engagements", href: "/#engagements" },
   { label: "Contact", href: "/contact-us" },
 ] as const;
