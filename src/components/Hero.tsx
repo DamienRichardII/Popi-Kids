@@ -19,11 +19,13 @@ export default function Hero({ slides }: { slides: React.ReactNode[] }) {
     <section aria-roledescription="carrousel" aria-label="Mise en avant" className="relative"
       onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
       {/* Mobile : visuel au-dessus, CTA dessous ; desktop : texte superposé */}
-      <div className="relative h-[300px] overflow-hidden sm:h-[420px] lg:h-[560px]">
-        {slides.map((s, k) => (
-          <div key={k} aria-hidden={k !== i} className={`absolute inset-0 transition-opacity duration-1000 ${k === i ? "opacity-100" : "opacity-0"}`}>{s}</div>
-        ))}
-        <div className="absolute inset-0 hidden lg:block" style={{ background: "var(--overlay)" }} />
+      <div className="relative h-[300px] overflow-hidden sm:h-[420px] lg:h-[600px]">
+        {/* Desktop : photo à droite (moins de recadrage), fondu vers le fond côté texte */}
+        <div className="absolute inset-0 lg:left-auto lg:w-[60%] lg:[mask-image:linear-gradient(to_right,transparent,#000_28%)]">
+          {slides.map((s, k) => (
+            <div key={k} aria-hidden={k !== i} className={`absolute inset-0 transition-opacity duration-1000 ${k === i ? "opacity-100" : "opacity-0"}`}>{s}</div>
+          ))}
+        </div>
         <div className="absolute inset-y-0 left-[6%] hidden flex-col justify-center lg:flex">
           <Logo size="xl" />
           <div className="mt-10 flex gap-4">
