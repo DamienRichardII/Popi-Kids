@@ -1,0 +1,10 @@
+Edit the first image: a professional e-commerce photo of a child wearing {GARMENT}. The second image is the brand logo "POPI KIDS".
+
+KEEP EXACTLY THE SAME: the {GARMENT} (colour, fabric, cut, print, piping, collar, zip, stripes), the child's face, hair, skin tone and identity, and the clothes the child wears on the lower body. Do not redesign, recolour or add anything to the clothing.
+
+CHANGE:
+1. Background: replace the coloured backdrop and any props (cubes, steps, arches, boxes) with a clean warm beige / peach photo studio backdrop (about #E9D3BF), soft light gradient, no floor lines, no objects.
+2. Pose: the child must look calm and natural, standing or sitting still, looking at the camera, arms relaxed (one hand in pocket or resting is fine). If the original pose is a jump, a kick, a dance or any strong movement, restyle it into a simple still pose without changing the clothes.
+3. Framing: vertical 4:5 portrait, upper body to mid-thigh, child centred, generous but not excessive space around, like a premium kidswear catalogue.
+4. Logo: embroidered "POPI KIDS" logo (use the second image as exact reference, do not redraw or change the letters) on the wearer's LEFT chest, which is the right side of the image when the child faces the camera. Small (roughly 5 to 6 cm in real life), at heart height, following the fabric folds like real embroidery. {POLO_RULE}
+5. Realistic studio lighting, natural skin, sharp fabric texture. No text, no watermark, no other logo, no extra person.
