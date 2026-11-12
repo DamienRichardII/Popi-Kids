@@ -74,7 +74,6 @@ export default async function Home() {
 
       <section id="packs" className="mx-auto max-w-[1400px] scroll-mt-24 px-4 pt-14 sm:px-6" aria-label="Packs">
         <h2 className="section-title mb-2 text-center text-3xl sm:text-4xl">Nos packs</h2>
-        <p className="mx-auto mb-6 max-w-xl text-center text-sm text-muted">Des looks complets avec de vrais articles de la boutique. Prix = somme des articles ; la remise s&apos;applique uniquement avec l&apos;offre 4ᵉ sweat offert.</p>
         <ul className="grid gap-4 md:grid-cols-3">
           {bundles.map((b) => b.items.length === b.slugs.length && (
             <li key={b.id}><BundleCard title={b.title} text={b.text} items={b.items} offer={b.offer} /></li>
