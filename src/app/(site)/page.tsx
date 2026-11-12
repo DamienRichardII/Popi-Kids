@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { ArrowRight, Droplets, Leaf, Lock, Mail, Package, ShieldCheck, Truck, Users } from "lucide-react";
-import Hero from "@/components/Hero";
+import Hero, { type HeroSlide } from "@/components/Hero";
+import BundleCard from "@/components/BundleCard";
 import Visual from "@/components/Visual";
 import ProductGrid from "@/components/ProductGrid";
-import { CATEGORIES, getBestSellers } from "@/lib/commerce";
+import { CATEGORIES, getBestSellers, getProduct } from "@/lib/commerce";
+import { BUNDLES } from "@/lib/offers";
 import { FAQ, REASSURANCE, SITE, TRUST } from "@/lib/site";
 
 const ICONS = { truck: Truck, leaf: Leaf, shield: ShieldCheck, package: Package, droplet: Droplets, users: Users, lock: Lock };
@@ -19,11 +21,40 @@ export default async function Home() {
   const best = await getBestSellers();
   const cats = [...CATEGORIES.map((c) => ({ slug: c.slug, name: c.name, image: c.image, href: `/collections/${c.slug}` })),
     { slug: "cadeaux", name: "Cartes cadeaux", image: "cat-cadeaux", href: "/carte-cadeau" }];
+  const tiles = (keys: string[], badge?: string) => (
+    <div className="grid h-full w-full grid-cols-4 gap-px bg-line">
+      {keys.map((k, n) => (
+        <div key={k} className="relative">
+          <Visual assetKey={k} alt="" className="h-full w-full" sizes="(min-width:1024px) 15vw, 25vw" position="50% 20%" priority={n === 0} />
+          {badge && n === keys.length - 1 && <span className="absolute inset-x-1 bottom-2 rounded-full bg-primary px-1 py-1 text-center text-[10px] font-medium uppercase tracking-widest text-primary-fg sm:text-xs">{badge}</span>}
+        </div>
+      ))}
+    </div>
+  );
+  const slides: HeroSlide[] = [
+    { visual: tiles(["prod-epiro-1", "prod-leros-1", "prod-badet-1", "prod-urban-1"], "4ᵉ offert"), eyebrow: "Offre sweats",
+      title: "Le 4ᵉ sweat est offert", text: "Pour 4 sweat-shirts dans votre panier, le moins cher est offert. Remise appliquée automatiquement.",
+      cta: { label: "Voir les sweats", href: "/collections/vetements" }, cta2: { label: "Voir les packs", href: "/#packs" } },
+    { visual: tiles(["prod-jamaica-1", "prod-aida-1", "prod-monzha-1", "prod-carpe-child-1"]), eyebrow: "Personnalisation",
+      title: "Faites-le vôtre", text: "Ajoutez un prénom, une phrase ou votre fichier PNG (fond transparent, 600 dpi) sur t-shirts, polos et sweat-shirts.",
+      cta: { label: "Personnaliser", href: "/collections/vetements" } },
+    { visual: tiles(["prod-monzha-1", "prod-dortmund-1", "prod-freya-1", "prod-forza-1"]), eyebrow: "Packs",
+      title: "Des packs prêts à porter", text: "Looks complets composés avec nos articles : ajoutez le pack en un clic.",
+      cta: { label: "Découvrir les packs", href: "/#packs" } },
+    { visual: <Visual assetKey="hero-1" alt="Enfants portant des vêtements POPI KIDS" className="h-full w-full" sizes="100vw" position="50% 18%" />, 
+      title: "Tout pour accompagner leurs aventures", text: "Des vêtements de qualité conçus pour grandir, explorer et jouer.",
+      cta: { label: "Découvrir les collections", href: "/shop" }, cta2: { label: "Nos best-sellers", href: "/shop?sort=populaires" } },
+  ];
+  const bundles = await Promise.all(BUNDLES.map(async (b) => {
+    const items = (await Promise.all(b.slugs.map((s) => getProduct(s)))).flatMap((p) => p ? [{
+      productId: p.id, slug: p.slug, name: p.name, price: p.price, image: p.images[0] ?? "",
+      visual: <Visual assetKey={p.images[0] ?? ""} alt={p.name} className="h-full w-full" sizes="25vw" position="50% 25%" />,
+    }] : []);
+    return { ...b, items };
+  }));
   return (
     <>
-      <Hero slides={["hero-1", "hero-2", "hero-3"].map((k, i) => (
-        <Visual key={k} assetKey={k} alt="Enfants portant des vêtements POPI KIDS" className="h-full w-full" priority={i === 0} sizes="100vw" position="50% 18%" />
-      ))} />
+      <Hero slides={slides} />
 
       {/* Atouts – relevés sur l'accueil actuel (seuil de livraison à valider) */}
       <section aria-label="Nos atouts" className="border-b border-line bg-surface-2/50">
@@ -38,6 +69,16 @@ export default async function Home() {
               </li>
             );
           })}
+        </ul>
+      </section>
+
+      <section id="packs" className="mx-auto max-w-[1400px] scroll-mt-24 px-4 pt-14 sm:px-6" aria-label="Packs">
+        <h2 className="section-title mb-2 text-center text-3xl sm:text-4xl">Nos packs</h2>
+        <p className="mx-auto mb-6 max-w-xl text-center text-sm text-muted">Des looks complets avec de vrais articles de la boutique. Prix = somme des articles ; la remise s&apos;applique uniquement avec l&apos;offre 4ᵉ sweat offert.</p>
+        <ul className="grid gap-4 md:grid-cols-3">
+          {bundles.map((b) => b.items.length === b.slugs.length && (
+            <li key={b.id}><BundleCard title={b.title} text={b.text} items={b.items} offer={b.offer} /></li>
+          ))}
         </ul>
       </section>
 

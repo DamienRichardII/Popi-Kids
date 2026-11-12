@@ -19,8 +19,13 @@ describe("catalogue POPI KIDS (fournisseur demo)", () => {
     const prices = (await getProducts({ sort: "prix-asc" })).map((p) => p.price);
     expect(prices).toEqual([...prices].sort((a, b) => a - b));
   });
-  it("n'invente ni tailles ni couleurs", async () => {
-    expect((await getProducts()).every((p) => p.sizes.length === 0 && p.colors.length === 0)).toBe(true);
+  it("n'invente pas de tailles et reprend les couleurs/descriptions du site", async () => {
+    const all = await getProducts();
+    expect(all.every((p) => p.sizes.length === 0)).toBe(true);
+    expect(all.every((p) => !p.description.startsWith("Description à fournir"))).toBe(true);
+    const tamil = await getProduct("tamil");
+    expect(tamil?.colors.map((c) => c.name)).toContain("Blanc/Noir");
+    expect(tamil?.composition).toMatch(/polyester/);
   });
   it("chaque produit a au moins une photo", async () => {
     expect((await getProducts()).every((p) => p.images.length > 0)).toBe(true);

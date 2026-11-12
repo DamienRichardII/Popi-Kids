@@ -19,7 +19,7 @@ export function CartLines() {
             <div className="min-w-0 flex-1 text-sm">
               <Link href={`/product/${l.slug}`} className="serif block truncate text-lg">{l.name}</Link>
               {(l.color || l.size) && <p className="text-muted">{[l.color, l.size].filter(Boolean).join(" · ")}</p>}
-              {l.custom && <p className="text-muted">Personnalisation : {l.custom.type === "prenom" ? `prénom « ${l.custom.text} »` : l.custom.type === "phrase" ? `phrase « ${l.custom.text} »` : `logo (${l.custom.text})`}</p>}
+              {l.custom && <p className="text-muted">Personnalisation : {l.custom.type === "prenom" ? `prénom « ${l.custom.text} »` : l.custom.type === "phrase" ? `phrase « ${l.custom.text} »` : `fichier PNG (${l.custom.text})`}</p>}
               <p className="mt-0.5 font-medium">{eur(l.price)}</p>
               <div className="mt-2 inline-flex items-center rounded-full border border-line">
                 <button aria-label={`Diminuer la quantité de ${l.name}`} className="flex h-9 w-9 items-center justify-center" onClick={() => setQty(k, l.qty - 1)}><Minus size={14} /></button>
@@ -52,10 +52,11 @@ export function PromoCode() {
 }
 
 export function Totals() {
-  const { subtotal } = useCart();
+  const { subtotal, discount } = useCart();
   return (
     <dl className="mt-4 space-y-1.5 text-sm">
       <div className="flex justify-between"><dt className="text-muted">Sous-total</dt><dd>{eur(subtotal)}</dd></div>
+      {discount > 0 && <div className="flex justify-between text-accent-strong"><dt>4ᵉ sweat offert</dt><dd>−{eur(discount)}</dd></div>}
       <div className="flex justify-between"><dt className="text-muted">Livraison</dt><dd className="text-muted">Calculée au paiement</dd></div>
     </dl>
   );

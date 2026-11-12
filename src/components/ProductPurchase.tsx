@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Heart, Minus, Plus } from "lucide-react";
 import { eur, inStock } from "@/lib/commerce";
 import { SITE } from "@/lib/site";
+import { inspectPng, PNG_MAX_BYTES, type PngCheck } from "@/lib/png";
 import type { Product } from "@/lib/types";
 import { useCart } from "./CartProvider";
 
@@ -18,6 +19,14 @@ export default function ProductPurchase({ product: p, gallery }: { product: Prod
   const [added, setAdded] = useState(false);
   const [cType, setCType] = useState<"" | "prenom" | "phrase" | "logo">("");
   const [cText, setCText] = useState("");
+  const [png, setPng] = useState<PngCheck | null>(null);
+  const onFile = async (f?: File) => {
+    setErr(""); setPng(null); setCText("");
+    if (!f) return;
+    if (f.size > PNG_MAX_BYTES) { setPng({ ok: false, error: "Fichier trop lourd (10 Mo max)." }); return; }
+    const r = inspectPng(new Uint8Array(await f.arrayBuffer()));
+    setPng(r); if (r.ok) setCText(f.name);
+  };
   const fav = favs.includes(p.id);
   const noOptions = p.sizes.length === 0;
   const stock = noOptions ? 10 : p.sizes.find((s) => s.label === size)?.stock ?? 0;
@@ -26,7 +35,7 @@ export default function ProductPurchase({ product: p, gallery }: { product: Prod
   const submit = (then: "cart" | "buy") => {
     if (!noOptions && !size) { setErr("Veuillez choisir une taille."); return; }
     if (stock < 1) { setErr("Cette taille n'est plus disponible."); return; }
-    if (cType && !cText.trim()) { setErr(cType === "prenom" ? "Indiquez le prénom à ajouter." : cType === "phrase" ? "Indiquez la phrase à imprimer." : "Décrivez le logo ou le dessin souhaité."); return; }
+    if (cType && !cText.trim()) { setErr(cType === "prenom" ? "Indiquez le prénom à ajouter." : cType === "phrase" ? "Indiquez la phrase à imprimer." : "Ajoutez votre fichier PNG (fond transparent, 600 dpi)."); return; }
     setErr("");
     add({ productId: p.id, slug: p.slug, name: p.name, price: p.price, color, size, qty: Math.min(qty, stock), image: p.images[0] ?? "", ...(cType ? { custom: { type: cType, text: cText.trim() } } : {}) });
     if (then === "buy") router.push("/checkout"); else { setAdded(true); setTimeout(() => setAdded(false), 1800); }
@@ -61,7 +70,7 @@ export default function ProductPurchase({ product: p, gallery }: { product: Prod
           ))}</div></fieldset>}
 
         {noOptions ? (
-          <p className="mt-6 rounded-lg border border-dashed border-line p-3 text-sm text-muted">Tailles et couleurs disponibles : à confirmer par POPI KIDS avant l&apos;ouverture de la vente.</p>
+          <p className="mt-6 rounded-lg border border-dashed border-line p-3 text-sm text-muted">Tailles et disponibilités : à confirmer par POPI KIDS avant l&apos;ouverture de la vente.</p>
         ) : (
         <fieldset className="mt-6"><legend className="mb-2 text-sm font-medium">Taille</legend>
           <div className="flex flex-wrap gap-2">{p.sizes.map((s) => (
@@ -78,8 +87,8 @@ export default function ProductPurchase({ product: p, gallery }: { product: Prod
           <fieldset className="mt-6 rounded-xl border border-line p-4">
             <legend className="px-2 text-sm font-medium">Personnalisation</legend>
             <div className="flex flex-wrap gap-2" role="radiogroup" aria-label="Type de personnalisation">
-              {([["", "Sans"], ["prenom", "Un prénom"], ["phrase", "Une phrase"], ["logo", "Un logo"]] as const).map(([v, l]) => (
-                <button key={v} role="radio" aria-checked={cType === v} onClick={() => { setCType(v); setCText(""); setErr(""); }}
+              {([["", "Sans"], ["prenom", "Un prénom"], ["phrase", "Une phrase"], ["logo", "Un fichier PNG"]] as const).map(([v, l]) => (
+                <button key={v} role="radio" aria-checked={cType === v} onClick={() => { setCType(v); setCText(""); setPng(null); setErr(""); }}
                   className={`min-h-11 rounded-full border px-4 text-sm ${cType === v ? "border-primary bg-primary text-primary-fg" : "border-line"}`}>{l}</button>
               ))}
             </div>
@@ -94,11 +103,16 @@ export default function ProductPurchase({ product: p, gallery }: { product: Prod
               </label>
             )}
             {cType === "logo" && (
-              <label className="mt-3 block text-sm">Décrivez le logo ou le dessin souhaité
-                <textarea value={cText} maxLength={200} rows={3} onChange={(e) => setCText(e.target.value)} className="mt-1 w-full rounded-lg border border-line bg-surface px-3 py-2" />
-              </label>
+              <div className="mt-3 text-sm">
+                <label className="block">Votre fichier PNG (fond transparent, 600 dpi, 10 Mo max)
+                  <input type="file" accept="image/png" onChange={(e) => onFile(e.target.files?.[0])}
+                    className="mt-1 block min-h-11 w-full rounded-lg border border-line bg-surface px-3 py-2 text-sm file:mr-3 file:rounded-full file:border-0 file:bg-primary file:px-4 file:py-2 file:text-primary-fg" />
+                </label>
+                {png && !png.ok && <p role="alert" className="mt-2 text-xs text-[#b3261e]">{png.error}</p>}
+                {png?.ok && <p role="status" className="mt-2 text-xs text-muted">Fichier valide ({png.width}×{png.height} px{png.dpi ? `, ${png.dpi} dpi` : ""}). {png.warning}</p>}
+                <p className="mt-2 text-xs text-muted">Le fichier est vérifié sur votre appareil. Après la commande, envoyez-le à {SITE.contactEmail} en indiquant votre numéro de commande.</p>
+              </div>
             )}
-            {cType === "logo" && <p className="mt-2 text-xs text-muted">Après la commande, envoyez votre fichier à {SITE.contactEmail} en indiquant votre numéro de commande.</p>}
             <p className="mt-2 text-xs text-muted">Impression DTF (pas de broderie). Supplément éventuel et délai de personnalisation : à confirmer par POPI KIDS.</p>
           </fieldset>
         )}

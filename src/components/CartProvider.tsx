@@ -1,9 +1,10 @@
 "use client";
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import type { CartLine } from "@/lib/types";
+import { sweatDiscount } from "@/lib/offers";
 
 type Ctx = {
-  lines: CartLine[]; count: number; subtotal: number; open: boolean; hydrated: boolean;
+  lines: CartLine[]; count: number; subtotal: number; discount: number; total: number; open: boolean; hydrated: boolean;
   setOpen: (v: boolean) => void;
   add: (l: CartLine) => void;
   setQty: (key: string, qty: number) => void;
@@ -48,6 +49,8 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     lines, open, hydrated, setOpen, add, setQty, remove, favs, toggleFav,
     count: lines.reduce((n, l) => n + l.qty, 0),
     subtotal: lines.reduce((n, l) => n + l.qty * l.price, 0),
+    discount: sweatDiscount(lines),
+    total: lines.reduce((n, l) => n + l.qty * l.price, 0) - sweatDiscount(lines),
   }), [lines, open, hydrated, add, setQty, remove, favs, toggleFav]);
 
   return <CartCtx.Provider value={value}>{children}</CartCtx.Provider>;

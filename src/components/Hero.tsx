@@ -4,35 +4,45 @@ import { useEffect, useState } from "react";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import Logo from "./Logo";
 
-/** `slides` : nœuds <Visual> rendus côté serveur (clé hero-1..3). */
-export default function Hero({ slides }: { slides: React.ReactNode[] }) {
+export type HeroSlide = {
+  visual: React.ReactNode;
+  eyebrow?: string;
+  title: string;
+  text: string;
+  cta: { label: string; href: string };
+  cta2?: { label: string; href: string };
+};
+
+/** Carrousel dynamique : chaque slide porte son visuel (rendu côté serveur) et son message. */
+export default function Hero({ slides }: { slides: HeroSlide[] }) {
   const [i, setI] = useState(0);
   const [paused, setPaused] = useState(false);
   const n = slides.length;
   useEffect(() => {
     if (paused || n < 2 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const t = setInterval(() => setI((x) => (x + 1) % n), 6000);
+    const t = setInterval(() => setI((x) => (x + 1) % n), 6500);
     return () => clearInterval(t);
   }, [paused, n]);
+  const s = slides[i] ?? slides[0];
+  if (!s) return null;
 
   return (
-    <section aria-roledescription="carrousel" aria-label="Mise en avant" className="relative"
+    <section aria-roledescription="carrousel" aria-label="Offres et mises en avant" className="relative"
       onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
-      {/* Mobile : visuel au-dessus, CTA dessous ; desktop : texte superposé */}
       <div className="relative h-[300px] overflow-hidden sm:h-[420px] lg:h-[600px]">
-        {/* Desktop : photo à droite (moins de recadrage), fondu vers le fond côté texte */}
         <div className="absolute inset-0 lg:left-auto lg:w-[60%] lg:[mask-image:linear-gradient(to_right,transparent,#000_28%)]">
-          {slides.map((s, k) => (
-            <div key={k} aria-hidden={k !== i} className={`absolute inset-0 transition-opacity duration-1000 ${k === i ? "opacity-100" : "opacity-0"}`}>{s}</div>
+          {slides.map((x, k) => (
+            <div key={k} aria-hidden={k !== i} className={`absolute inset-0 transition-opacity duration-1000 ${k === i ? "opacity-100" : "opacity-0"}`}>{x.visual}</div>
           ))}
         </div>
-        <div className="absolute inset-y-0 left-[6%] hidden flex-col justify-center lg:flex">
+        <div className="absolute inset-y-0 left-[6%] hidden max-w-md flex-col justify-center lg:flex" aria-live="off">
           <Logo size="xl" />
-          <h1 className="serif mt-6 max-w-md text-3xl leading-tight text-[color:var(--hero-title)]">Tout pour accompagner leurs aventures</h1>
-          <p className="mt-2 max-w-md text-muted">Des vêtements de qualité conçus pour grandir, explorer et jouer.</p>
-          <div className="mt-8 flex gap-4">
-            <Link href="/shop" className="btn btn-primary">Découvrir les collections <ArrowRight size={18} /></Link>
-            <Link href="/shop?sort=populaires" className="btn btn-secondary">Nos best-sellers <ArrowRight size={18} /></Link>
+          {s.eyebrow && <p className="mt-6 text-xs font-medium uppercase tracking-[.25em] text-accent-strong">{s.eyebrow}</p>}
+          <h1 className="serif mt-3 text-4xl leading-tight text-[color:var(--hero-title)]">{s.title}</h1>
+          <p className="mt-3 text-muted">{s.text}</p>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <Link href={s.cta.href} className="btn btn-primary">{s.cta.label} <ArrowRight size={18} /></Link>
+            {s.cta2 && <Link href={s.cta2.href} className="btn btn-secondary">{s.cta2.label} <ArrowRight size={18} /></Link>}
           </div>
         </div>
         <button aria-label="Slide précédente" onClick={() => setI((i - 1 + n) % n)}
@@ -47,10 +57,11 @@ export default function Hero({ slides }: { slides: React.ReactNode[] }) {
         </div>
       </div>
       <div className="flex flex-col gap-3 px-6 py-6 lg:hidden">
-        <h1 className="serif text-3xl leading-tight">Tout pour accompagner leurs aventures</h1>
-        <p className="mb-2 text-muted">Des vêtements de qualité conçus pour grandir, explorer et jouer.</p>
-        <Link href="/shop" className="btn btn-primary">Découvrir</Link>
-        <Link href="/shop?sort=populaires" className="btn btn-secondary">Nos best-sellers</Link>
+        {s.eyebrow && <p className="text-xs font-medium uppercase tracking-[.25em] text-accent-strong">{s.eyebrow}</p>}
+        <h1 className="serif text-3xl leading-tight">{s.title}</h1>
+        <p className="mb-2 text-muted">{s.text}</p>
+        <Link href={s.cta.href} className="btn btn-primary">{s.cta.label}</Link>
+        {s.cta2 && <Link href={s.cta2.href} className="btn btn-secondary">{s.cta2.label}</Link>}
       </div>
     </section>
   );

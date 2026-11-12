@@ -5,7 +5,7 @@ import { useCart } from "@/components/CartProvider";
 import { eur } from "@/lib/commerce";
 
 export default function CartPage() {
-  const { lines, subtotal, hydrated } = useCart();
+  const { lines, total, hydrated } = useCart();
   return (
     <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
       <h1 className="section-title mb-4 text-4xl">Mon panier</h1>
@@ -14,7 +14,7 @@ export default function CartPage() {
       {lines.length > 0 && (
         <div className="border-t border-line pt-2">
           <PromoCode /><Totals />
-          <p className="mt-3 flex justify-between text-lg font-medium"><span>Total (hors livraison)</span><span>{eur(subtotal)}</span></p>
+          <p className="mt-3 flex justify-between text-lg font-medium"><span>Total (hors livraison)</span><span>{eur(total)}</span></p>
           <Link href="/checkout" className="btn btn-primary mt-5 w-full">Procéder au paiement</Link>
         </div>
       )}

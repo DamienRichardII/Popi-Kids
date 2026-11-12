@@ -58,7 +58,7 @@ export default async function CatalogView({
               {hasSizes && <fieldset><legend className="mb-2 font-medium">Taille</legend>
                 {SIZES.map((s) => <label key={s} className="flex items-center py-1.5"><input className={chk} type="checkbox" name="taille" value={s} defaultChecked={q.size?.includes(s)} />{s}</label>)}</fieldset>}
               {colors.length > 0 && <fieldset><legend className="mb-2 font-medium">Couleur</legend>
-                {colors.map((c) => <label key={c} className="flex items-center py-1.5"><input className={chk} type="checkbox" name="couleur" value={c} defaultChecked={q.color?.includes(c)} />{c}</label>)}</fieldset>}
+                <div className="max-h-64 overflow-y-auto pr-1">{colors.map((c) => <label key={c} className="flex items-center py-1.5"><input className={chk} type="checkbox" name="couleur" value={c} defaultChecked={q.color?.includes(c)} />{c}</label>)}</div></fieldset>}
               <fieldset><legend className="mb-2 font-medium">Prix (€)</legend>
                 <div className="flex gap-2">
                   <label className="sr-only" htmlFor="min">Prix minimum</label><input id="min" name="min" type="number" min={0} placeholder="Min" defaultValue={q.min} className="h-10 w-full rounded-lg border border-line bg-surface px-3" />
