@@ -8,7 +8,7 @@ export type HeroSlide = {
   visual: React.ReactNode;
   eyebrow?: string;
   title: string;
-  text: string;
+  text?: string;
   cta: { label: string; href: string };
   cta2?: { label: string; href: string };
 };
@@ -35,12 +35,11 @@ export default function Hero({ slides }: { slides: HeroSlide[] }) {
             <div key={k} aria-hidden={k !== i} className={`absolute inset-0 transition-opacity duration-1000 ${k === i ? "opacity-100" : "opacity-0"}`}>{x.visual}</div>
           ))}
         </div>
-        <div className="absolute inset-y-0 left-[6%] hidden max-w-md flex-col justify-center lg:flex" aria-live="off">
+        <div className="absolute inset-y-0 left-0 hidden w-[42%] flex-col items-center justify-center px-8 text-center lg:flex" aria-live="off">
           <Logo size="xl" />
           {s.eyebrow && <p className="mt-6 text-xs font-medium uppercase tracking-[.25em] text-accent-strong">{s.eyebrow}</p>}
           <h1 className="serif mt-3 text-4xl leading-tight text-[color:var(--hero-title)]">{s.title}</h1>
-          <p className="mt-3 text-muted">{s.text}</p>
-          <div className="mt-8 flex flex-wrap gap-4">
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link href={s.cta.href} className="btn btn-primary">{s.cta.label} <ArrowRight size={18} /></Link>
             {s.cta2 && <Link href={s.cta2.href} className="btn btn-secondary">{s.cta2.label} <ArrowRight size={18} /></Link>}
           </div>
@@ -59,7 +58,6 @@ export default function Hero({ slides }: { slides: HeroSlide[] }) {
       <div className="flex flex-col gap-3 px-6 py-6 lg:hidden">
         {s.eyebrow && <p className="text-xs font-medium uppercase tracking-[.25em] text-accent-strong">{s.eyebrow}</p>}
         <h1 className="serif text-3xl leading-tight">{s.title}</h1>
-        <p className="mb-2 text-muted">{s.text}</p>
         <Link href={s.cta.href} className="btn btn-primary">{s.cta.label}</Link>
         {s.cta2 && <Link href={s.cta2.href} className="btn btn-secondary">{s.cta2.label}</Link>}
       </div>

@@ -22,5 +22,5 @@ export function sweatDiscount(lines: Pick<CartLine, "slug" | "price" | "qty">[])
 export const BUNDLES = [
   { id: "pack-sweats", title: "Pack 4 sweats", text: "Choisissez le confort : le 4ᵉ sweat est offert.", slugs: ["epiro", "leros", "badet", "urban"], offer: true },
   { id: "pack-rentree", title: "Pack rentrée", text: "Un polo, un pantalon et une casquette pour démarrer du bon pied.", slugs: ["monzha", "dortmund", "freya"], offer: false },
-  { id: "pack-sport", title: "Pack sport", text: "Le t-shirt, le short et les chaussettes pour les journées de match.", slugs: ["forza", "calcio", "soccer"], offer: false },
+  { id: "pack-sport", title: "Pack sport", text: "Un t-shirt, un short et une tenue de match pour les journées sportives.", slugs: ["forza", "calcio", "soccer"], offer: false },
 ] as const;

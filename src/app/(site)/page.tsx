@@ -25,7 +25,7 @@ export default async function Home() {
     <div className="grid h-full w-full grid-cols-4 gap-px bg-line">
       {keys.map((k, n) => (
         <div key={k} className="relative">
-          <Visual assetKey={k} alt="" className="h-full w-full" sizes="(min-width:1024px) 15vw, 25vw" position="50% 20%" priority={n === 0} />
+          <Visual assetKey={k} alt="" className="h-full w-full" sizes="(min-width:1024px) 15vw, 25vw" position="50% 0%" priority={n === 0} />
           {badge && n === keys.length - 1 && <span className="absolute inset-x-1 bottom-2 rounded-full bg-primary px-1 py-1 text-center text-[10px] font-medium uppercase tracking-widest text-primary-fg sm:text-xs">{badge}</span>}
         </div>
       ))}
@@ -48,7 +48,7 @@ export default async function Home() {
   const bundles = await Promise.all(BUNDLES.map(async (b) => {
     const items = (await Promise.all(b.slugs.map((s) => getProduct(s)))).flatMap((p) => p ? [{
       productId: p.id, slug: p.slug, name: p.name, price: p.price, image: p.images[0] ?? "",
-      visual: <Visual assetKey={p.images[0] ?? ""} alt={p.name} className="h-full w-full" sizes="25vw" position="50% 25%" />,
+      visual: <Visual assetKey={p.images[0] ?? ""} alt={p.name} className="h-full w-full" sizes="25vw" position="50% 0%" />,
     }] : []);
     return { ...b, items };
   }));
