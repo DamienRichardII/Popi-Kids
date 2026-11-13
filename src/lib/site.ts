@@ -12,15 +12,17 @@ export const SITE = {
   socials: { tiktok: null, snapchat: null, instagram: null, facebook: null } as Record<string, string | null>,
 };
 
+/** Menu identique à popikids.com (ordre de la capture fournie par le client). */
 export const NAV = [
-  { label: "Accueil", href: "/" },
-  { label: "Vêtements", href: "/collections/vetements" },
-  { label: "Jeux", href: "/collections/jeux" },
-  { label: "Collections", href: "/shop", mega: true },
-  { label: "Lunch boxes", href: "/collections/lunch-boxes" },
-  { label: "Gourdes", href: "/collections/gourdes" },
-  { label: "Nos engagements", href: "/#engagements" },
-  { label: "Contact", href: "/contact-us" },
+  { label: "Page d'accueil", href: "/" },
+  { label: "T-shirts & polos", href: "/collections/t-shirts-polos" },
+  { label: "Sweats & gilets", href: "/collections/sweats-gilets" },
+  { label: "Vestes & Manteaux", href: "/collections/vestes-manteaux" },
+  { label: "Boîtes à lunch", href: "/collections/lunch-boxes" },
+  { label: "Jeux de société", href: "/collections/jeux" },
+  { label: "Sport", href: "/collections/sport" },
+  { label: "Accessoires", href: "/collections/accessoires" },
+  { label: "Contactez-nous", href: "/contact-us" },
 ] as const;
 
 /** Atouts relevés sur l'accueil actuel de popikids.com (livraison : seuil 100 € / 49 € à valider). */

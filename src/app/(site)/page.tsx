@@ -13,8 +13,8 @@ const ICONS = { truck: Truck, leaf: Leaf, shield: ShieldCheck, package: Package,
 /** Offres de saison : aucune promotion inventée, uniquement des accès vers les rayons existants. */
 const SEASON = [
   { title: "Idées cadeaux de Noël", text: "Jeux, lunch boxes, gourdes et sacs à offrir.", image: "prod-salento-1", href: "/collections/jeux", cta: "Découvrir" },
-  { title: "Looks d'hiver", text: "Sweats, vestes et tenues pour affronter le froid.", image: "prod-urban-1", href: "/collections/vetements", cta: "Voir les vêtements" },
-  { title: "Personnalisez", text: "Ajoutez un prénom, une phrase ou un logo sur les t-shirts, polos et sweat-shirts.", image: "prod-jamaica-1", href: "/collections/vetements", cta: "Personnaliser" },
+  { title: "Looks d'hiver", text: "Sweats, vestes et tenues pour affronter le froid.", image: "prod-nepal-1", href: "/collections/vestes-manteaux", cta: "Voir les vestes" },
+  { title: "Personnalisez", text: "Ajoutez un prénom, une phrase ou un logo sur les t-shirts, polos et sweat-shirts.", image: "prod-jamaica-1", href: "/collections/t-shirts-polos", cta: "Personnaliser" },
 ] as const;
 
 export default async function Home() {
@@ -32,19 +32,23 @@ export default async function Home() {
     </div>
   );
   const slides: HeroSlide[] = [
+    { visual: tiles(["prod-jamaica-1", "prod-aida-1", "prod-monzha-1", "prod-carpe-child-1"], "Personnalisable"), eyebrow: "Personnalisation",
+      title: "Faites-le vôtre : prénom, phrase ou logo",
+      cta: { label: "Personnaliser", href: "/collections/t-shirts-polos" }, cta2: { label: "Voir les sweats", href: "/collections/sweats-gilets" } },
     { visual: tiles(["prod-epiro-1", "prod-leros-1", "prod-badet-1", "prod-urban-1"], "4ᵉ offert"), eyebrow: "Offre sweats",
-      title: "Le 4ᵉ sweat est offert", text: "Pour 4 sweat-shirts dans votre panier, le moins cher est offert. Remise appliquée automatiquement.",
-      cta: { label: "Voir les sweats", href: "/collections/vetements" }, cta2: { label: "Voir les packs", href: "/#packs" } },
-    { visual: tiles(["prod-jamaica-1", "prod-aida-1", "prod-monzha-1", "prod-carpe-child-1"]), eyebrow: "Personnalisation",
-      title: "Faites-le vôtre", text: "Ajoutez un prénom, une phrase ou votre fichier PNG (fond transparent, 600 dpi) sur t-shirts, polos et sweat-shirts.",
-      cta: { label: "Personnaliser", href: "/collections/vetements" } },
+      title: "Le 4ᵉ sweat est offert",
+      cta: { label: "Voir les sweats", href: "/collections/sweats-gilets" }, cta2: { label: "Voir les packs", href: "/#packs" } },
+    { visual: <Visual assetKey="carte-cadeau-1" alt="Carte cadeau POPI KIDS et son enveloppe" className="h-full w-full" sizes="(min-width:1024px) 60vw, 100vw" position="50% 50%" />, eyebrow: "Idée cadeau",
+      title: "La carte cadeau POPI KIDS",
+      cta: { label: "Offrir une carte cadeau", href: "/carte-cadeau" } },
     { visual: tiles(["prod-monzha-1", "prod-dortmund-1", "prod-freya-1", "prod-forza-1"]), eyebrow: "Packs",
-      title: "Des packs prêts à porter", text: "Looks complets composés avec nos articles : ajoutez le pack en un clic.",
+      title: "Des packs prêts à porter",
       cta: { label: "Découvrir les packs", href: "/#packs" } },
-    { visual: <Visual assetKey="hero-1" alt="Enfants portant des vêtements POPI KIDS" className="h-full w-full" sizes="100vw" position="50% 18%" />, 
-      title: "Tout pour accompagner leurs aventures", text: "Des vêtements de qualité conçus pour grandir, explorer et jouer.",
+    { visual: <Visual assetKey="hero-1" alt="Enfants portant des vêtements POPI KIDS" className="h-full w-full" sizes="100vw" position="50% 18%" />,
+      title: "Tout pour accompagner leurs aventures",
       cta: { label: "Découvrir les collections", href: "/shop" }, cta2: { label: "Nos best-sellers", href: "/shop?sort=populaires" } },
   ];
+
   const bundles = await Promise.all(BUNDLES.map(async (b) => {
     const items = (await Promise.all(b.slugs.map((s) => getProduct(s)))).flatMap((p) => p ? [{
       productId: p.id, slug: p.slug, name: p.name, price: p.price, image: p.images[0] ?? "",
@@ -79,6 +83,16 @@ export default async function Home() {
             <li key={b.id}><BundleCard title={b.title} text={b.text} items={b.items} offer={b.offer} /></li>
           ))}
         </ul>
+      </section>
+
+      <section className="mx-auto mt-14 grid max-w-[1400px] items-center gap-8 px-4 sm:px-6 md:grid-cols-2">
+        <Visual assetKey="carte-cadeau-1" alt="Carte cadeau POPI KIDS et son enveloppe" className="aspect-square w-full rounded-2xl border border-line" sizes="(min-width:768px) 50vw, 100vw" />
+        <div>
+          <p className="mb-2 text-xs font-medium uppercase tracking-[.25em] text-accent-strong">Idée cadeau</p>
+          <h2 className="section-title text-3xl sm:text-4xl">La carte cadeau POPI KIDS</h2>
+          <p className="mt-3 max-w-md text-muted">Pour les petits aventuriers : une idée de cadeau élégante, à offrir sans se tromper de taille.</p>
+          <Link href="/carte-cadeau" className="btn btn-primary mt-6 w-fit">Découvrir <ArrowRight size={16} /></Link>
+        </div>
       </section>
 
       <section className="mx-auto max-w-[1400px] px-4 pt-14 sm:px-6" aria-label="Offres de saison">
@@ -134,14 +148,6 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="mx-auto mt-16 grid max-w-[1400px] items-center gap-8 px-4 sm:px-6 md:grid-cols-2">
-        <Visual assetKey="carte-cadeau-1" alt="Carte cadeau POPI KIDS et son enveloppe" className="aspect-square w-full rounded-2xl border border-line" sizes="(min-width:768px) 50vw, 100vw" />
-        <div>
-          <h2 className="section-title text-3xl sm:text-4xl">La carte cadeau POPI KIDS</h2>
-          <p className="mt-3 max-w-md text-muted">Pour les petits aventuriers : une idée de cadeau élégante, à offrir sans se tromper de taille.</p>
-          <Link href="/carte-cadeau" className="btn btn-primary mt-6 w-fit">Découvrir <ArrowRight size={16} /></Link>
-        </div>
-      </section>
 
       <section id="engagements" className="mx-auto mt-16 max-w-[1400px] scroll-mt-24 px-4 sm:px-6">
         <div className="rounded-3xl bg-surface-2 px-6 py-12 text-center sm:px-16">

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import CatalogView, { type SP } from "@/components/CatalogView";
 import { getCategory } from "@/lib/commerce";
 
@@ -12,6 +12,8 @@ export async function generateMetadata({ params }: P): Promise<Metadata> {
 
 export default async function Collection({ params, searchParams }: P) {
   const { slug } = await params;
+  const legacy: Record<string, string> = { vetements: "/shop", gourdes: "/collections/accessoires", sacs: "/collections/accessoires" };
+  if (legacy[slug]) redirect(legacy[slug]);
   const c = await getCategory(slug);
   if (!c) notFound();
   return (

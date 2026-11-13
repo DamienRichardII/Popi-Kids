@@ -19,7 +19,7 @@ export default function ThemeSwitcher() {
       }}
     >
       {theme === "ivory" ? <Moon size={16} /> : <Sun size={16} />}
-      <span className="hidden xl:inline">{theme === "ivory" ? "Mode nuit" : "Mode jour"}</span>
+      <span className="hidden 2xl:inline">{theme === "ivory" ? "Mode nuit" : "Mode jour"}</span>
     </button>
   );
 }

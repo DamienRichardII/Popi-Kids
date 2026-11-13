@@ -37,17 +37,17 @@ export default function Header() {
       </div>
 
       <header className="sticky top-0 z-40 border-b border-line bg-bg/95 backdrop-blur">
-        <div className="mx-auto grid h-16 max-w-[1400px] grid-cols-[1fr_auto_1fr] items-center px-4 sm:h-[88px] sm:px-6 lg:flex lg:gap-8">
+        <div className="mx-auto grid h-16 max-w-[1400px] grid-cols-[1fr_auto_1fr] items-center px-4 sm:h-[88px] sm:px-6 xl:flex xl:gap-8">
           {/* Mobile : hamburger */}
-          <button className="flex h-11 w-11 items-center justify-center lg:hidden" aria-label="Ouvrir le menu" aria-expanded={menu} onClick={() => setMenu(true)}>
+          <button className="flex h-11 w-11 items-center justify-center xl:hidden" aria-label="Ouvrir le menu" aria-expanded={menu} onClick={() => setMenu(true)}>
             <Menu />
           </button>
-          <div className="justify-self-center lg:justify-self-auto"><Logo size="sm" /></div>
+          <div className="justify-self-center xl:justify-self-auto"><Logo size="sm" /></div>
 
           {/* Desktop nav + mega-menu */}
-          <nav aria-label="Navigation principale" className="hidden flex-1 items-center justify-center gap-7 text-sm lg:flex">
+          <nav aria-label="Navigation principale" className="hidden flex-1 items-center justify-center gap-3 whitespace-nowrap text-[13px] xl:flex 2xl:gap-5 2xl:text-sm">
             {NAV.map((n) => {
-              const active = n.href === "/" ? path === "/" : path.startsWith(n.href) && n.href !== "/#engagements";
+              const active = n.href === "/" ? path === "/" : path.startsWith(n.href);
               return "mega" in n ? (
                 <div key={n.label} className="group relative">
                   <Link href={n.href} className={`py-2 hover:text-accent-strong ${active ? "border-b border-fg" : ""}`}>{n.label}</Link>
@@ -79,7 +79,7 @@ export default function Header() {
       </header>
 
       {/* Menu mobile */}
-      <div className={`fixed inset-0 z-50 lg:hidden ${menu ? "" : "pointer-events-none"}`} aria-hidden={!menu}>
+      <div className={`fixed inset-0 z-50 xl:hidden ${menu ? "" : "pointer-events-none"}`} aria-hidden={!menu}>
         <div className={`absolute inset-0 bg-black/50 transition-opacity ${menu ? "opacity-100" : "opacity-0"}`} onClick={() => setMenu(false)} />
         <nav aria-label="Menu mobile" className={`absolute inset-y-0 left-0 flex w-[85%] max-w-sm flex-col bg-bg p-6 transition-transform duration-300 ${menu ? "translate-x-0" : "-translate-x-full"}`}>
           <button className="mb-6 flex h-11 w-11 items-center justify-center self-end" aria-label="Fermer le menu" onClick={() => setMenu(false)}><X /></button>

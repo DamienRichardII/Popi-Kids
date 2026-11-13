@@ -1,14 +1,17 @@
 /** Données issues de popikids.com (WooCommerce, sync_catalogue.py) : descriptions, composition et couleurs réelles.
  * Les teintes (hex) sont une transcription visuelle des noms de couleurs du site. */
-export const WOO: Record<string, { d: string | null; c: string | null; k: { name: string; hex: string }[] }> = {
+export const WOO: Record<string, { d: string | null; c: string | null; g: string[]; k: { name: string; hex: string }[] }> = {
  "salento": {
   "d": "Ensemble de pelles de plage en bois et fibres de blé. Inclut jeux multijoueurs : échecs et parcheesi.",
   "c": null,
   "k": [
    {
     "name": "Beige",
-   "hex": "#D8C3A5"
+    "hex": "#D8C3A5"
    }
+  ],
+  "g": [
+   "jeux"
   ]
  },
  "feroe": {
@@ -17,32 +20,35 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Jaune",
-   "hex": "#F2C500"
+    "hex": "#F2C500"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Orange",
-   "hex": "#F28A1E"
+    "hex": "#F28A1E"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Vert fougère",
-   "hex": "#2E8B3D"
+    "hex": "#2E8B3D"
    }
+  ],
+  "g": [
+   "jeux"
   ]
  },
  "siscar": {
@@ -51,8 +57,11 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Beige",
-   "hex": "#D8C3A5"
+    "hex": "#D8C3A5"
    }
+  ],
+  "g": [
+   "jeux"
   ]
  },
  "buelix": {
@@ -61,8 +70,11 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Beige",
-   "hex": "#D8C3A5"
+    "hex": "#D8C3A5"
    }
+  ],
+  "g": [
+   "jeux"
   ]
  },
  "minos": {
@@ -71,8 +83,11 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Beige",
-   "hex": "#D8C3A5"
+    "hex": "#D8C3A5"
    }
+  ],
+  "g": [
+   "jeux"
   ]
  },
  "ludus": {
@@ -81,8 +96,11 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Beige",
-   "hex": "#D8C3A5"
+    "hex": "#D8C3A5"
    }
+  ],
+  "g": [
+   "jeux"
   ]
  },
  "fisac": {
@@ -91,86 +109,128 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Dinosaur",
-   "hex": "#B5B8BC"
+    "hex": "#B5B8BC"
    },
    {
     "name": "Dog",
-   "hex": "#B5B8BC"
+    "hex": "#B5B8BC"
    },
    {
     "name": "Rocket",
-   "hex": "#B5B8BC"
+    "hex": "#B5B8BC"
    },
    {
     "name": "Train",
-   "hex": "#B5B8BC"
+    "hex": "#B5B8BC"
    }
+  ],
+  "g": [
+   "jeux"
   ]
  },
  "zeon": {
   "d": "Jeu de puzzles en carton recyclé. Contient deux puzzles de 12 pièces chacun. Idéal pour les enfants, ce jeu allie divertissement et durabilité. Un produit écologique qui encourage la créativité et le respect de l’environnement, offrant des heures d’amusement et d’apprentissage dans un format compact et attrayant. Article certifié EN71-1, EN71-2, EN71-3.",
   "c": "Carton recyclé",
-  "k": []
+  "k": [],
+  "g": [
+   "jeux"
+  ]
  },
  "vicos": {
   "d": "Jeu Puissance 4 en bois. Idéal pour s’amuser à tout moment, que ce soit à la maison ou à l’extérieur. Son design robuste et naturel lui confèrent une apparence classique. Facile à monter et à démonter, il offre un divertissement instantané pour toutes les âges. Parfait pour des réunions familiales, événements sociaux ou tout simplement pour passer un bon moment. Ce jeu allie plaisir et esthétique.",
   "c": "Bois",
-  "k": []
+  "k": [],
+  "g": [
+   "jeux"
+  ]
  },
  "nokit": {
   "d": "Puzzle en bois de 24 pièces. Présentation en pochette coton.",
   "c": "Bois",
-  "k": []
+  "k": [],
+  "g": [
+   "jeux"
+  ]
  },
  "vernon": {
   "d": "Jeu de mathématiques en bois pour les enfants. Ensemble de 32 pièces. Présentation en pochette coton.",
   "c": null,
-  "k": []
+  "k": [],
+  "g": [
+   "jeux"
+  ]
  },
  "cubik": {
   "d": "Jeu de compétences, disponible en 24 modèles différents. Un paquet contient 24 unités.",
   "c": null,
-  "k": []
+  "k": [],
+  "g": [
+   "jeux"
+  ]
  },
  "pensy": {
   "d": "Jeu de morpion en bois. Comprends 10 pièces présentées dans une pochette en coton naturel.",
   "c": "Bois",
-  "k": []
+  "k": [],
+  "g": [
+   "jeux"
+  ]
  },
  "naipe": {
   "d": "Jeu de cartes français en carton recyclé. 54 cartes incluses. Présentation en boîte écodesign.",
   "c": "Carton recyclé",
-  "k": []
+  "k": [],
+  "g": [
+   "jeux"
+  ]
  },
  "brisca": {
   "d": "Ensemble de 2 jeux de société : jeu de dés et cartes françaises. Présenté dans une boîte en bois avec deux compartiments et un couvercle coulissant. Le plateau mesure 8,5 cm x 5,5 cm. Article certifié EN71-1, EN71-2, EN71-3.",
   "c": null,
-  "k": []
+  "k": [],
+  "g": [
+   "jeux"
+  ]
  },
  "galvy": {
   "d": "Ensemble de 4 jeux d’adresse : mikado, échecs, dames et dominos. Présenté dans une boîte avec un couvercle coulissant avec une fonction de table à l’intérieur. Article certifié EN71-1, EN71-2, EN71-3.",
   "c": null,
-  "k": []
+  "k": [],
+  "g": [
+   "jeux"
+  ]
  },
  "domis": {
   "d": "Jeu de dominos en bois. 28 pièces présentées dans un coffret avec couvercle coulissant.",
   "c": "Bois",
-  "k": []
+  "k": [],
+  "g": [
+   "jeux"
+  ]
  },
  "triwa": {
   "d": "Jeu de société à 3 rangs en bois. 9 blocs présentés dans une boîte avec un couvercle coulissant.",
   "c": "Bois",
-  "k": []
+  "k": [],
+  "g": [
+   "jeux"
+  ]
  },
  "ryman": {
   "d": "Jeu d’adresse composé de 45 blocs rectangulaires, présenté dans un sac en coton avec cordons de serrage. Article certifié EN71-1, EN71-2, EN71-3.",
   "c": "Bois et coton.",
-  "k": []
+  "k": [],
+  "g": [
+   "jeux"
+  ]
  },
  "rocks": {
   "d": "Ensemble de 3 jeux d’adresse en bois naturel. Présenté dans une boîte en bois avec compartiments et couvercle coulissant. Article certifié EN71-1, EN71-2, EN71-3.",
   "c": "Bois naturel",
-  "k": []
+  "k": [],
+  "g": [
+   "jeux"
+  ]
  },
  "rosko": {
   "d": "Yo-yo en bois naturel avec un cordon blanc de 75 cm.",
@@ -178,34 +238,40 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Beige",
-   "hex": "#D8C3A5"
+    "hex": "#D8C3A5"
    },
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Jaune",
-   "hex": "#F2C500"
+    "hex": "#F2C500"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Vert fougère",
-   "hex": "#2E8B3D"
+    "hex": "#2E8B3D"
    }
+  ],
+  "g": [
+   "jeux"
   ]
  },
  "leis": {
   "d": "Puzzle Tangram en bois naturel avec 7 pièces colorées. Idéal pour le développement des compétences. Article certifié EN71-1, EN71-2, EN71-3.",
   "c": "Bois",
-  "k": []
+  "k": [],
+  "g": [
+   "jeux"
+  ]
  },
  "jazz": {
   "d": "Ours en peluche avec sweatshirt doux en polyester doux au toucher. Également parfait comme cadeau. Position assise. Remarks: Dimensions du sweat-shirt : Devant : 12 x 4,5 cm Derrière : 12 x 6 cm",
@@ -213,32 +279,35 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Orange",
-   "hex": "#F28A1E"
+    "hex": "#F28A1E"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Vert fougère",
-   "hex": "#2E8B3D"
+    "hex": "#2E8B3D"
    }
+  ],
+  "g": [
+   "jeux"
   ]
  },
  "koda": {
@@ -247,24 +316,27 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Jaune",
-   "hex": "#F2C500"
+    "hex": "#F2C500"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    }
+  ],
+  "g": [
+   "jeux"
   ]
  },
  "croker": {
@@ -273,32 +345,35 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Jaune",
-   "hex": "#F2C500"
+    "hex": "#F2C500"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Orange",
-   "hex": "#F28A1E"
+    "hex": "#F28A1E"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Vert fougère",
-   "hex": "#2E8B3D"
+    "hex": "#2E8B3D"
    }
+  ],
+  "g": [
+   "sport_accessories"
   ]
  },
  "bingo": {
@@ -307,35 +382,44 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Beige",
-   "hex": "#D8C3A5"
+    "hex": "#D8C3A5"
    },
    {
     "name": "Bleu royal clair",
-   "hex": "#3F7FE0"
+    "hex": "#3F7FE0"
    },
    {
     "name": "Jaune",
-   "hex": "#F2C500"
+    "hex": "#F2C500"
    },
    {
     "name": "Rose clair",
-   "hex": "#F4C2D0"
+    "hex": "#F4C2D0"
    },
    {
     "name": "Vert fougère",
-   "hex": "#2E8B3D"
+    "hex": "#2E8B3D"
    }
+  ],
+  "g": [
+   "sport_accessories"
   ]
  },
  "turcaz": {
   "d": "Sac à dos pour enfants en non wowen. Design pour le coloriage. Avec 5 crayons de cire de différentes couleurs.",
   "c": "Non-tissé",
-  "k": []
+  "k": [],
+  "g": [
+   "sport_accessories"
+  ]
  },
  "azor": {
   "d": "Sac non tissé pour enfants avec motif à colorier. Comprend 5 cires de couleurs assorties.",
   "c": "Non-tissé",
-  "k": []
+  "k": [],
+  "g": [
+   "sport_accessories"
+  ]
  },
  "elanio": {
   "d": "Sac à dos pour enfants à cordelettes pliable en polyester 190T. Poche pour pliage en forme d’ animal.",
@@ -343,20 +427,23 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Coq",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Girafe",
-   "hex": "#B5B8BC"
+    "hex": "#B5B8BC"
    },
    {
     "name": "Poisson",
-   "hex": "#B5B8BC"
+    "hex": "#B5B8BC"
    },
    {
     "name": "Zèbre",
-   "hex": "#B5B8BC"
+    "hex": "#B5B8BC"
    }
+  ],
+  "g": [
+   "sport_accessories"
   ]
  },
  "marabu": {
@@ -365,45 +452,46 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Jaune",
-   "hex": "#F2C500"
+    "hex": "#F2C500"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Orange",
-   "hex": "#F28A1E"
+    "hex": "#F28A1E"
    },
    {
     "name": "Rosacé",
-   "hex": "#E8A0A8"
+    "hex": "#E8A0A8"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Turquoise",
-   "hex": "#17B6C9"
+    "hex": "#17B6C9"
    },
    {
     "name": "Vert fougère",
-   "hex": "#2E8B3D"
+    "hex": "#2E8B3D"
    },
    {
     "name": "Vert militaire",
-   "hex": "#4B5320"
+    "hex": "#4B5320"
    }
-  ]
+  ],
+  "g": []
  },
  "kinkan": {
   "d": "Bidon en Tritan avec corps de couleur translucide. Bouchon assorti avec poignée de transport intégrée. Capacité 650 ml. Présentation dans un coffret design. Presentation in design box. ***Hand wash only***",
@@ -411,28 +499,31 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Jaune",
-   "hex": "#F2C500"
+    "hex": "#F2C500"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Vert fougère",
-   "hex": "#2E8B3D"
+    "hex": "#2E8B3D"
    }
+  ],
+  "g": [
+   "sport_accessories"
   ]
  },
  "balax": {
@@ -441,44 +532,47 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Argent",
-   "hex": "#C0C0C0"
+    "hex": "#C0C0C0"
    },
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu profond",
-   "hex": "#0E2A5C"
+    "hex": "#0E2A5C"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Or",
-   "hex": "#D4AF37"
+    "hex": "#D4AF37"
    },
    {
     "name": "Orange",
-   "hex": "#F28A1E"
+    "hex": "#F28A1E"
    },
    {
     "name": "Rose doré",
-   "hex": "#E7B7A4"
+    "hex": "#E7B7A4"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Vert fougère",
-   "hex": "#2E8B3D"
+    "hex": "#2E8B3D"
    }
+  ],
+  "g": [
+   "sport_accessories"
   ]
  },
  "gerald": {
@@ -487,28 +581,31 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Dark green",
-   "hex": "#1F4D2E"
+    "hex": "#1F4D2E"
    },
    {
     "name": "Dark red",
-   "hex": "#7A0F1E"
+    "hex": "#7A0F1E"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    }
+  ],
+  "g": [
+   "sport_accessories"
   ]
  },
  "bontax": {
@@ -517,28 +614,31 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Argent",
-   "hex": "#C0C0C0"
+    "hex": "#C0C0C0"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Orange",
-   "hex": "#F28A1E"
+    "hex": "#F28A1E"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Vert fougère",
-   "hex": "#2E8B3D"
+    "hex": "#2E8B3D"
    }
+  ],
+  "g": [
+   "sport_accessories"
   ]
  },
  "fafik": {
@@ -547,16 +647,19 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Basket",
-   "hex": "#B5B8BC"
+    "hex": "#B5B8BC"
    },
    {
     "name": "Foot",
-   "hex": "#B5B8BC"
+    "hex": "#B5B8BC"
    },
    {
     "name": "Tennis",
-   "hex": "#B5B8BC"
+    "hex": "#B5B8BC"
    }
+  ],
+  "g": [
+   "sport_accessories"
   ]
  },
  "kelis": {
@@ -565,20 +668,23 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Dark green",
-   "hex": "#1F4D2E"
+    "hex": "#1F4D2E"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    }
+  ],
+  "g": [
+   "sport_accessories"
   ]
  },
  "marlen": {
@@ -587,20 +693,23 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Jaune",
-   "hex": "#F2C500"
+    "hex": "#F2C500"
    },
    {
     "name": "Vert fougère",
-   "hex": "#2E8B3D"
+    "hex": "#2E8B3D"
    }
+  ],
+  "g": [
+   "sport_accessories"
   ]
  },
  "pumba": {
@@ -609,35 +718,44 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Jaune",
-   "hex": "#F2C500"
+    "hex": "#F2C500"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Vert fougère",
-   "hex": "#2E8B3D"
+    "hex": "#2E8B3D"
    }
+  ],
+  "g": [
+   "sport_accessories"
   ]
  },
  "brena": {
   "d": "Boîte à lunch en acier inoxydable 304 avec système de fermeture à boucle latérale. Grande capacité de 1,2 litre pour mettre vos aliments.",
   "c": "Acier inoxydable 304.",
-  "k": []
+  "k": [],
+  "g": [
+   "lunch_boxes"
+  ]
  },
  "korlan": {
   "d": "Boîte à lunch en acier inoxydable 304 avec couvercle en bambou et bande de sécurité en polyester. Capacité 750 ml.",
   "c": "Acier inoxydable 304.",
-  "k": []
+  "k": [],
+  "g": [
+   "lunch_boxes"
+  ]
  },
  "comix": {
   "d": "Boîte à lunch d’une capacité de 1,3 L en PP, avec trois compartiments indépendants de différentes tailles qui gardent les aliments séparés à tout moment. De plus, ces sections font partie d’un compartiment principal amovible, laissant de l’espace en bas pour ranger la fourchette et la cuillère incluses. Il dispose d’un bouchon rabattable avec une fermeture anti-goutte grâce à la doublure en silicone à l’intérieur. Ce mécanisme aide à garder les aliments dans un état optimal pendant le transport. En outre, elle comprend un compartiment intérieur séparé pour transporter des sauces ou d’autres condiments. Passe au micro-ondes (avec couvercle ouvert). Ne passe pas au lave-vaisselle. Nous vous recommandons de le laver à la main.",
@@ -645,24 +763,27 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Beige",
-   "hex": "#D8C3A5"
+    "hex": "#D8C3A5"
    },
    {
     "name": "Dark green",
-   "hex": "#1F4D2E"
+    "hex": "#1F4D2E"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    }
+  ],
+  "g": [
+   "lunch_boxes"
   ]
  },
  "kady": {
@@ -671,16 +792,19 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Beige",
-   "hex": "#D8C3A5"
+    "hex": "#D8C3A5"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    }
+  ],
+  "g": [
+   "lunch_boxes"
   ]
  },
  "briox": {
@@ -689,16 +813,19 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Beige",
-   "hex": "#D8C3A5"
+    "hex": "#D8C3A5"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    }
+  ],
+  "g": [
+   "lunch_boxes"
   ]
  },
  "camden": {
@@ -707,24 +834,27 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Beige",
-   "hex": "#D8C3A5"
+    "hex": "#D8C3A5"
    },
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    }
+  ],
+  "g": [
+   "lunch_boxes"
   ]
  },
  "carmel": {
@@ -733,16 +863,19 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    }
+  ],
+  "g": [
+   "lunch_boxes"
   ]
  },
  "janex": {
@@ -751,16 +884,19 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Beige",
-   "hex": "#D8C3A5"
+    "hex": "#D8C3A5"
    },
    {
     "name": "Grey",
-   "hex": "#9A9DA1"
+    "hex": "#9A9DA1"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    }
+  ],
+  "g": [
+   "lunch_boxes"
   ]
  },
  "aida": {
@@ -769,20 +905,23 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Corail fluo",
-   "hex": "#FF6F5E"
+    "hex": "#FF6F5E"
    },
    {
     "name": "Jaune fluo",
-   "hex": "#E6F23A"
+    "hex": "#E6F23A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "andre": {
@@ -791,36 +930,39 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Jaune fluo",
-   "hex": "#E6F23A"
+    "hex": "#E6F23A"
    },
    {
     "name": "Lime",
-   "hex": "#A8D81F"
+    "hex": "#A8D81F"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Orange fluo",
-   "hex": "#FF7A1A"
+    "hex": "#FF7A1A"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Turquoise",
-   "hex": "#17B6C9"
+    "hex": "#17B6C9"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "monzha": {
@@ -829,48 +971,51 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu ciel",
-   "hex": "#8FCBEF"
+    "hex": "#8FCBEF"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Jaune fluo",
-   "hex": "#E6F23A"
+    "hex": "#E6F23A"
    },
    {
     "name": "Lime",
-   "hex": "#A8D81F"
+    "hex": "#A8D81F"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Orange fluo",
-   "hex": "#FF7A1A"
+    "hex": "#FF7A1A"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Turquoise",
-   "hex": "#17B6C9"
+    "hex": "#17B6C9"
    },
    {
     "name": "Vert fougère",
-   "hex": "#2E8B3D"
+    "hex": "#2E8B3D"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "tamil": {
@@ -879,24 +1024,27 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc/Noir",
-   "hex": "linear-gradient(135deg,#FFFFFF 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#FFFFFF 50%,#111111 50%)"
    },
    {
     "name": "Marine/Blanc",
-   "hex": "linear-gradient(135deg,#1B2A4A 50%,#FFFFFF 50%)"
+    "hex": "linear-gradient(135deg,#1B2A4A 50%,#FFFFFF 50%)"
    },
    {
     "name": "Noir/Blanc",
-   "hex": "linear-gradient(135deg,#111111 50%,#FFFFFF 50%)"
+    "hex": "linear-gradient(135deg,#111111 50%,#FFFFFF 50%)"
    },
    {
     "name": "Rouge/Blanc",
-   "hex": "linear-gradient(135deg,#C8102E 50%,#FFFFFF 50%)"
+    "hex": "linear-gradient(135deg,#C8102E 50%,#FFFFFF 50%)"
    },
    {
     "name": "Royal/Blanc",
-   "hex": "linear-gradient(135deg,#B5B8BC 50%,#FFFFFF 50%)"
+    "hex": "linear-gradient(135deg,#B5B8BC 50%,#FFFFFF 50%)"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "austin": {
@@ -905,32 +1053,35 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Bleu marine chiné",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Bleu royal chiné",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Corail fluo chiné",
-   "hex": "#FF6F5E"
+    "hex": "#FF6F5E"
    },
    {
     "name": "Jaune fluo chiné",
-   "hex": "#E6F23A"
+    "hex": "#E6F23A"
    },
    {
     "name": "Lime chiné",
-   "hex": "#A8D81F"
+    "hex": "#A8D81F"
    },
    {
     "name": "Noir chiné",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Turquoise chiné",
-   "hex": "#17B6C9"
+    "hex": "#17B6C9"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "sport": {
@@ -939,20 +1090,23 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Gris chiné",
-   "hex": "#B5B8BC"
+    "hex": "#B5B8BC"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "forza": {
@@ -961,28 +1115,31 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Espagne",
-   "hex": "#B5B8BC"
+    "hex": "#B5B8BC"
    },
    {
     "name": "France",
-   "hex": "#B5B8BC"
+    "hex": "#B5B8BC"
    },
    {
     "name": "Germany flag",
-   "hex": "#B5B8BC"
+    "hex": "#B5B8BC"
    },
    {
     "name": "Italie",
-   "hex": "#B5B8BC"
+    "hex": "#B5B8BC"
    },
    {
     "name": "Le portugal",
-   "hex": "#B5B8BC"
+    "hex": "#B5B8BC"
    },
    {
     "name": "United kingdom flag",
-   "hex": "#B5B8BC"
+    "hex": "#B5B8BC"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "calcio": {
@@ -991,32 +1148,35 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Jaune",
-   "hex": "#F2C500"
+    "hex": "#F2C500"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Vert fougère",
-   "hex": "#2E8B3D"
+    "hex": "#2E8B3D"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "dortmund": {
@@ -1025,28 +1185,31 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Vert fougère",
-   "hex": "#2E8B3D"
+    "hex": "#2E8B3D"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "celtic": {
@@ -1055,16 +1218,19 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "player": {
@@ -1073,24 +1239,27 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "carla": {
@@ -1099,12 +1268,15 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "nelly": {
@@ -1113,8 +1285,11 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "agia": {
@@ -1123,16 +1298,19 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Bourgogne/Blanc",
-   "hex": "linear-gradient(135deg,#B5B8BC 50%,#FFFFFF 50%)"
+    "hex": "linear-gradient(135deg,#B5B8BC 50%,#FFFFFF 50%)"
    },
    {
     "name": "Marine/Blanc",
-   "hex": "linear-gradient(135deg,#1B2A4A 50%,#FFFFFF 50%)"
+    "hex": "linear-gradient(135deg,#1B2A4A 50%,#FFFFFF 50%)"
    },
    {
     "name": "Noir/ébène",
-   "hex": "linear-gradient(135deg,#111111 50%,#2B2420 50%)"
+    "hex": "linear-gradient(135deg,#111111 50%,#2B2420 50%)"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "bugatti": {
@@ -1141,44 +1319,47 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc/ Bleu royal",
-   "hex": "linear-gradient(135deg,#FFFFFF 50%,#1F4FBF 50%)"
+    "hex": "linear-gradient(135deg,#FFFFFF 50%,#1F4FBF 50%)"
    },
    {
     "name": "Blanc/Noir",
-   "hex": "linear-gradient(135deg,#FFFFFF 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#FFFFFF 50%,#111111 50%)"
    },
    {
     "name": "Blanc/Rouge",
-   "hex": "linear-gradient(135deg,#FFFFFF 50%,#C8102E 50%)"
+    "hex": "linear-gradient(135deg,#FFFFFF 50%,#C8102E 50%)"
    },
    {
     "name": "Blanc/Vert fougère",
-   "hex": "linear-gradient(135deg,#FFFFFF 50%,#2E8B3D 50%)"
+    "hex": "linear-gradient(135deg,#FFFFFF 50%,#2E8B3D 50%)"
    },
    {
     "name": "Fuchsia/noir",
-   "hex": "linear-gradient(135deg,#D81B7B 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#D81B7B 50%,#111111 50%)"
    },
    {
     "name": "Jaune fluo/noir",
-   "hex": "linear-gradient(135deg,#E6F23A 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#E6F23A 50%,#111111 50%)"
    },
    {
     "name": "Noir/Blanc",
-   "hex": "linear-gradient(135deg,#111111 50%,#FFFFFF 50%)"
+    "hex": "linear-gradient(135deg,#111111 50%,#FFFFFF 50%)"
    },
    {
     "name": "Orange fluo/Noir",
-   "hex": "linear-gradient(135deg,#FF7A1A 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#FF7A1A 50%,#111111 50%)"
    },
    {
     "name": "Vert fluo/marine",
-   "hex": "linear-gradient(135deg,#7CE23B 50%,#1B2A4A 50%)"
+    "hex": "linear-gradient(135deg,#7CE23B 50%,#1B2A4A 50%)"
    },
    {
     "name": "Vert fougère/noir",
-   "hex": "linear-gradient(135deg,#2E8B3D 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#2E8B3D 50%,#111111 50%)"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "leire": {
@@ -1187,16 +1368,19 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Gris chiné",
-   "hex": "#B5B8BC"
+    "hex": "#B5B8BC"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "indianapolis": {
@@ -1205,36 +1389,39 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc/ Bleu royal",
-   "hex": "linear-gradient(135deg,#FFFFFF 50%,#1F4FBF 50%)"
+    "hex": "linear-gradient(135deg,#FFFFFF 50%,#1F4FBF 50%)"
    },
    {
     "name": "Blanc/Bleu marine",
-   "hex": "linear-gradient(135deg,#FFFFFF 50%,#1B2A4A 50%)"
+    "hex": "linear-gradient(135deg,#FFFFFF 50%,#1B2A4A 50%)"
    },
    {
     "name": "Blanc/Noir",
-   "hex": "linear-gradient(135deg,#FFFFFF 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#FFFFFF 50%,#111111 50%)"
    },
    {
     "name": "Blanc/Rouge",
-   "hex": "linear-gradient(135deg,#FFFFFF 50%,#C8102E 50%)"
+    "hex": "linear-gradient(135deg,#FFFFFF 50%,#C8102E 50%)"
    },
    {
     "name": "Blanc/Vert fougère",
-   "hex": "linear-gradient(135deg,#FFFFFF 50%,#2E8B3D 50%)"
+    "hex": "linear-gradient(135deg,#FFFFFF 50%,#2E8B3D 50%)"
    },
    {
     "name": "Jaune fluo/marine",
-   "hex": "linear-gradient(135deg,#E6F23A 50%,#1B2A4A 50%)"
+    "hex": "linear-gradient(135deg,#E6F23A 50%,#1B2A4A 50%)"
    },
    {
     "name": "Orange fluo/Noir",
-   "hex": "linear-gradient(135deg,#FF7A1A 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#FF7A1A 50%,#111111 50%)"
    },
    {
     "name": "Vert fluo/blanc",
-   "hex": "linear-gradient(135deg,#7CE23B 50%,#FFFFFF 50%)"
+    "hex": "linear-gradient(135deg,#7CE23B 50%,#FFFFFF 50%)"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "adelpho": {
@@ -1243,16 +1430,19 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Gris chiné",
-   "hex": "#B5B8BC"
+    "hex": "#B5B8BC"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "detroit": {
@@ -1261,32 +1451,35 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc/turquoise",
-   "hex": "linear-gradient(135deg,#FFFFFF 50%,#17B6C9 50%)"
+    "hex": "linear-gradient(135deg,#FFFFFF 50%,#17B6C9 50%)"
    },
    {
     "name": "Bleu royal/bleu royal clair",
-   "hex": "linear-gradient(135deg,#1F4FBF 50%,#3F7FE0 50%)"
+    "hex": "linear-gradient(135deg,#1F4FBF 50%,#3F7FE0 50%)"
    },
    {
     "name": "Corail fluo/noir",
-   "hex": "linear-gradient(135deg,#FF6F5E 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#FF6F5E 50%,#111111 50%)"
    },
    {
     "name": "Ébène/noir",
-   "hex": "linear-gradient(135deg,#2B2420 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#2B2420 50%,#111111 50%)"
    },
    {
     "name": "Fuchsia/noir",
-   "hex": "linear-gradient(135deg,#D81B7B 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#D81B7B 50%,#111111 50%)"
    },
    {
     "name": "Lime punch/noir",
-   "hex": "linear-gradient(135deg,#A8D81F 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#A8D81F 50%,#111111 50%)"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "new-astun": {
@@ -1295,16 +1488,19 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Gris chiné",
-   "hex": "#B5B8BC"
+    "hex": "#B5B8BC"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "shanghai": {
@@ -1313,32 +1509,35 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc/plomb foncé",
-   "hex": "linear-gradient(135deg,#FFFFFF 50%,#4B4F55 50%)"
+    "hex": "linear-gradient(135deg,#FFFFFF 50%,#4B4F55 50%)"
    },
    {
     "name": "Jaune fluo/noir",
-   "hex": "linear-gradient(135deg,#E6F23A 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#E6F23A 50%,#111111 50%)"
    },
    {
     "name": "Noir/plomb foncé",
-   "hex": "linear-gradient(135deg,#111111 50%,#4B4F55 50%)"
+    "hex": "linear-gradient(135deg,#111111 50%,#4B4F55 50%)"
    },
    {
     "name": "Orange fluo/Noir",
-   "hex": "linear-gradient(135deg,#FF7A1A 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#FF7A1A 50%,#111111 50%)"
    },
    {
     "name": "Rouge/plomb foncé",
-   "hex": "linear-gradient(135deg,#C8102E 50%,#4B4F55 50%)"
+    "hex": "linear-gradient(135deg,#C8102E 50%,#4B4F55 50%)"
    },
    {
     "name": "Turquoise/plomb foncé",
-   "hex": "linear-gradient(135deg,#17B6C9 50%,#4B4F55 50%)"
+    "hex": "linear-gradient(135deg,#17B6C9 50%,#4B4F55 50%)"
    },
    {
     "name": "Vert fluo/Noir",
-   "hex": "linear-gradient(135deg,#7CE23B 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#7CE23B 50%,#111111 50%)"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "argos": {
@@ -1347,12 +1546,15 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "zolder": {
@@ -1361,28 +1563,31 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc/corail fluo chiné",
-   "hex": "linear-gradient(135deg,#FFFFFF 50%,#FF6F5E 50%)"
+    "hex": "linear-gradient(135deg,#FFFFFF 50%,#FF6F5E 50%)"
    },
    {
     "name": "Blanc/noir chiné",
-   "hex": "linear-gradient(135deg,#FFFFFF 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#FFFFFF 50%,#111111 50%)"
    },
    {
     "name": "Jaune fluo/noir chiné",
-   "hex": "linear-gradient(135deg,#E6F23A 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#E6F23A 50%,#111111 50%)"
    },
    {
     "name": "Noir/noir chiné",
-   "hex": "linear-gradient(135deg,#111111 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#111111 50%,#111111 50%)"
    },
    {
     "name": "Rouge/rouge chiné",
-   "hex": "linear-gradient(135deg,#C8102E 50%,#C8102E 50%)"
+    "hex": "linear-gradient(135deg,#C8102E 50%,#C8102E 50%)"
    },
    {
     "name": "Turquoise/turquoise chiné",
-   "hex": "linear-gradient(135deg,#17B6C9 50%,#17B6C9 50%)"
+    "hex": "linear-gradient(135deg,#17B6C9 50%,#17B6C9 50%)"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "daytona": {
@@ -1391,64 +1596,67 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Cranberry",
-   "hex": "#9B2D4A"
+    "hex": "#9B2D4A"
    },
    {
     "name": "Grey",
-   "hex": "#9A9DA1"
+    "hex": "#9A9DA1"
    },
    {
     "name": "Jaune",
-   "hex": "#F2C500"
+    "hex": "#F2C500"
    },
    {
     "name": "Jaune fluo",
-   "hex": "#E6F23A"
+    "hex": "#E6F23A"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Orange",
-   "hex": "#F28A1E"
+    "hex": "#F28A1E"
    },
    {
     "name": "Orange fluo",
-   "hex": "#FF7A1A"
+    "hex": "#FF7A1A"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Silk pink",
-   "hex": "#F2C9CF"
+    "hex": "#F2C9CF"
    },
    {
     "name": "Turquoise",
-   "hex": "#17B6C9"
+    "hex": "#17B6C9"
    },
    {
     "name": "Vert fluo",
-   "hex": "#7CE23B"
+    "hex": "#7CE23B"
    },
    {
     "name": "Vert fougère",
-   "hex": "#2E8B3D"
+    "hex": "#2E8B3D"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "coria": {
@@ -1457,16 +1665,19 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Gris chiné",
-   "hex": "#B5B8BC"
+    "hex": "#B5B8BC"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "imola": {
@@ -1475,72 +1686,75 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Corail fluo",
-   "hex": "#FF6F5E"
+    "hex": "#FF6F5E"
    },
    {
     "name": "Jaune",
-   "hex": "#F2C500"
+    "hex": "#F2C500"
    },
    {
     "name": "Jaune fluo",
-   "hex": "#E6F23A"
+    "hex": "#E6F23A"
    },
    {
     "name": "Lime",
-   "hex": "#A8D81F"
+    "hex": "#A8D81F"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Orange fluo",
-   "hex": "#FF7A1A"
+    "hex": "#FF7A1A"
    },
    {
     "name": "Plomb foncé",
-   "hex": "#4B4F55"
+    "hex": "#4B4F55"
    },
    {
     "name": "Rosacé",
-   "hex": "#E8A0A8"
+    "hex": "#E8A0A8"
    },
    {
     "name": "Rose fluo",
-   "hex": "#FF4FA3"
+    "hex": "#FF4FA3"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Turquoise",
-   "hex": "#17B6C9"
+    "hex": "#17B6C9"
    },
    {
     "name": "Vert fluo",
-   "hex": "#7CE23B"
+    "hex": "#7CE23B"
    },
    {
     "name": "Vert fougère",
-   "hex": "#2E8B3D"
+    "hex": "#2E8B3D"
    },
    {
     "name": "Violet",
-   "hex": "#6B3FA0"
+    "hex": "#6B3FA0"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "epiro": {
@@ -1549,52 +1763,57 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Grey",
-   "hex": "#9A9DA1"
+    "hex": "#9A9DA1"
    },
    {
     "name": "Jaune",
-   "hex": "#F2C500"
+    "hex": "#F2C500"
    },
    {
     "name": "Jaune fluo",
-   "hex": "#E6F23A"
+    "hex": "#E6F23A"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Rose fluo",
-   "hex": "#FF4FA3"
+    "hex": "#FF4FA3"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Turquoise fluo",
-   "hex": "#00E0E0"
+    "hex": "#00E0E0"
    },
    {
     "name": "Vert fluo",
-   "hex": "#7CE23B"
+    "hex": "#7CE23B"
    },
    {
     "name": "Vert fougère",
-   "hex": "#2E8B3D"
+    "hex": "#2E8B3D"
    },
    {
     "name": "Violet",
-   "hex": "#6B3FA0"
+    "hex": "#6B3FA0"
    }
+  ],
+  "g": [
+   "pulls-and-gilets",
+   "sports",
+   "swe"
   ]
  },
  "neapolis": {
@@ -1603,12 +1822,15 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "valier": {
@@ -1617,48 +1839,52 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Grey",
-   "hex": "#9A9DA1"
+    "hex": "#9A9DA1"
    },
    {
     "name": "Jaune fluo",
-   "hex": "#E6F23A"
+    "hex": "#E6F23A"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Rose fluo",
-   "hex": "#FF4FA3"
+    "hex": "#FF4FA3"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Turquoise fluo",
-   "hex": "#00E0E0"
+    "hex": "#00E0E0"
    },
    {
     "name": "Vert fluo",
-   "hex": "#7CE23B"
+    "hex": "#7CE23B"
    },
    {
     "name": "Vert fougère",
-   "hex": "#2E8B3D"
+    "hex": "#2E8B3D"
    },
    {
     "name": "Violet",
-   "hex": "#6B3FA0"
+    "hex": "#6B3FA0"
    }
+  ],
+  "g": [
+   "sports",
+   "coats"
   ]
  },
  "leros": {
@@ -1667,28 +1893,31 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Bleu clair/Bleu marine",
-   "hex": "linear-gradient(135deg,#B5B8BC 50%,#1B2A4A 50%)"
+    "hex": "linear-gradient(135deg,#B5B8BC 50%,#1B2A4A 50%)"
    },
    {
     "name": "Bleu royal/Bleu marine",
-   "hex": "linear-gradient(135deg,#1F4FBF 50%,#1B2A4A 50%)"
+    "hex": "linear-gradient(135deg,#1F4FBF 50%,#1B2A4A 50%)"
    },
    {
     "name": "Jaune/Bleu marine",
-   "hex": "linear-gradient(135deg,#F2C500 50%,#1B2A4A 50%)"
+    "hex": "linear-gradient(135deg,#F2C500 50%,#1B2A4A 50%)"
    },
    {
     "name": "Lime/marine",
-   "hex": "linear-gradient(135deg,#A8D81F 50%,#1B2A4A 50%)"
+    "hex": "linear-gradient(135deg,#A8D81F 50%,#1B2A4A 50%)"
    },
    {
     "name": "Rouge/Bleu marine",
-   "hex": "linear-gradient(135deg,#C8102E 50%,#1B2A4A 50%)"
+    "hex": "linear-gradient(135deg,#C8102E 50%,#1B2A4A 50%)"
    },
    {
     "name": "Vert fougère/marine",
-   "hex": "linear-gradient(135deg,#2E8B3D 50%,#1B2A4A 50%)"
+    "hex": "linear-gradient(135deg,#2E8B3D 50%,#1B2A4A 50%)"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "rodas": {
@@ -1697,8 +1926,11 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "gladius": {
@@ -1707,28 +1939,32 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Bleu clair/Bleu marine",
-   "hex": "linear-gradient(135deg,#B5B8BC 50%,#1B2A4A 50%)"
+    "hex": "linear-gradient(135deg,#B5B8BC 50%,#1B2A4A 50%)"
    },
    {
     "name": "Bleu royal/Bleu marine",
-   "hex": "linear-gradient(135deg,#1F4FBF 50%,#1B2A4A 50%)"
+    "hex": "linear-gradient(135deg,#1F4FBF 50%,#1B2A4A 50%)"
    },
    {
     "name": "Grenat/marine",
-   "hex": "linear-gradient(135deg,#7B1E2B 50%,#1B2A4A 50%)"
+    "hex": "linear-gradient(135deg,#7B1E2B 50%,#1B2A4A 50%)"
    },
    {
     "name": "Rouge/Bleu marine",
-   "hex": "linear-gradient(135deg,#C8102E 50%,#1B2A4A 50%)"
+    "hex": "linear-gradient(135deg,#C8102E 50%,#1B2A4A 50%)"
    },
    {
     "name": "Rouge/Noir",
-   "hex": "linear-gradient(135deg,#C8102E 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#C8102E 50%,#111111 50%)"
    },
    {
     "name": "Vert fougère/noir",
-   "hex": "linear-gradient(135deg,#2E8B3D 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#2E8B3D 50%,#111111 50%)"
    }
+  ],
+  "g": [
+   "sports",
+   "coats"
   ]
  },
  "urus": {
@@ -1737,12 +1973,15 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "creta": {
@@ -1751,28 +1990,31 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Bleu royal/Bleu marine",
-   "hex": "linear-gradient(135deg,#1F4FBF 50%,#1B2A4A 50%)"
+    "hex": "linear-gradient(135deg,#1F4FBF 50%,#1B2A4A 50%)"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Rouge/Noir",
-   "hex": "linear-gradient(135deg,#C8102E 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#C8102E 50%,#111111 50%)"
    },
    {
     "name": "Vert fougère/noir",
-   "hex": "linear-gradient(135deg,#2E8B3D 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#2E8B3D 50%,#111111 50%)"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "evans": {
@@ -1781,32 +2023,35 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Bleu marine/bleu royal",
-   "hex": "linear-gradient(135deg,#1B2A4A 50%,#1F4FBF 50%)"
+    "hex": "linear-gradient(135deg,#1B2A4A 50%,#1F4FBF 50%)"
    },
    {
     "name": "Marine/Blanc",
-   "hex": "linear-gradient(135deg,#1B2A4A 50%,#FFFFFF 50%)"
+    "hex": "linear-gradient(135deg,#1B2A4A 50%,#FFFFFF 50%)"
    },
    {
     "name": "Marine/jaune",
-   "hex": "linear-gradient(135deg,#1B2A4A 50%,#F2C500 50%)"
+    "hex": "linear-gradient(135deg,#1B2A4A 50%,#F2C500 50%)"
    },
    {
     "name": "Marine/vert fougère",
-   "hex": "linear-gradient(135deg,#1B2A4A 50%,#2E8B3D 50%)"
+    "hex": "linear-gradient(135deg,#1B2A4A 50%,#2E8B3D 50%)"
    },
    {
     "name": "Noir/ébène",
-   "hex": "linear-gradient(135deg,#111111 50%,#2B2420 50%)"
+    "hex": "linear-gradient(135deg,#111111 50%,#2B2420 50%)"
    },
    {
     "name": "Noir/lime",
-   "hex": "linear-gradient(135deg,#111111 50%,#A8D81F 50%)"
+    "hex": "linear-gradient(135deg,#111111 50%,#A8D81F 50%)"
    },
    {
     "name": "Noir/Rouge",
-   "hex": "linear-gradient(135deg,#111111 50%,#C8102E 50%)"
+    "hex": "linear-gradient(135deg,#111111 50%,#C8102E 50%)"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "prime": {
@@ -1815,40 +2060,43 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Jaune",
-   "hex": "#F2C500"
+    "hex": "#F2C500"
    },
    {
     "name": "Jaune fluo",
-   "hex": "#E6F23A"
+    "hex": "#E6F23A"
    },
    {
     "name": "Lime punch",
-   "hex": "#A8D81F"
+    "hex": "#A8D81F"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Vert fougère",
-   "hex": "#2E8B3D"
+    "hex": "#2E8B3D"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "better": {
@@ -1857,8 +2105,11 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "benoit": {
@@ -1867,16 +2118,19 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    }
+  ],
+  "g": [
+   "sport_accessories"
   ]
  },
  "montecarlo": {
@@ -1885,64 +2139,67 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Corail fluo",
-   "hex": "#FF6F5E"
+    "hex": "#FF6F5E"
    },
    {
     "name": "Jaune",
-   "hex": "#F2C500"
+    "hex": "#F2C500"
    },
    {
     "name": "Jaune fluo",
-   "hex": "#E6F23A"
+    "hex": "#E6F23A"
    },
    {
     "name": "Lime",
-   "hex": "#A8D81F"
+    "hex": "#A8D81F"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Orange fluo",
-   "hex": "#FF7A1A"
+    "hex": "#FF7A1A"
    },
    {
     "name": "Plomb foncé",
-   "hex": "#4B4F55"
+    "hex": "#4B4F55"
    },
    {
     "name": "Rosacé",
-   "hex": "#E8A0A8"
+    "hex": "#E8A0A8"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Turquoise",
-   "hex": "#17B6C9"
+    "hex": "#17B6C9"
    },
    {
     "name": "Vert fougère",
-   "hex": "#2E8B3D"
+    "hex": "#2E8B3D"
    },
    {
     "name": "Violet",
-   "hex": "#6B3FA0"
+    "hex": "#6B3FA0"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "carpe-child": {
@@ -1951,8 +2208,11 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    }
+  ],
+  "g": [
+   "cam_po"
   ]
  },
  "estoril": {
@@ -1961,48 +2221,51 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Bleu zen",
-   "hex": "#5B8DB8"
+    "hex": "#5B8DB8"
    },
    {
     "name": "Grey",
-   "hex": "#9A9DA1"
+    "hex": "#9A9DA1"
    },
    {
     "name": "Jade",
-   "hex": "#00A86B"
+    "hex": "#00A86B"
    },
    {
     "name": "Jaune fluo",
-   "hex": "#E6F23A"
+    "hex": "#E6F23A"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Silk pink",
-   "hex": "#F2C9CF"
+    "hex": "#F2C9CF"
    },
    {
     "name": "Vert fluo",
-   "hex": "#7CE23B"
+    "hex": "#7CE23B"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "angelo": {
@@ -2011,24 +2274,28 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Jaune fluo",
-   "hex": "#E6F23A"
+    "hex": "#E6F23A"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    }
+  ],
+  "g": [
+   "sports",
+   "coats"
   ]
  },
  "pointer-child": {
@@ -2037,24 +2304,27 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    }
+  ],
+  "g": [
+   "cam_po"
   ]
  },
  "tallin": {
@@ -2063,32 +2333,35 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Bleu royal/Bleu marine",
-   "hex": "linear-gradient(135deg,#1F4FBF 50%,#1B2A4A 50%)"
+    "hex": "linear-gradient(135deg,#1F4FBF 50%,#1B2A4A 50%)"
    },
    {
     "name": "Curry yellow/black",
-   "hex": "linear-gradient(135deg,#B5B8BC 50%,#B5B8BC 50%)"
+    "hex": "linear-gradient(135deg,#B5B8BC 50%,#B5B8BC 50%)"
    },
    {
     "name": "Ébène/noir",
-   "hex": "linear-gradient(135deg,#2B2420 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#2B2420 50%,#111111 50%)"
    },
    {
     "name": "Jaune/Bleu marine",
-   "hex": "linear-gradient(135deg,#F2C500 50%,#1B2A4A 50%)"
+    "hex": "linear-gradient(135deg,#F2C500 50%,#1B2A4A 50%)"
    },
    {
     "name": "Lime/noir",
-   "hex": "linear-gradient(135deg,#A8D81F 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#A8D81F 50%,#111111 50%)"
    },
    {
     "name": "Rouge/Noir",
-   "hex": "linear-gradient(135deg,#C8102E 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#C8102E 50%,#111111 50%)"
    },
    {
     "name": "Vert fougère/marine",
-   "hex": "linear-gradient(135deg,#2E8B3D 50%,#1B2A4A 50%)"
+    "hex": "linear-gradient(135deg,#2E8B3D 50%,#1B2A4A 50%)"
    }
+  ],
+  "g": [
+   "coats"
   ]
  },
  "nepal": {
@@ -2097,20 +2370,23 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Sable foncé",
-   "hex": "#B8A178"
+    "hex": "#B8A178"
    },
    {
     "name": "Vert militaire foncé",
-   "hex": "#3C4A2C"
+    "hex": "#3C4A2C"
    }
+  ],
+  "g": [
+   "coats"
   ]
  },
  "norway-sport": {
@@ -2119,16 +2395,20 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Bleu royal/Bleu marine",
-   "hex": "linear-gradient(135deg,#1F4FBF 50%,#1B2A4A 50%)"
+    "hex": "linear-gradient(135deg,#1F4FBF 50%,#1B2A4A 50%)"
    },
    {
     "name": "Marine/vert fluo",
-   "hex": "linear-gradient(135deg,#1B2A4A 50%,#7CE23B 50%)"
+    "hex": "linear-gradient(135deg,#1B2A4A 50%,#7CE23B 50%)"
    },
    {
     "name": "Noir/Rouge",
-   "hex": "linear-gradient(135deg,#111111 50%,#C8102E 50%)"
+    "hex": "linear-gradient(135deg,#111111 50%,#C8102E 50%)"
    }
+  ],
+  "g": [
+   "sports",
+   "coats"
   ]
  },
  "titan": {
@@ -2137,32 +2417,35 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Bleu royal/Bleu marine",
-   "hex": "linear-gradient(135deg,#1F4FBF 50%,#1B2A4A 50%)"
+    "hex": "linear-gradient(135deg,#1F4FBF 50%,#1B2A4A 50%)"
    },
    {
     "name": "Grey/black",
-   "hex": "linear-gradient(135deg,#9A9DA1 50%,#B5B8BC 50%)"
+    "hex": "linear-gradient(135deg,#9A9DA1 50%,#B5B8BC 50%)"
    },
    {
     "name": "Rouge/Bleu marine",
-   "hex": "linear-gradient(135deg,#C8102E 50%,#1B2A4A 50%)"
+    "hex": "linear-gradient(135deg,#C8102E 50%,#1B2A4A 50%)"
    },
    {
     "name": "Rouge/marine/jaune",
-   "hex": "linear-gradient(135deg,#C8102E 50%,#1B2A4A 50%)"
+    "hex": "linear-gradient(135deg,#C8102E 50%,#1B2A4A 50%)"
    },
    {
     "name": "Silk pink/black",
-   "hex": "linear-gradient(135deg,#F2C9CF 50%,#B5B8BC 50%)"
+    "hex": "linear-gradient(135deg,#F2C9CF 50%,#B5B8BC 50%)"
    },
    {
     "name": "Turquoise fluo/Bleu marine",
-   "hex": "linear-gradient(135deg,#00E0E0 50%,#1B2A4A 50%)"
+    "hex": "linear-gradient(135deg,#00E0E0 50%,#1B2A4A 50%)"
    },
    {
     "name": "Vert fougère/noir",
-   "hex": "linear-gradient(135deg,#2E8B3D 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#2E8B3D 50%,#111111 50%)"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "honey-l-s": {
@@ -2171,20 +2454,23 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu ciel",
-   "hex": "#8FCBEF"
+    "hex": "#8FCBEF"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Rose clair",
-   "hex": "#F4C2D0"
+    "hex": "#F4C2D0"
    }
+  ],
+  "g": [
+   "baby-bodies"
   ]
  },
  "juve": {
@@ -2193,24 +2479,27 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc/ Bleu royal",
-   "hex": "linear-gradient(135deg,#FFFFFF 50%,#1F4FBF 50%)"
+    "hex": "linear-gradient(135deg,#FFFFFF 50%,#1F4FBF 50%)"
    },
    {
     "name": "Blanc/Noir",
-   "hex": "linear-gradient(135deg,#FFFFFF 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#FFFFFF 50%,#111111 50%)"
    },
    {
     "name": "Blanc/Rouge",
-   "hex": "linear-gradient(135deg,#FFFFFF 50%,#C8102E 50%)"
+    "hex": "linear-gradient(135deg,#FFFFFF 50%,#C8102E 50%)"
    },
    {
     "name": "Vert fluo/marine",
-   "hex": "linear-gradient(135deg,#7CE23B 50%,#1B2A4A 50%)"
+    "hex": "linear-gradient(135deg,#7CE23B 50%,#1B2A4A 50%)"
    },
    {
     "name": "Vert fougère/noir",
-   "hex": "linear-gradient(135deg,#2E8B3D 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#2E8B3D 50%,#111111 50%)"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "racing": {
@@ -2219,24 +2508,27 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc/ Bleu royal",
-   "hex": "linear-gradient(135deg,#FFFFFF 50%,#1F4FBF 50%)"
+    "hex": "linear-gradient(135deg,#FFFFFF 50%,#1F4FBF 50%)"
    },
    {
     "name": "Blanc/Rouge",
-   "hex": "linear-gradient(135deg,#FFFFFF 50%,#C8102E 50%)"
+    "hex": "linear-gradient(135deg,#FFFFFF 50%,#C8102E 50%)"
    },
    {
     "name": "Fuchsia/marine",
-   "hex": "linear-gradient(135deg,#D81B7B 50%,#1B2A4A 50%)"
+    "hex": "linear-gradient(135deg,#D81B7B 50%,#1B2A4A 50%)"
    },
    {
     "name": "Jaune/bleu royal",
-   "hex": "linear-gradient(135deg,#F2C500 50%,#1F4FBF 50%)"
+    "hex": "linear-gradient(135deg,#F2C500 50%,#1F4FBF 50%)"
    },
    {
     "name": "Lime/noir",
-   "hex": "linear-gradient(135deg,#A8D81F 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#A8D81F 50%,#111111 50%)"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "united": {
@@ -2245,20 +2537,23 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc/Noir",
-   "hex": "linear-gradient(135deg,#FFFFFF 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#FFFFFF 50%,#111111 50%)"
    },
    {
     "name": "Rouge/Bleu marine",
-   "hex": "linear-gradient(135deg,#C8102E 50%,#1B2A4A 50%)"
+    "hex": "linear-gradient(135deg,#C8102E 50%,#1B2A4A 50%)"
    },
    {
     "name": "Royal/Blanc",
-   "hex": "linear-gradient(135deg,#B5B8BC 50%,#FFFFFF 50%)"
+    "hex": "linear-gradient(135deg,#B5B8BC 50%,#FFFFFF 50%)"
    },
    {
     "name": "Vert fluo/marine",
-   "hex": "linear-gradient(135deg,#7CE23B 50%,#1B2A4A 50%)"
+    "hex": "linear-gradient(135deg,#7CE23B 50%,#1B2A4A 50%)"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "america": {
@@ -2267,20 +2562,23 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    }
+  ],
+  "g": [
+   "coats"
   ]
  },
  "porto": {
@@ -2289,24 +2587,27 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Bleu royal/noir",
-   "hex": "linear-gradient(135deg,#1F4FBF 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#1F4FBF 50%,#111111 50%)"
    },
    {
     "name": "Jaune/Noir",
-   "hex": "linear-gradient(135deg,#F2C500 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#F2C500 50%,#111111 50%)"
    },
    {
     "name": "Noir/jaune fluo",
-   "hex": "linear-gradient(135deg,#111111 50%,#E6F23A 50%)"
+    "hex": "linear-gradient(135deg,#111111 50%,#E6F23A 50%)"
    },
    {
     "name": "Rouge/Noir",
-   "hex": "linear-gradient(135deg,#C8102E 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#C8102E 50%,#111111 50%)"
    },
    {
     "name": "Vert fougère/noir",
-   "hex": "linear-gradient(135deg,#2E8B3D 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#2E8B3D 50%,#111111 50%)"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "norway": {
@@ -2315,16 +2616,19 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Bleu électrique",
-   "hex": "#0A5CFF"
+    "hex": "#0A5CFF"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    }
+  ],
+  "g": [
+   "coats"
   ]
  },
  "bayern": {
@@ -2333,8 +2637,11 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "arsenal": {
@@ -2343,8 +2650,11 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "antartida": {
@@ -2353,16 +2663,19 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    }
+  ],
+  "g": [
+   "coats"
   ]
  },
  "roma": {
@@ -2371,44 +2684,47 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Corail fluo",
-   "hex": "#FF6F5E"
+    "hex": "#FF6F5E"
    },
    {
     "name": "Jaune fluo",
-   "hex": "#E6F23A"
+    "hex": "#E6F23A"
    },
    {
     "name": "Orange fluo",
-   "hex": "#FF7A1A"
+    "hex": "#FF7A1A"
    },
    {
     "name": "Rose fluo",
-   "hex": "#FF4FA3"
+    "hex": "#FF4FA3"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Turquoise fluo",
-   "hex": "#00E0E0"
+    "hex": "#00E0E0"
    },
    {
     "name": "Vert fluo",
-   "hex": "#7CE23B"
+    "hex": "#7CE23B"
    },
    {
     "name": "Violet",
-   "hex": "#6B3FA0"
+    "hex": "#6B3FA0"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "soccer": {
@@ -2417,32 +2733,35 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Jaune",
-   "hex": "#F2C500"
+    "hex": "#F2C500"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Vert fougère",
-   "hex": "#2E8B3D"
+    "hex": "#2E8B3D"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "himalaya": {
@@ -2451,16 +2770,20 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    }
+  ],
+  "g": [
+   "pulls-and-gilets",
+   "swe"
   ]
  },
  "freya": {
@@ -2469,64 +2792,67 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Blanc/ Bleu royal",
-   "hex": "linear-gradient(135deg,#FFFFFF 50%,#1F4FBF 50%)"
+    "hex": "linear-gradient(135deg,#FFFFFF 50%,#1F4FBF 50%)"
    },
    {
     "name": "Blanc/Bleu marine",
-   "hex": "linear-gradient(135deg,#FFFFFF 50%,#1B2A4A 50%)"
+    "hex": "linear-gradient(135deg,#FFFFFF 50%,#1B2A4A 50%)"
    },
    {
     "name": "Blanc/Noir",
-   "hex": "linear-gradient(135deg,#FFFFFF 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#FFFFFF 50%,#111111 50%)"
    },
    {
     "name": "Blanc/Rouge",
-   "hex": "linear-gradient(135deg,#FFFFFF 50%,#C8102E 50%)"
+    "hex": "linear-gradient(135deg,#FFFFFF 50%,#C8102E 50%)"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Bleu royal clair",
-   "hex": "#3F7FE0"
+    "hex": "#3F7FE0"
    },
    {
     "name": "Jaune",
-   "hex": "#F2C500"
+    "hex": "#F2C500"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Orange",
-   "hex": "#F28A1E"
+    "hex": "#F28A1E"
    },
    {
     "name": "Pourpre",
-   "hex": "#7A1F6B"
+    "hex": "#7A1F6B"
    },
    {
     "name": "Rose clair",
-   "hex": "#F4C2D0"
+    "hex": "#F4C2D0"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Vert fougère",
-   "hex": "#2E8B3D"
+    "hex": "#2E8B3D"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "oslo": {
@@ -2535,12 +2861,15 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    }
+  ],
+  "g": [
+   "coats"
   ]
  },
  "new-artic": {
@@ -2549,24 +2878,28 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Pourpre",
-   "hex": "#7A1F6B"
+    "hex": "#7A1F6B"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    }
+  ],
+  "g": [
+   "pulls-and-gilets",
+   "swe"
   ]
  },
  "aqua": {
@@ -2575,28 +2908,31 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Jaune fluo",
-   "hex": "#E6F23A"
+    "hex": "#E6F23A"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Orange fluo",
-   "hex": "#FF7A1A"
+    "hex": "#FF7A1A"
    },
    {
     "name": "Rose fluo",
-   "hex": "#FF4FA3"
+    "hex": "#FF4FA3"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Turquoise",
-   "hex": "#17B6C9"
+    "hex": "#17B6C9"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "uranus": {
@@ -2605,52 +2941,55 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Beige",
-   "hex": "#D8C3A5"
+    "hex": "#D8C3A5"
    },
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Bleu royal clair",
-   "hex": "#3F7FE0"
+    "hex": "#3F7FE0"
    },
    {
     "name": "Dark green",
-   "hex": "#1F4D2E"
+    "hex": "#1F4D2E"
    },
    {
     "name": "Jaune",
-   "hex": "#F2C500"
+    "hex": "#F2C500"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Orange",
-   "hex": "#F28A1E"
+    "hex": "#F28A1E"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Vert fougère",
-   "hex": "#2E8B3D"
+    "hex": "#2E8B3D"
    },
    {
     "name": "Vert oasis",
-   "hex": "#3FAE8A"
+    "hex": "#3FAE8A"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "panel": {
@@ -2659,60 +2998,63 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Camouflage forêt",
-   "hex": "#4B5D3A"
+    "hex": "#4B5D3A"
    },
    {
     "name": "Fuchsia",
-   "hex": "#D81B7B"
+    "hex": "#D81B7B"
    },
    {
     "name": "Jaune",
-   "hex": "#F2C500"
+    "hex": "#F2C500"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Orange",
-   "hex": "#F28A1E"
+    "hex": "#F28A1E"
    },
    {
     "name": "Pourpre",
-   "hex": "#7A1F6B"
+    "hex": "#7A1F6B"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Turquoise",
-   "hex": "#17B6C9"
+    "hex": "#17B6C9"
    },
    {
     "name": "Vert bouteille",
-   "hex": "#0F4D2A"
+    "hex": "#0F4D2A"
    },
    {
     "name": "Vert fougère",
-   "hex": "#2E8B3D"
+    "hex": "#2E8B3D"
    },
    {
     "name": "Vert oasis",
-   "hex": "#3FAE8A"
+    "hex": "#3FAE8A"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "badet": {
@@ -2721,40 +3063,44 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Gris chiné/bleu royal",
-   "hex": "linear-gradient(135deg,#B5B8BC 50%,#1F4FBF 50%)"
+    "hex": "linear-gradient(135deg,#B5B8BC 50%,#1F4FBF 50%)"
    },
    {
     "name": "Gris chiné/grenat",
-   "hex": "linear-gradient(135deg,#B5B8BC 50%,#7B1E2B 50%)"
+    "hex": "linear-gradient(135deg,#B5B8BC 50%,#7B1E2B 50%)"
    },
    {
     "name": "Gris chiné/noir",
-   "hex": "linear-gradient(135deg,#B5B8BC 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#B5B8BC 50%,#111111 50%)"
    },
    {
     "name": "Gris chiné/pourpre",
-   "hex": "linear-gradient(135deg,#B5B8BC 50%,#7A1F6B 50%)"
+    "hex": "linear-gradient(135deg,#B5B8BC 50%,#7A1F6B 50%)"
    },
    {
     "name": "Gris chiné/rose clair",
-   "hex": "linear-gradient(135deg,#B5B8BC 50%,#F4C2D0 50%)"
+    "hex": "linear-gradient(135deg,#B5B8BC 50%,#F4C2D0 50%)"
    },
    {
     "name": "Gris chiné/rouge",
-   "hex": "linear-gradient(135deg,#B5B8BC 50%,#C8102E 50%)"
+    "hex": "linear-gradient(135deg,#B5B8BC 50%,#C8102E 50%)"
    },
    {
     "name": "Gris chiné/vert bouteille",
-   "hex": "linear-gradient(135deg,#B5B8BC 50%,#B5B8BC 50%)"
+    "hex": "linear-gradient(135deg,#B5B8BC 50%,#B5B8BC 50%)"
    },
    {
     "name": "Marine/gris chiné",
-   "hex": "linear-gradient(135deg,#1B2A4A 50%,#B5B8BC 50%)"
+    "hex": "linear-gradient(135deg,#1B2A4A 50%,#B5B8BC 50%)"
    },
    {
     "name": "Noir/gris chiné",
-   "hex": "linear-gradient(135deg,#111111 50%,#B5B8BC 50%)"
+    "hex": "linear-gradient(135deg,#111111 50%,#B5B8BC 50%)"
    }
+  ],
+  "g": [
+   "pulls-and-gilets",
+   "swe"
   ]
  },
  "montblanc": {
@@ -2763,24 +3109,28 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Gris chiné",
-   "hex": "#B5B8BC"
+    "hex": "#B5B8BC"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    }
+  ],
+  "g": [
+   "pulls-and-gilets",
+   "swe"
   ]
  },
  "urban": {
@@ -2789,112 +3139,116 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Angora naturel",
-   "hex": "#E9E2D0"
+    "hex": "#E9E2D0"
    },
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Blanc/Bleu marine",
-   "hex": "linear-gradient(135deg,#FFFFFF 50%,#1B2A4A 50%)"
+    "hex": "linear-gradient(135deg,#FFFFFF 50%,#1B2A4A 50%)"
    },
    {
     "name": "Bleu ciel/blanc",
-   "hex": "linear-gradient(135deg,#8FCBEF 50%,#FFFFFF 50%)"
+    "hex": "linear-gradient(135deg,#8FCBEF 50%,#FFFFFF 50%)"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Blue lake",
-   "hex": "#2F8FB0"
+    "hex": "#2F8FB0"
    },
    {
     "name": "Corail",
-   "hex": "#F0765F"
+    "hex": "#F0765F"
    },
    {
     "name": "Ébène",
-   "hex": "#2B2420"
+    "hex": "#2B2420"
    },
    {
     "name": "Gris chiné",
-   "hex": "#B5B8BC"
+    "hex": "#B5B8BC"
    },
    {
     "name": "Gris chiné/noir",
-   "hex": "linear-gradient(135deg,#B5B8BC 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#B5B8BC 50%,#111111 50%)"
    },
    {
     "name": "Iris purple",
-   "hex": "#6A5ACD"
+    "hex": "#6A5ACD"
    },
    {
     "name": "Laurel green",
-   "hex": "#6B8E4E"
+    "hex": "#6B8E4E"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Marine/gris chiné",
-   "hex": "linear-gradient(135deg,#1B2A4A 50%,#B5B8BC 50%)"
+    "hex": "linear-gradient(135deg,#1B2A4A 50%,#B5B8BC 50%)"
    },
    {
     "name": "Moka",
-   "hex": "#7B5B45"
+    "hex": "#7B5B45"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Noir/gris chiné",
-   "hex": "linear-gradient(135deg,#111111 50%,#B5B8BC 50%)"
+    "hex": "linear-gradient(135deg,#111111 50%,#B5B8BC 50%)"
    },
    {
     "name": "Pourpre",
-   "hex": "#7A1F6B"
+    "hex": "#7A1F6B"
    },
    {
     "name": "Rosacé",
-   "hex": "#E8A0A8"
+    "hex": "#E8A0A8"
    },
    {
     "name": "Rose clair",
-   "hex": "#F4C2D0"
+    "hex": "#F4C2D0"
    },
    {
     "name": "Rose clair/gris chiné",
-   "hex": "linear-gradient(135deg,#F4C2D0 50%,#B5B8BC 50%)"
+    "hex": "linear-gradient(135deg,#F4C2D0 50%,#B5B8BC 50%)"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Rouge/Noir",
-   "hex": "linear-gradient(135deg,#C8102E 50%,#111111 50%)"
+    "hex": "linear-gradient(135deg,#C8102E 50%,#111111 50%)"
    },
    {
     "name": "Royal/Blanc",
-   "hex": "linear-gradient(135deg,#B5B8BC 50%,#FFFFFF 50%)"
+    "hex": "linear-gradient(135deg,#B5B8BC 50%,#FFFFFF 50%)"
    },
    {
     "name": "Turquoise",
-   "hex": "#17B6C9"
+    "hex": "#17B6C9"
    },
    {
     "name": "Vert kelly/blanc",
-   "hex": "linear-gradient(135deg,#2FA84F 50%,#FFFFFF 50%)"
+    "hex": "linear-gradient(135deg,#2FA84F 50%,#FFFFFF 50%)"
    },
    {
     "name": "Vintage blanc",
-   "hex": "#F1EEE6"
+    "hex": "#F1EEE6"
    }
+  ],
+  "g": [
+   "pulls-and-gilets",
+   "swe"
   ]
  },
  "clasica": {
@@ -2903,100 +3257,104 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Angora naturel",
-   "hex": "#E9E2D0"
+    "hex": "#E9E2D0"
    },
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu ciel",
-   "hex": "#8FCBEF"
+    "hex": "#8FCBEF"
    },
    {
     "name": "Bleu océan",
-   "hex": "#1E6A9E"
+    "hex": "#1E6A9E"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Blue lake",
-   "hex": "#2F8FB0"
+    "hex": "#2F8FB0"
    },
    {
     "name": "Corail",
-   "hex": "#F0765F"
+    "hex": "#F0765F"
    },
    {
     "name": "Ébène",
-   "hex": "#2B2420"
+    "hex": "#2B2420"
    },
    {
     "name": "Grenat",
-   "hex": "#7B1E2B"
+    "hex": "#7B1E2B"
    },
    {
     "name": "Gris chiné",
-   "hex": "#B5B8BC"
+    "hex": "#B5B8BC"
    },
    {
     "name": "Iris purple",
-   "hex": "#6A5ACD"
+    "hex": "#6A5ACD"
    },
    {
     "name": "Jaune",
-   "hex": "#F2C500"
+    "hex": "#F2C500"
    },
    {
     "name": "Laurel green",
-   "hex": "#6B8E4E"
+    "hex": "#6B8E4E"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Moka",
-   "hex": "#7B5B45"
+    "hex": "#7B5B45"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Orange",
-   "hex": "#F28A1E"
+    "hex": "#F28A1E"
    },
    {
     "name": "Pourpre",
-   "hex": "#7A1F6B"
+    "hex": "#7A1F6B"
    },
    {
     "name": "Rosacé",
-   "hex": "#E8A0A8"
+    "hex": "#E8A0A8"
    },
    {
     "name": "Rose clair",
-   "hex": "#F4C2D0"
+    "hex": "#F4C2D0"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Turquoise",
-   "hex": "#17B6C9"
+    "hex": "#17B6C9"
    },
    {
     "name": "Vert kelly",
-   "hex": "#2FA84F"
+    "hex": "#2FA84F"
    },
    {
     "name": "Vert oasis",
-   "hex": "#3FAE8A"
+    "hex": "#3FAE8A"
    }
+  ],
+  "g": [
+   "pulls-and-gilets",
+   "swe"
   ]
  },
  "star": {
@@ -3005,36 +3363,39 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu ciel",
-   "hex": "#8FCBEF"
+    "hex": "#8FCBEF"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Jaune",
-   "hex": "#F2C500"
+    "hex": "#F2C500"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Vert Tropical",
-   "hex": "#1FA67A"
+    "hex": "#1FA67A"
    }
+  ],
+  "g": [
+   "cam_po"
   ]
  },
  "ulan": {
@@ -3043,32 +3404,36 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Grenat",
-   "hex": "#7B1E2B"
+    "hex": "#7B1E2B"
    },
    {
     "name": "Gris chiné",
-   "hex": "#B5B8BC"
+    "hex": "#B5B8BC"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    }
+  ],
+  "g": [
+   "pulls-and-gilets",
+   "swe"
   ]
  },
  "estrella-l-s": {
@@ -3077,12 +3442,15 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    }
+  ],
+  "g": [
+   "cam_po"
   ]
  },
  "pegaso-premium": {
@@ -3091,32 +3459,35 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu ciel",
-   "hex": "#8FCBEF"
+    "hex": "#8FCBEF"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Turquoise",
-   "hex": "#17B6C9"
+    "hex": "#17B6C9"
    },
    {
     "name": "Vert mantis",
-   "hex": "#74C365"
+    "hex": "#74C365"
    }
+  ],
+  "g": [
+   "cam_po"
   ]
  },
  "golden": {
@@ -3125,40 +3496,43 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Ébène",
-   "hex": "#2B2420"
+    "hex": "#2B2420"
    },
    {
     "name": "Gris chiné",
-   "hex": "#B5B8BC"
+    "hex": "#B5B8BC"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Opale",
-   "hex": "#CFE3E0"
+    "hex": "#CFE3E0"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Vert menthe",
-   "hex": "#98E0C0"
+    "hex": "#98E0C0"
    },
    {
     "name": "Vintage blanc",
-   "hex": "#F1EEE6"
+    "hex": "#F1EEE6"
    }
+  ],
+  "g": [
+   "cam_po"
   ]
  },
  "texas": {
@@ -3167,32 +3541,35 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Gris chiné",
-   "hex": "#B5B8BC"
+    "hex": "#B5B8BC"
    },
    {
     "name": "Jaune or",
-   "hex": "#F2C500"
+    "hex": "#F2C500"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    }
+  ],
+  "g": [
+   "cam_po"
   ]
  },
  "brenda": {
@@ -3201,32 +3578,35 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu électrique",
-   "hex": "#0A5CFF"
+    "hex": "#0A5CFF"
    },
    {
     "name": "Gris chiné",
-   "hex": "#B5B8BC"
+    "hex": "#B5B8BC"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Rosacé",
-   "hex": "#E8A0A8"
+    "hex": "#E8A0A8"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Turquoise",
-   "hex": "#17B6C9"
+    "hex": "#17B6C9"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "akita": {
@@ -3235,16 +3615,19 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Jaune fluo",
-   "hex": "#E6F23A"
+    "hex": "#E6F23A"
    },
    {
     "name": "Orange fluo",
-   "hex": "#FF7A1A"
+    "hex": "#FF7A1A"
    },
    {
     "name": "Rose fluo",
-   "hex": "#FF4FA3"
+    "hex": "#FF4FA3"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "stafford": {
@@ -3253,156 +3636,159 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Angora naturel",
-   "hex": "#E9E2D0"
+    "hex": "#E9E2D0"
    },
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu ciel",
-   "hex": "#8FCBEF"
+    "hex": "#8FCBEF"
    },
    {
     "name": "Bleu denim",
-   "hex": "#4A6A94"
+    "hex": "#4A6A94"
    },
    {
     "name": "Bleu dusty",
-   "hex": "#7E9BB5"
+    "hex": "#7E9BB5"
    },
    {
     "name": "bleu lavé",
-   "hex": "#6E93C0"
+    "hex": "#6E93C0"
    },
    {
     "name": "bleu riviere",
-   "hex": "#3E7CB1"
+    "hex": "#3E7CB1"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Bleu zen",
-   "hex": "#5B8DB8"
+    "hex": "#5B8DB8"
    },
    {
     "name": "Blue lake",
-   "hex": "#2F8FB0"
+    "hex": "#2F8FB0"
    },
    {
     "name": "Corail",
-   "hex": "#F0765F"
+    "hex": "#F0765F"
    },
    {
     "name": "Grenat",
-   "hex": "#7B1E2B"
+    "hex": "#7B1E2B"
    },
    {
     "name": "Gris chiné",
-   "hex": "#B5B8BC"
+    "hex": "#B5B8BC"
    },
    {
     "name": "Iris purple",
-   "hex": "#6A5ACD"
+    "hex": "#6A5ACD"
    },
    {
     "name": "Jaune",
-   "hex": "#F2C500"
+    "hex": "#F2C500"
    },
    {
     "name": "Laurel green",
-   "hex": "#6B8E4E"
+    "hex": "#6B8E4E"
    },
    {
     "name": "lavande",
-   "hex": "#B9A7E0"
+    "hex": "#B9A7E0"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Moka",
-   "hex": "#7B5B45"
+    "hex": "#7B5B45"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Opale",
-   "hex": "#CFE3E0"
+    "hex": "#CFE3E0"
    },
    {
     "name": "Orange",
-   "hex": "#F28A1E"
+    "hex": "#F28A1E"
    },
    {
     "name": "orange clay",
-   "hex": "#F28A1E"
+    "hex": "#F28A1E"
    },
    {
     "name": "orange greek",
-   "hex": "#F28A1E"
+    "hex": "#F28A1E"
    },
    {
     "name": "Plomb foncé",
-   "hex": "#4B4F55"
+    "hex": "#4B4F55"
    },
    {
     "name": "Pourpre",
-   "hex": "#7A1F6B"
+    "hex": "#7A1F6B"
    },
    {
     "name": "Rosacé",
-   "hex": "#E8A0A8"
+    "hex": "#E8A0A8"
    },
    {
     "name": "Rose clair",
-   "hex": "#F4C2D0"
+    "hex": "#F4C2D0"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "rouge chrysanthème",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Turquoise",
-   "hex": "#17B6C9"
+    "hex": "#17B6C9"
    },
    {
     "name": "Vert aventure",
-   "hex": "#4F7942"
+    "hex": "#4F7942"
    },
    {
     "name": "Vert bouteille",
-   "hex": "#0F4D2A"
+    "hex": "#0F4D2A"
    },
    {
     "name": "Vert kelly",
-   "hex": "#2FA84F"
+    "hex": "#2FA84F"
    },
    {
     "name": "Vert mist",
-   "hex": "#B7D3C0"
+    "hex": "#B7D3C0"
    },
    {
     "name": "Vert oasis",
-   "hex": "#3FAE8A"
+    "hex": "#3FAE8A"
    },
    {
     "name": "Vert prairie",
-   "hex": "#6FB04A"
+    "hex": "#6FB04A"
    },
    {
     "name": "Vintage blanc",
-   "hex": "#F1EEE6"
+    "hex": "#F1EEE6"
    }
+  ],
+  "g": [
+   "cam_po"
   ]
  },
  "jamaica": {
@@ -3411,28 +3797,31 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Rosacé",
-   "hex": "#E8A0A8"
+    "hex": "#E8A0A8"
    },
    {
     "name": "Rose clair",
-   "hex": "#F4C2D0"
+    "hex": "#F4C2D0"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Turquoise",
-   "hex": "#17B6C9"
+    "hex": "#17B6C9"
    }
+  ],
+  "g": [
+   "cam_po"
   ]
  },
  "extreme": {
@@ -3441,44 +3830,47 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu ciel",
-   "hex": "#8FCBEF"
+    "hex": "#8FCBEF"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Jaune",
-   "hex": "#F2C500"
+    "hex": "#F2C500"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Orange",
-   "hex": "#F28A1E"
+    "hex": "#F28A1E"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Turquoise",
-   "hex": "#17B6C9"
+    "hex": "#17B6C9"
    },
    {
     "name": "Vert oasis",
-   "hex": "#3FAE8A"
+    "hex": "#3FAE8A"
    }
+  ],
+  "g": [
+   "cam_po"
   ]
  },
  "bahrain": {
@@ -3487,88 +3879,91 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu ciel",
-   "hex": "#8FCBEF"
+    "hex": "#8FCBEF"
    },
    {
     "name": "Bleu lumière de lune",
-   "hex": "#9FB6D1"
+    "hex": "#9FB6D1"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Corail fluo",
-   "hex": "#FF6F5E"
+    "hex": "#FF6F5E"
    },
    {
     "name": "Jaune",
-   "hex": "#F2C500"
+    "hex": "#F2C500"
    },
    {
     "name": "Jaune fluo",
-   "hex": "#E6F23A"
+    "hex": "#E6F23A"
    },
    {
     "name": "Lime",
-   "hex": "#A8D81F"
+    "hex": "#A8D81F"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Orange fluo",
-   "hex": "#FF7A1A"
+    "hex": "#FF7A1A"
    },
    {
     "name": "Plomb foncé",
-   "hex": "#4B4F55"
+    "hex": "#4B4F55"
    },
    {
     "name": "Rosacé",
-   "hex": "#E8A0A8"
+    "hex": "#E8A0A8"
    },
    {
     "name": "Rose fluo",
-   "hex": "#FF4FA3"
+    "hex": "#FF4FA3"
    },
    {
     "name": "Rose lady fluo",
-   "hex": "#FF69B4"
+    "hex": "#FF69B4"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Turquoise",
-   "hex": "#17B6C9"
+    "hex": "#17B6C9"
    },
    {
     "name": "Vert fluo",
-   "hex": "#7CE23B"
+    "hex": "#7CE23B"
    },
    {
     "name": "Vert fougère",
-   "hex": "#2E8B3D"
+    "hex": "#2E8B3D"
    },
    {
     "name": "Vert menthe",
-   "hex": "#98E0C0"
+    "hex": "#98E0C0"
    },
    {
     "name": "Violet",
-   "hex": "#6B3FA0"
+    "hex": "#6B3FA0"
    }
+  ],
+  "g": [
+   "sports"
   ]
  },
  "honey": {
@@ -3577,40 +3972,43 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu ciel",
-   "hex": "#8FCBEF"
+    "hex": "#8FCBEF"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Gris chiné",
-   "hex": "#B5B8BC"
+    "hex": "#B5B8BC"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Rosacé",
-   "hex": "#E8A0A8"
+    "hex": "#E8A0A8"
    },
    {
     "name": "Rose clair",
-   "hex": "#F4C2D0"
+    "hex": "#F4C2D0"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    }
+  ],
+  "g": [
+   "baby-bodies"
   ]
  },
  "braco": {
@@ -3619,20 +4017,23 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Turquoise",
-   "hex": "#17B6C9"
+    "hex": "#17B6C9"
    }
+  ],
+  "g": [
+   "cam_po"
   ]
  },
  "dogo-premium": {
@@ -3641,84 +4042,87 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu ciel",
-   "hex": "#8FCBEF"
+    "hex": "#8FCBEF"
    },
    {
     "name": "Bleu denim",
-   "hex": "#4A6A94"
+    "hex": "#4A6A94"
    },
    {
     "name": "Bleu océan",
-   "hex": "#1E6A9E"
+    "hex": "#1E6A9E"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Gris chiné",
-   "hex": "#B5B8BC"
+    "hex": "#B5B8BC"
    },
    {
     "name": "Jaune",
-   "hex": "#F2C500"
+    "hex": "#F2C500"
    },
    {
     "name": "lime citron",
-   "hex": "#A8D81F"
+    "hex": "#A8D81F"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Orange",
-   "hex": "#F28A1E"
+    "hex": "#F28A1E"
    },
    {
     "name": "Pourpre",
-   "hex": "#7A1F6B"
+    "hex": "#7A1F6B"
    },
    {
     "name": "Rosacé",
-   "hex": "#E8A0A8"
+    "hex": "#E8A0A8"
    },
    {
     "name": "Rose clair",
-   "hex": "#F4C2D0"
+    "hex": "#F4C2D0"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Turquoise",
-   "hex": "#17B6C9"
+    "hex": "#17B6C9"
    },
    {
     "name": "vert irlandais",
-   "hex": "#009A44"
+    "hex": "#009A44"
    },
    {
     "name": "Vert oasis",
-   "hex": "#3FAE8A"
+    "hex": "#3FAE8A"
    },
    {
     "name": "Vert prairie",
-   "hex": "#6FB04A"
+    "hex": "#6FB04A"
    },
    {
     "name": "Vert Tropical",
-   "hex": "#1FA67A"
+    "hex": "#1FA67A"
    }
+  ],
+  "g": [
+   "cam_po"
   ]
  },
  "beagle": {
@@ -3727,124 +4131,127 @@ export const WOO: Record<string, { d: string | null; c: string | null; k: { name
   "k": [
    {
     "name": "Angora naturel",
-   "hex": "#E9E2D0"
+    "hex": "#E9E2D0"
    },
    {
     "name": "Blanc",
-   "hex": "#FFFFFF"
+    "hex": "#FFFFFF"
    },
    {
     "name": "Bleu ciel",
-   "hex": "#8FCBEF"
+    "hex": "#8FCBEF"
    },
    {
     "name": "Bleu denim",
-   "hex": "#4A6A94"
+    "hex": "#4A6A94"
    },
    {
     "name": "Bleu dusty",
-   "hex": "#7E9BB5"
+    "hex": "#7E9BB5"
    },
    {
     "name": "Bleu lumière de lune",
-   "hex": "#9FB6D1"
+    "hex": "#9FB6D1"
    },
    {
     "name": "Bleu profond",
-   "hex": "#0E2A5C"
+    "hex": "#0E2A5C"
    },
    {
     "name": "Bleu royal",
-   "hex": "#1F4FBF"
+    "hex": "#1F4FBF"
    },
    {
     "name": "Brick red",
-   "hex": "#9C3B2E"
+    "hex": "#9C3B2E"
    },
    {
     "name": "Corail",
-   "hex": "#F0765F"
+    "hex": "#F0765F"
    },
    {
     "name": "Grenat",
-   "hex": "#7B1E2B"
+    "hex": "#7B1E2B"
    },
    {
     "name": "Gris chiné",
-   "hex": "#B5B8BC"
+    "hex": "#B5B8BC"
    },
    {
     "name": "Iris purple",
-   "hex": "#6A5ACD"
+    "hex": "#6A5ACD"
    },
    {
     "name": "Jaune",
-   "hex": "#F2C500"
+    "hex": "#F2C500"
    },
    {
     "name": "Marine",
-   "hex": "#1B2A4A"
+    "hex": "#1B2A4A"
    },
    {
     "name": "Noir",
-   "hex": "#111111"
+    "hex": "#111111"
    },
    {
     "name": "Ochre",
-   "hex": "#CC7722"
+    "hex": "#CC7722"
    },
    {
     "name": "Orange",
-   "hex": "#F28A1E"
+    "hex": "#F28A1E"
    },
    {
     "name": "Pourpre",
-   "hex": "#7A1F6B"
+    "hex": "#7A1F6B"
    },
    {
     "name": "Rosacé",
-   "hex": "#E8A0A8"
+    "hex": "#E8A0A8"
    },
    {
     "name": "Rose clair",
-   "hex": "#F4C2D0"
+    "hex": "#F4C2D0"
    },
    {
     "name": "Rouge",
-   "hex": "#C8102E"
+    "hex": "#C8102E"
    },
    {
     "name": "Silk pink",
-   "hex": "#F2C9CF"
+    "hex": "#F2C9CF"
    },
    {
     "name": "Sweet blue",
-   "hex": "#A9CCE8"
+    "hex": "#A9CCE8"
    },
    {
     "name": "Sweet yellow",
-   "hex": "#F7E27A"
+    "hex": "#F7E27A"
    },
    {
     "name": "Turquoise",
-   "hex": "#17B6C9"
+    "hex": "#17B6C9"
    },
    {
     "name": "Vert kelly",
-   "hex": "#2FA84F"
+    "hex": "#2FA84F"
    },
    {
     "name": "Vert oasis",
-   "hex": "#3FAE8A"
+    "hex": "#3FAE8A"
    },
    {
     "name": "Vert prairie",
-   "hex": "#6FB04A"
+    "hex": "#6FB04A"
    },
    {
     "name": "Vintage blanc",
-   "hex": "#F1EEE6"
+    "hex": "#F1EEE6"
    }
+  ],
+  "g": [
+   "cam_po"
   ]
  }
 };

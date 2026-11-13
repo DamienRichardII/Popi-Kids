@@ -150,12 +150,24 @@ const ROWS: Row[] = [
   ["beagle", "Beagle", 490, "vetements", "CA6554", 1],
 ];
 
+/** Rayons identiques à popikids.com : un produit peut figurer dans plusieurs rayons (ex. Sport + Vestes). */
+const WOO_TO_SLUG: Record<string, string> = {
+  cam_po: "t-shirts-polos", swe: "sweats-gilets", "pulls-and-gilets": "sweats-gilets", coats: "vestes-manteaux",
+  lunch_boxes: "lunch-boxes", jeux: "jeux", sports: "sport", sport_accessories: "accessoires",
+};
+function categoriesOf(slug: string, base: string): string[] {
+  const out = new Set<string>();
+  for (const g of WOO[slug]?.g ?? []) { const m = WOO_TO_SLUG[g]; if (m) out.add(m); }
+  if (!out.size) out.add(base === "vetements" ? "t-shirts-polos" : base === "gourdes" || base === "sacs" ? "accessoires" : base);
+  return [...out];
+}
+
 const PRODUCTS: Product[] = ROWS.map(([slug, name, price, category, reference, photos, available], i) => ({
   id: `p${i + 1}`,
   slug,
   name,
   price,
-  categories: [category],
+  categories: categoriesOf(slug, category),
   colors: WOO[slug]?.k ?? [],
   sizes: [],
   images: Array.from({ length: photos }, (_, k) => `prod-${slug}-${k + 1}`),
@@ -168,12 +180,15 @@ const PRODUCTS: Product[] = ROWS.map(([slug, name, price, category, reference, p
   isDemo: false,
 }));
 
+/** Ordre et libellés du menu de popikids.com. */
 export const CATEGORIES: Category[] = [
-  { slug: "vetements", name: "Vêtements", description: "", image: "cat-vetements" },
-  { slug: "jeux", name: "Jeux", description: "", image: "cat-jeux" },
-  { slug: "lunch-boxes", name: "Lunch boxes", description: "", image: "cat-lunch-boxes" },
-  { slug: "gourdes", name: "Gourdes", description: "", image: "cat-gourdes" },
-  { slug: "sacs", name: "Sacs", description: "", image: "cat-sacs" },
+  { slug: "t-shirts-polos", name: "T-shirts & polos", description: "", image: "prod-monzha-1" },
+  { slug: "sweats-gilets", name: "Sweats & gilets", description: "", image: "prod-urban-1" },
+  { slug: "vestes-manteaux", name: "Vestes & Manteaux", description: "", image: "prod-nepal-1" },
+  { slug: "lunch-boxes", name: "Boîtes à lunch", description: "", image: "cat-lunch-boxes" },
+  { slug: "jeux", name: "Jeux de société", description: "", image: "cat-jeux" },
+  { slug: "sport", name: "Sport", description: "", image: "prod-forza-1" },
+  { slug: "accessoires", name: "Accessoires", description: "", image: "cat-gourdes" },
 ].map((c) => ({ ...c, description: "Description de catégorie à fournir." }));
 
 export type Query = {
