@@ -4,51 +4,46 @@ import Hero, { type HeroSlide } from "@/components/Hero";
 import BundleCard from "@/components/BundleCard";
 import Visual from "@/components/Visual";
 import ProductGrid from "@/components/ProductGrid";
-import { CATEGORIES, getBestSellers, getProduct } from "@/lib/commerce";
-import { BUNDLES } from "@/lib/offers";
+import { CATEGORIES, eur, getBestSellers, getProduct } from "@/lib/commerce";
+import { BUNDLES, SWEAT_OFFER } from "@/lib/offers";
 import { FAQ, REASSURANCE, SITE, TRUST } from "@/lib/site";
 
 const ICONS = { truck: Truck, leaf: Leaf, shield: ShieldCheck, package: Package, droplet: Droplets, users: Users, lock: Lock };
 
-/** Offres de saison : aucune promotion inventée, uniquement des accès vers les rayons existants. */
-const SEASON = [
-  { title: "Idées cadeaux de Noël", text: "Jeux, lunch boxes, gourdes et sacs à offrir.", image: "prod-salento-1", href: "/collections/jeux", cta: "Découvrir" },
-  { title: "Looks d'hiver", text: "Sweats, vestes et tenues pour affronter le froid.", image: "prod-nepal-1", href: "/collections/vestes-manteaux", cta: "Voir les vestes" },
-  { title: "Personnalisez", text: "Ajoutez un prénom, une phrase ou un logo sur les t-shirts, polos et sweat-shirts.", image: "prod-jamaica-1", href: "/collections/t-shirts-polos", cta: "Personnaliser" },
+/** Nos essentiels de saison : produits réels du catalogue, photos et couleurs de la maquette client. */
+const ESSENTIALS = [
+  { slug: "urban", label: "Sweat", color: "Marine", image: "ess-urban" },
+  { slug: "clasica", label: "Sweat", color: "Angora naturel", image: "ess-clasica" },
+  { slug: "nepal", label: "Parka", color: "Vert militaire foncé", image: "ess-nepal" },
+  { slug: "norway", label: "Doudoune", color: "Marine", image: "ess-norway" },
+] as const;
+
+/** La magie des fêtes : accès vers les rayons existants, aucune promotion inventée. */
+const FETES = [
+  { title: "Personnalisés", text: "Un prénom, une phrase ou un logo sur les sweat-shirts.", image: "fete-1", href: "/collections/sweats-gilets", cta: "Personnaliser" },
+  { title: "Idées cadeaux", text: "Jeux, lunch boxes, gourdes et sacs à offrir.", image: "fete-2", href: "/collections/jeux", cta: "Découvrir" },
+  { title: "Looks d'hiver", text: "Sweats, vestes et tenues pour affronter le froid.", image: "fete-3", href: "/collections/vestes-manteaux", cta: "Voir les vestes" },
 ] as const;
 
 export default async function Home() {
   const best = await getBestSellers();
   const cats = [...CATEGORIES.map((c) => ({ slug: c.slug, name: c.name, image: c.image, href: `/collections/${c.slug}` })),
     { slug: "cadeaux", name: "Cartes cadeaux", image: "cat-cadeaux", href: "/carte-cadeau" }];
-  const tiles = (keys: string[], badge?: string) => (
-    <div className="grid h-full w-full grid-cols-4 gap-px bg-line">
-      {keys.map((k, n) => (
-        <div key={k} className="relative">
-          <Visual assetKey={k} alt="" className="h-full w-full" sizes="(min-width:1024px) 15vw, 25vw" position="50% 0%" priority={n === 0} />
-          {badge && n === keys.length - 1 && <span className="absolute inset-x-1 bottom-2 rounded-full bg-primary px-1 py-1 text-center text-[10px] font-medium uppercase tracking-widest text-primary-fg sm:text-xs">{badge}</span>}
-        </div>
-      ))}
-    </div>
-  );
+  const img = (key: string, alt: string, sizes: string, position?: string, priority = false) =>
+    <Visual assetKey={key} alt={alt} className="h-full w-full" sizes={sizes} position={position} priority={priority} />;
   const slides: HeroSlide[] = [
-    { visual: tiles(["prod-jamaica-1", "prod-aida-1", "prod-monzha-1", "prod-carpe-child-1"], "Personnalisable"), eyebrow: "Personnalisation",
-      title: "Faites-le vôtre : prénom, phrase ou logo",
-      cta: { label: "Personnaliser", href: "/collections/t-shirts-polos" }, cta2: { label: "Voir les sweats", href: "/collections/sweats-gilets" } },
-    { visual: tiles(["prod-epiro-1", "prod-leros-1", "prod-badet-1", "prod-urban-1"], "4ᵉ offert"), eyebrow: "Offre sweats",
-      title: "Le 4ᵉ sweat est offert",
-      cta: { label: "Voir les sweats", href: "/collections/sweats-gilets" }, cta2: { label: "Voir les packs", href: "/#packs" } },
-    { visual: <Visual assetKey="carte-cadeau-1" alt="Carte cadeau POPI KIDS et son enveloppe" className="h-full w-full" sizes="(min-width:1024px) 60vw, 100vw" position="50% 50%" />, eyebrow: "Idée cadeau",
-      title: "La carte cadeau POPI KIDS",
+    { desktop: img("hero-b1", "", "100vw", "50% 50%", true), mobile: img("hero-m1", "Quatre enfants en doudounes et sweats POPI KIDS", "100vw", "50% 30%"),
+      thumb: img("hero-t1", "", "(min-width:640px) 30vw, 33vw"), thumbLabel: "Bien au chaud", title: "Bien au chaud, tout simplement.",
+      cta: { label: "Découvrir les vestes", href: "/collections/vestes-manteaux" } },
+    { desktop: img("hero-b2", "", "100vw"), mobile: img("hero-m2", "Sweats personnalisés Jade et Adam", "100vw", "35% 50%"),
+      thumb: img("hero-t2", "", "(min-width:640px) 30vw, 33vw"), thumbLabel: "Un cadeau personnalisé", title: "Personnalisez leur sweat pour les fêtes",
+      cta: { label: "Créer mon cadeau", href: "/collections/sweats-gilets" } },
+    { desktop: img("hero-b3", "", "100vw"), mobile: img("hero-m3", "Carte cadeau POPI KIDS et son enveloppe", "100vw", "50% 50%"),
+      thumb: img("hero-t3", "", "(min-width:640px) 30vw, 33vw"), thumbLabel: "Le plaisir de choisir", title: "Et si vous leur laissiez le choix ?",
       cta: { label: "Offrir une carte cadeau", href: "/carte-cadeau" } },
-    { visual: tiles(["prod-monzha-1", "prod-dortmund-1", "prod-freya-1", "prod-forza-1"]), eyebrow: "Packs",
-      title: "Des packs prêts à porter",
-      cta: { label: "Découvrir les packs", href: "/#packs" } },
-    { visual: <Visual assetKey="hero-1" alt="Enfants portant des vêtements POPI KIDS" className="h-full w-full" sizes="100vw" position="50% 18%" />,
-      title: "Tout pour accompagner leurs aventures",
-      cta: { label: "Découvrir les collections", href: "/shop" }, cta2: { label: "Nos best-sellers", href: "/shop?sort=populaires" } },
   ];
 
+  const essentials = (await Promise.all(ESSENTIALS.map(async (e) => ({ e, p: await getProduct(e.slug) })))).flatMap((x) => x.p ? [{ ...x.e, p: x.p }] : []);
   const bundles = await Promise.all(BUNDLES.map(async (b) => {
     const items = (await Promise.all(b.slugs.map((s) => getProduct(s)))).flatMap((p) => p ? [{
       productId: p.id, slug: p.slug, name: p.name, price: p.price, image: p.images[0] ?? "",
@@ -76,41 +71,76 @@ export default async function Home() {
         </ul>
       </section>
 
-      <section id="packs" className="mx-auto max-w-[1400px] scroll-mt-24 px-4 pt-14 sm:px-6" aria-label="Packs">
-        <h2 className="section-title mb-2 text-center text-3xl sm:text-4xl">Nos packs</h2>
-        <ul className="grid gap-4 md:grid-cols-3">
-          {bundles.map((b) => b.items.length === b.slugs.length && (
-            <li key={b.id}><BundleCard title={b.title} text={b.text} items={b.items} offer={b.offer} /></li>
-          ))}
-        </ul>
-      </section>
-
-      <section className="mx-auto mt-14 grid max-w-[1400px] items-center gap-8 px-4 sm:px-6 md:grid-cols-2">
-        <Visual assetKey="carte-cadeau-1" alt="Carte cadeau POPI KIDS et son enveloppe" className="aspect-square w-full rounded-2xl border border-line" sizes="(min-width:768px) 50vw, 100vw" />
-        <div>
-          <p className="mb-2 text-xs font-medium uppercase tracking-[.25em] text-accent-strong">Idée cadeau</p>
-          <h2 className="section-title text-3xl sm:text-4xl">La carte cadeau POPI KIDS</h2>
-          <p className="mt-3 max-w-md text-muted">Pour les petits aventuriers : une idée de cadeau élégante, à offrir sans se tromper de taille.</p>
-          <Link href="/carte-cadeau" className="btn btn-primary mt-6 w-fit">Découvrir <ArrowRight size={16} /></Link>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-[1400px] px-4 pt-14 sm:px-6" aria-label="Offres de saison">
-        <h2 className="section-title mb-6 text-center text-3xl sm:text-4xl">Noël &amp; hiver</h2>
-        <ul className="grid gap-4 md:grid-cols-3">
-          {SEASON.map((o) => (
-            <li key={o.title}>
-              <Link href={o.href} className="group flex h-full items-center gap-4 overflow-hidden rounded-2xl border border-line bg-surface-2/60 p-4 transition hover:border-accent-strong md:flex-col md:items-stretch md:p-5">
-                <Visual assetKey={o.image} alt="" className="aspect-[4/5] w-32 shrink-0 rounded-xl md:w-full" sizes="(min-width:768px) 33vw, 128px" />
-                <div className="md:pt-2">
-                  <h3 className="serif text-2xl leading-tight">{o.title}</h3>
-                  <p className="mt-1 text-sm text-muted">{o.text}</p>
-                  <span className="mt-3 inline-flex items-center gap-1 text-sm font-medium underline-offset-4 group-hover:underline">{o.cta} <ArrowRight size={15} /></span>
+      <section className="mx-auto max-w-[1400px] px-4 pt-14 sm:px-6" aria-label="Nos essentiels de saison">
+        <h2 className="section-title mb-6 text-center text-3xl sm:text-4xl">Nos essentiels de saison</h2>
+        <ul className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
+          {essentials.map(({ p, label, color, image }) => (
+            <li key={p.slug}>
+              <Link href={`/product/${p.slug}`} className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface transition hover:border-accent-strong">
+                <Visual assetKey={image} alt={`${label} ${p.name}, ${color}`} className="aspect-[4/5] w-full" sizes="(min-width:1024px) 25vw, 50vw" position="50% 0%" />
+                <div className="flex flex-1 flex-col p-3 sm:p-4">
+                  <h3 className="serif text-lg leading-tight sm:text-xl">{label} {p.name}</h3>
+                  <p className="mt-1 text-xs text-muted sm:text-sm">{color}</p>
+                  <p className="mt-2 text-sm font-medium">{eur(p.price)}</p>
+                  <span className="mt-3 inline-flex items-center gap-1 text-sm font-medium underline-offset-4 group-hover:underline">Découvrir <ArrowRight size={15} /></span>
                 </div>
               </Link>
             </li>
           ))}
         </ul>
+      </section>
+
+      <section className="mx-auto max-w-[1400px] px-4 pt-14 sm:px-6" aria-label="La magie des fêtes">
+        <h2 className="section-title mb-6 text-center text-3xl sm:text-4xl">La magie des fêtes</h2>
+        <ul className="grid gap-4 md:grid-cols-3">
+          {FETES.map((o) => (
+            <li key={o.title}>
+              <Link href={o.href} className="group relative block aspect-[4/5] overflow-hidden rounded-2xl border border-line">
+                <span className="absolute inset-0 block transition-transform duration-500 group-hover:scale-105"><Visual assetKey={o.image} alt="" className="h-full w-full" sizes="(min-width:768px) 33vw, 100vw" position="50% 30%" /></span>
+                <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/45 to-transparent p-5 pt-20 text-white [text-shadow:0_1px_8px_rgb(0_0_0/.5)]">
+                  <span className="serif block text-2xl leading-tight">{o.title}</span>
+                  <span className="mt-1 block text-sm text-white/90">{o.text}</span>
+                  <span className="mt-3 inline-flex items-center gap-1 text-sm font-medium underline-offset-4 group-hover:underline">{o.cta} <ArrowRight size={15} /></span>
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section id="packs" className="mx-auto max-w-[1400px] scroll-mt-24 px-4 pt-14 sm:px-6" aria-label="Packs">
+        <h2 className="section-title mb-6 text-center text-3xl sm:text-4xl">Nos packs</h2>
+        <div className="grid overflow-hidden rounded-2xl border border-line bg-surface-2/60 md:grid-cols-2">
+          <Visual assetKey="pack-chaud" alt="Trois enfants en sweats et doudounes POPI KIDS" className="aspect-[4/3] w-full md:aspect-auto md:min-h-[360px]" sizes="(min-width:768px) 50vw, 100vw" position="50% 30%" />
+          <div className="flex flex-col justify-center p-6 sm:p-10">
+            <span className="mb-3 w-fit rounded-full bg-primary px-3 py-1 text-[11px] font-medium uppercase tracking-widest text-primary-fg">{SWEAT_OFFER.label}</span>
+            <h3 className="serif text-3xl leading-tight sm:text-4xl">Le pack bien au chaud</h3>
+            <p className="mt-3 max-w-md text-muted">Choisissez 3 articles similaires, payez-en seulement 2.</p>
+            <p className="mt-2 text-sm text-muted">Clasica · Urban · New Artic</p>
+            <Link href="/collections/sweats-gilets" className="btn btn-primary mt-6 w-fit">Composer mon pack <ArrowRight size={16} /></Link>
+          </div>
+        </div>
+        {bundles.length > 0 && (
+          <ul className="mt-4 grid gap-4 md:grid-cols-2">
+            {bundles.map((b) => b.items.length === b.slugs.length && (
+              <li key={b.id}><BundleCard title={b.title} text={b.text} items={b.items} offer={b.offer} /></li>
+            ))}
+          </ul>
+        )}
+      </section>
+
+      <section className="mx-auto mt-14 max-w-[1400px] px-4 sm:px-6" aria-label="Carte cadeau">
+        <Link href="/carte-cadeau" className="group relative block overflow-hidden rounded-2xl border border-line">
+          <span className="relative hidden aspect-[1920/800] w-full md:block">{img("hero-b3", "Et si vous leur laissiez le choix ? Offrez une carte cadeau POPI KIDS", "(min-width:1400px) 1400px, 100vw", "50% 50%")}</span>
+          <span className="block md:hidden">
+            <span className="relative block aspect-[3/2] w-full">{img("hero-m3", "Carte cadeau POPI KIDS et son enveloppe", "100vw", "50% 50%")}</span>
+            <span className="block p-6">
+              <span className="serif block text-3xl leading-tight">Et si vous leur laissiez le choix ?</span>
+              <span className="mt-2 block text-muted">Offrez une carte cadeau POPI KIDS.</span>
+              <span className="btn btn-primary mt-5 w-full">Offrir une carte cadeau <ArrowRight size={16} /></span>
+            </span>
+          </span>
+        </Link>
       </section>
 
       <section className="mx-auto max-w-[1400px] px-4 pt-14 sm:px-6">

@@ -1,4 +1,5 @@
 "use client";
+import { SWEAT_OFFER } from "@/lib/offers";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
@@ -56,7 +57,7 @@ export function Totals() {
   return (
     <dl className="mt-4 space-y-1.5 text-sm">
       <div className="flex justify-between"><dt className="text-muted">Sous-total</dt><dd>{eur(subtotal)}</dd></div>
-      {discount > 0 && <div className="flex justify-between text-accent-strong"><dt>4ᵉ sweat offert</dt><dd>−{eur(discount)}</dd></div>}
+      {discount > 0 && <div className="flex justify-between text-accent-strong"><dt>{SWEAT_OFFER.label}</dt><dd>−{eur(discount)}</dd></div>}
       <div className="flex justify-between"><dt className="text-muted">Livraison</dt><dd className="text-muted">Calculée au paiement</dd></div>
     </dl>
   );
