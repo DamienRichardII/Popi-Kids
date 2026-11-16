@@ -176,7 +176,7 @@ const PRODUCTS: Product[] = ROWS.map(([slug, name, price, category, reference, p
   reference,
   available: available !== false,
   // Références fournisseur CA… (t-shirts), PO… (polos), SU… (sweat-shirts) : à confirmer avec POPI KIDS
-  customizable: category === "vetements" && /^(CA|PO|SU)/.test(reference),
+  customizable: category === "vetements" && /^(CA|SU)/.test(reference),
   isDemo: false,
 }));
 

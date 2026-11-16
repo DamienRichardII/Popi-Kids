@@ -111,15 +111,15 @@ export default function ProductPurchase({ product: p, gallery }: { product: Prod
                 </div>
                 <div role="radiogroup" aria-label="Couleur d'impression">
                   <p className="mb-2 font-medium">Couleur d&apos;impression : <span className="font-normal text-muted">{cColor}</span></p>
-                  <div className="flex gap-3">
+                  <div className="flex max-h-44 flex-wrap gap-2.5 overflow-y-auto p-1">
                     {PRINT_COLORS.map((c) => (
                       <button key={c.name} role="radio" aria-checked={cColor === c.name} aria-label={c.name} onClick={() => setCColor(c.name)}
-                        className={`h-9 w-9 rounded-full border border-line ${cColor === c.name ? "ring-2 ring-accent-strong ring-offset-2 ring-offset-bg" : ""}`} style={{ background: c.hex }} />
+                        title={c.name} className={`h-8 w-8 shrink-0 rounded-full border border-line ${cColor === c.name ? "ring-2 ring-accent-strong ring-offset-2 ring-offset-bg" : ""}`} style={{ background: c.hex }} />
                     ))}
                   </div>
                 </div>
                 <div aria-label="Aperçu" className="flex min-h-20 items-center justify-center rounded-lg border border-line px-3 py-4 text-center text-3xl"
-                  style={{ background: cColor === "Blanc" ? "#2b2b2b" : "#f3ece0", color: PRINT_COLORS.find((c) => c.name === cColor)?.hex, fontFamily: PRINT_FONTS.find((f) => f.id === cFont)?.css }}>
+                  style={{ background: ["Blanc", "Vintage blanc", "Angora naturel"].includes(cColor) ? "#2b2b2b" : "#f3ece0", color: PRINT_COLORS.find((c) => c.name === cColor)?.hex, fontFamily: PRINT_FONTS.find((f) => f.id === cFont)?.css }}>
                   {cText || (cType === "prenom" ? "Prénom" : "Votre phrase")}
                 </div>
                 <p className="text-xs text-muted">Aperçu indicatif : le rendu final dépend du tissu et de la couleur du vêtement.</p>
