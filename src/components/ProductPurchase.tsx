@@ -136,7 +136,7 @@ export default function ProductPurchase({ product: p, gallery }: { product: Prod
                 <p className="mt-2 text-xs text-muted">Le fichier est vérifié sur votre appareil. Après la commande, envoyez-le à {SITE.contactEmail} en indiquant votre numéro de commande.</p>
               </div>
             )}
-            <p className="mt-2 text-xs text-muted">Impression DTF (pas de broderie). Supplément éventuel et délai de personnalisation : à confirmer par POPI KIDS.</p>
+            <p className="mt-2 text-xs text-muted">Impression DTF (pas de broderie).</p>
           </fieldset>
         )}
 
