@@ -1,11 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Dancing_Script, Inter } from "next/font/google";
+import { Comfortaa, Cormorant_Garamond, Inter, Pacifico } from "next/font/google";
 import { CartProvider } from "@/components/CartProvider";
 import { SITE } from "@/lib/site";
 import "./globals.css";
 
 const serif = Cormorant_Garamond({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-cormorant", display: "swap" });
-const script = Dancing_Script({ subsets: ["latin"], weight: ["500", "600"], variable: "--font-script", display: "swap" });
+const script = Pacifico({ subsets: ["latin"], weight: "400", variable: "--font-script", display: "swap" });
+const rounded = Comfortaa({ subsets: ["latin"], weight: "700", variable: "--font-rounded", display: "swap" });
 const sans = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 
 export const metadata: Metadata = {
@@ -21,7 +22,7 @@ const themeScript = `try{var t=localStorage.getItem('popi-theme');if(t==='midnig
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" data-theme="ivory" className={`${serif.variable} ${sans.variable} ${script.variable}`} suppressHydrationWarning>
+    <html lang="fr" data-theme="ivory" className={`${serif.variable} ${sans.variable} ${script.variable} ${rounded.variable}`} suppressHydrationWarning>
       <head><script dangerouslySetInnerHTML={{ __html: themeScript }} /></head>
       <body><CartProvider>{children}</CartProvider></body>
     </html>

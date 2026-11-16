@@ -1,11 +1,11 @@
 /**
  * Options de personnalisation texte (prénom / phrase), impression DTF.
- * ⚠ À VALIDER par CMR Personnalisation : choisir les 2 styles de police (les couleurs viennent des couleurs produits du site).
+ * Polices fournies par le client : Manuscrite = Pacifico, Arrondie = Comfortaa Bold (chargées via next/font dans layout.tsx).
  * Pour changer : modifier uniquement ce fichier (la police "css" doit exister dans layout.tsx).
  */
 export const PRINT_FONTS = [
   { id: "manuscrite", label: "Manuscrite", css: "var(--font-script), cursive" },
-  { id: "classique", label: "Classique", css: "var(--font-cormorant), Georgia, serif" },
+  { id: "arrondie", label: "Arrondie", css: "var(--font-rounded), system-ui, sans-serif", weight: 700 },
 ] as const;
 
 /** Couleurs d'impression = couleurs unies des produits du site (sweats et t-shirts), triées des neutres aux teintes. */
