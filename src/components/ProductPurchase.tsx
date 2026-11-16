@@ -72,9 +72,7 @@ export default function ProductPurchase({ product: p, gallery }: { product: Prod
               className={`h-9 w-9 rounded-full border ${color === c.name ? "ring-2 ring-accent-strong ring-offset-2 ring-offset-bg" : "border-line"}`} style={{ background: c.hex }} />
           ))}</div></fieldset>}
 
-        {noOptions ? (
-          <p className="mt-6 rounded-lg border border-dashed border-line p-3 text-sm text-muted">Tailles et disponibilités : à confirmer par POPI KIDS avant l&apos;ouverture de la vente.</p>
-        ) : (
+        {noOptions ? null : (
         <fieldset className="mt-6"><legend className="mb-2 text-sm font-medium">Taille</legend>
           <div className="flex flex-wrap gap-2">{p.sizes.map((s) => (
             <button key={s.label} disabled={s.stock === 0} aria-pressed={size === s.label} onClick={() => { setSize(s.label); setErr(""); setQty(1); }}
