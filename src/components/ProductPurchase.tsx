@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Heart, Minus, Plus } from "lucide-react";
 import { eur, inStock } from "@/lib/commerce";
 import { SITE } from "@/lib/site";
+import { PRINT_COLORS, PRINT_FONTS } from "@/lib/personalisation";
 import { inspectPng, PNG_MAX_BYTES, type PngCheck } from "@/lib/png";
 import type { Product } from "@/lib/types";
 import { useCart } from "./CartProvider";
@@ -20,6 +21,8 @@ export default function ProductPurchase({ product: p, gallery }: { product: Prod
   const [cType, setCType] = useState<"" | "prenom" | "phrase" | "logo">("");
   const [cText, setCText] = useState("");
   const [png, setPng] = useState<PngCheck | null>(null);
+  const [cFont, setCFont] = useState<string>(PRINT_FONTS[0].id);
+  const [cColor, setCColor] = useState<string>(PRINT_COLORS[0].name);
   const onFile = async (f?: File) => {
     setErr(""); setPng(null); setCText("");
     if (!f) return;
@@ -37,7 +40,7 @@ export default function ProductPurchase({ product: p, gallery }: { product: Prod
     if (stock < 1) { setErr("Cette taille n'est plus disponible."); return; }
     if (cType && !cText.trim()) { setErr(cType === "prenom" ? "Indiquez le prénom à ajouter." : cType === "phrase" ? "Indiquez la phrase à imprimer." : "Ajoutez votre fichier PNG (fond transparent, 600 dpi)."); return; }
     setErr("");
-    add({ productId: p.id, slug: p.slug, name: p.name, price: p.price, color, size, qty: Math.min(qty, stock), image: p.images[0] ?? "", ...(cType ? { custom: { type: cType, text: cText.trim() } } : {}) });
+    add({ productId: p.id, slug: p.slug, name: p.name, price: p.price, color, size, qty: Math.min(qty, stock), image: p.images[0] ?? "", ...(cType ? { custom: { type: cType, text: cText.trim(), ...(cType !== "logo" ? { font: cFont, color: cColor } : {}) } } : {}) });
     if (then === "buy") router.push("/checkout"); else { setAdded(true); setTimeout(() => setAdded(false), 1800); }
   };
 
@@ -92,15 +95,35 @@ export default function ProductPurchase({ product: p, gallery }: { product: Prod
                   className={`min-h-11 rounded-full border px-4 text-sm ${cType === v ? "border-primary bg-primary text-primary-fg" : "border-line"}`}>{l}</button>
               ))}
             </div>
-            {cType === "prenom" && (
-              <label className="mt-3 block text-sm">Prénom (15 caractères max.)
-                <input value={cText} maxLength={15} onChange={(e) => setCText(e.target.value)} className="mt-1 min-h-11 w-full rounded-lg border border-line bg-surface px-3" />
-              </label>
-            )}
-            {cType === "phrase" && (
-              <label className="mt-3 block text-sm">Phrase (40 caractères max.)
-                <input value={cText} maxLength={40} onChange={(e) => setCText(e.target.value)} className="mt-1 min-h-11 w-full rounded-lg border border-line bg-surface px-3" />
-              </label>
+            {(cType === "prenom" || cType === "phrase") && (
+              <div className="mt-3 space-y-4 text-sm">
+                <label className="block">{cType === "prenom" ? "Prénom (15 caractères max.)" : "Phrase (40 caractères max.)"}
+                  <input value={cText} maxLength={cType === "prenom" ? 15 : 40} onChange={(e) => setCText(e.target.value)} className="mt-1 min-h-11 w-full rounded-lg border border-line bg-surface px-3" />
+                </label>
+                <div role="radiogroup" aria-label="Style d'écriture">
+                  <p className="mb-2 font-medium">Style d&apos;écriture</p>
+                  <div className="flex flex-wrap gap-2">
+                    {PRINT_FONTS.map((f) => (
+                      <button key={f.id} role="radio" aria-checked={cFont === f.id} onClick={() => setCFont(f.id)}
+                        className={`min-h-11 rounded-lg border px-4 text-lg ${cFont === f.id ? "border-primary ring-1 ring-primary" : "border-line"}`} style={{ fontFamily: f.css }}>{f.label}</button>
+                    ))}
+                  </div>
+                </div>
+                <div role="radiogroup" aria-label="Couleur d'impression">
+                  <p className="mb-2 font-medium">Couleur d&apos;impression : <span className="font-normal text-muted">{cColor}</span></p>
+                  <div className="flex gap-3">
+                    {PRINT_COLORS.map((c) => (
+                      <button key={c.name} role="radio" aria-checked={cColor === c.name} aria-label={c.name} onClick={() => setCColor(c.name)}
+                        className={`h-9 w-9 rounded-full border border-line ${cColor === c.name ? "ring-2 ring-accent-strong ring-offset-2 ring-offset-bg" : ""}`} style={{ background: c.hex }} />
+                    ))}
+                  </div>
+                </div>
+                <div aria-label="Aperçu" className="flex min-h-20 items-center justify-center rounded-lg border border-line px-3 py-4 text-center text-3xl"
+                  style={{ background: cColor === "Blanc" ? "#2b2b2b" : "#f3ece0", color: PRINT_COLORS.find((c) => c.name === cColor)?.hex, fontFamily: PRINT_FONTS.find((f) => f.id === cFont)?.css }}>
+                  {cText || (cType === "prenom" ? "Prénom" : "Votre phrase")}
+                </div>
+                <p className="text-xs text-muted">Aperçu indicatif : le rendu final dépend du tissu et de la couleur du vêtement.</p>
+              </div>
             )}
             {cType === "logo" && (
               <div className="mt-3 text-sm">

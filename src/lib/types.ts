@@ -37,7 +37,7 @@ export type CartLine = {
   qty: number;
   image: string;
   /** Personnalisation choisie (prénom ou description du dessin) */
-  custom?: { type: "prenom" | "phrase" | "logo"; text: string };
+  custom?: { type: "prenom" | "phrase" | "logo"; text: string; font?: string; color?: string };
 };
 
 export type AdminStats = {

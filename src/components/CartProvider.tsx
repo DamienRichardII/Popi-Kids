@@ -13,7 +13,7 @@ type Ctx = {
 };
 const CartCtx = createContext<Ctx | null>(null);
 export const lineKey = (l: Pick<CartLine, "productId" | "color" | "size" | "custom">) =>
-  `${l.productId}|${l.color}|${l.size}|${l.custom ? `${l.custom.type}:${l.custom.text}` : ""}`;
+  `${l.productId}|${l.color}|${l.size}|${l.custom ? `${l.custom.type}:${l.custom.text}:${l.custom.font ?? ""}:${l.custom.color ?? ""}` : ""}`;
 
 function load<T>(k: string, fallback: T): T {
   try { return JSON.parse(localStorage.getItem(k) ?? "") as T; } catch { return fallback; }
