@@ -115,7 +115,7 @@ export default async function Home() {
           <div className="flex flex-col justify-center p-6 sm:p-10">
             <span className="mb-3 w-fit rounded-full bg-primary px-3 py-1 text-[11px] font-medium uppercase tracking-widest text-primary-fg">{SWEAT_OFFER.label}</span>
             <h3 className="serif text-3xl leading-tight sm:text-4xl">Le pack bien au chaud</h3>
-            <p className="mt-3 max-w-md text-muted">Choisissez 3 articles similaires, payez-en seulement 2.</p>
+            <p className="mt-3 max-w-md text-muted">Choisissez 4 articles similaires, payez-en seulement 3.</p>
             <p className="mt-2 text-sm text-muted">Clasica · Urban · New Artic</p>
             <Link href="/collections/sweats-gilets" className="btn btn-primary mt-6 w-fit">Composer mon pack <ArrowRight size={16} /></Link>
           </div>

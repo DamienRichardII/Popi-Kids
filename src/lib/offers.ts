@@ -1,14 +1,14 @@
 import type { CartLine } from "./types";
 
 /**
- * Offre « Le pack bien au chaud : 3ᵉ article offert » (maquette client) : pour 3 articles éligibles
- * (Clasica, Urban, New Artic) dans le panier, le moins cher du lot de 3 est offert.
+ * Offre « Le pack bien au chaud : 4ᵉ article offert » (demande client) : pour 4 articles éligibles
+ * (Clasica, Urban, New Artic) dans le panier, le moins cher du lot de 4 est offert.
  * Conditions exactes (« articles similaires ») à confirmer par POPI KIDS.
  */
 export const SWEAT_SLUGS = ["clasica", "urban", "new-artic"] as const;
-export const SWEAT_OFFER = { every: 3, label: "3ᵉ article offert" } as const;
+export const SWEAT_OFFER = { every: 4, label: "4ᵉ article offert" } as const;
 
-/** Remise en centimes : dans chaque lot de 3 articles éligibles (du plus cher au moins cher), le 3ᵉ est offert. */
+/** Remise en centimes : dans chaque lot de 4 articles éligibles (du plus cher au moins cher), le 4ᵉ est offert. */
 export function sweatDiscount(lines: Pick<CartLine, "slug" | "price" | "qty">[]): number {
   const prices: number[] = [];
   for (const l of lines) if ((SWEAT_SLUGS as readonly string[]).includes(l.slug)) for (let i = 0; i < l.qty; i++) prices.push(l.price);
