@@ -4,7 +4,7 @@ import Hero, { type HeroSlide } from "@/components/Hero";
 import BundleCard from "@/components/BundleCard";
 import Visual from "@/components/Visual";
 import ProductGrid from "@/components/ProductGrid";
-import { CATEGORIES, eur, getBestSellers, getProduct } from "@/lib/commerce";
+import { CATEGORIES, eur, getProduct, getProducts, inStock } from "@/lib/commerce";
 import { BUNDLES, SWEAT_OFFER } from "@/lib/offers";
 import { FAQ, REASSURANCE, SITE, TRUST } from "@/lib/site";
 
@@ -26,7 +26,9 @@ const FETES = [
 ] as const;
 
 export default async function Home() {
-  const best = await getBestSellers();
+  /** Sélection = sweats, polaires et pulls du catalogue (hors les produits déjà mis en avant ci-dessus), 6 produits. */
+  const shown: string[] = ESSENTIALS.map((e) => e.slug);
+  const best = (await getProducts({ category: "sweats-gilets" })).filter((p) => inStock(p) && !shown.includes(p.slug)).slice(0, 6);
   const cats = [...CATEGORIES.map((c) => ({ slug: c.slug, name: c.name, image: c.image, href: `/collections/${c.slug}` })),
     { slug: "cadeaux", name: "Cartes cadeaux", image: "cat-cadeaux", href: "/carte-cadeau" }];
   const img = (key: string, alt: string, sizes: string, position?: string, priority = false) =>
@@ -146,9 +148,9 @@ export default async function Home() {
       <section className="mx-auto max-w-[1400px] px-4 pt-14 sm:px-6">
         <div className="mb-6 flex items-end justify-between gap-4">
           <h2 className="section-title text-3xl sm:text-4xl">Notre sélection</h2>
-          <Link href="/shop?sort=populaires" className="btn btn-secondary !min-h-11 shrink-0 !px-5 text-sm">Voir toute la boutique <ArrowRight size={16} /></Link>
+          <Link href="/collections/sweats-gilets" className="btn btn-secondary !min-h-11 shrink-0 !px-5 text-sm">Voir toute la boutique <ArrowRight size={16} /></Link>
         </div>
-        <ProductGrid products={best.slice(0, 5)} cols="lg:grid-cols-5" />
+        <ProductGrid products={best} cols="lg:grid-cols-6" />
       </section>
 
       <section className="mx-auto max-w-[1400px] px-4 pt-14 sm:px-6">
