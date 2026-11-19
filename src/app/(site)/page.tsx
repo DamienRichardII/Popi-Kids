@@ -20,7 +20,7 @@ const ESSENTIALS = [
 
 /** La magie des fêtes : accès vers les rayons existants, aucune promotion inventée. */
 const FETES = [
-  { title: "Personnalisés", text: "Un prénom, une phrase ou un logo sur les sweat-shirts.", image: "fete-1", href: "/collections/sweats-gilets", cta: "Personnaliser" },
+  { title: "Personnalisés", text: "Un prénom, une phrase ou un logo sur les sweats, t-shirts et sacs.", image: "fete-1", href: "/collections/personnalisables", cta: "Personnaliser" },
   { title: "Idées cadeaux", text: "Jeux, lunch boxes, gourdes et sacs à offrir.", image: "fete-2", href: "/collections/jeux", cta: "Découvrir" },
   { title: "Looks d'hiver", text: "Sweats, vestes et tenues pour affronter le froid.", image: "fete-3", href: "/collections/vestes-manteaux", cta: "Voir les vestes" },
 ] as const;
@@ -39,7 +39,7 @@ export default async function Home() {
       cta: { label: "Découvrir les vestes", href: "/collections/vestes-manteaux" } },
     { desktop: img("hero-b2", "", "100vw"), mobile: img("hero-m2", "Sweats personnalisés Jade et Adam", "100vw", "35% 50%"),
       thumb: img("hero-t2", "", "(min-width:640px) 30vw, 33vw"), thumbLabel: "Un cadeau personnalisé", title: "Personnalisez leur sweat pour les fêtes",
-      cta: { label: "Créer mon cadeau", href: "/collections/sweats-gilets" } },
+      cta: { label: "Créer mon cadeau", href: "/collections/personnalisables" } },
     { desktop: img("hero-b3", "", "100vw"), mobile: img("hero-m3", "Carte cadeau POPI KIDS et son enveloppe", "100vw", "50% 50%"),
       thumb: img("hero-t3", "", "(min-width:640px) 30vw, 33vw"), thumbLabel: "Le plaisir de choisir", title: "Et si vous leur laissiez le choix ?",
       cta: { label: "Offrir une carte cadeau", href: "/carte-cadeau" } },

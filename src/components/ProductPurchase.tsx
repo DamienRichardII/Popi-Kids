@@ -87,7 +87,7 @@ export default function ProductPurchase({ product: p, gallery }: { product: Prod
         {p.customizable && (
           <fieldset className="mt-6 rounded-xl border border-line p-4">
             <legend className="px-2 text-sm font-medium">Personnalisation</legend>
-            <p className="mb-3 text-sm text-muted">Ajoutez un prénom, une phrase ou votre propre fichier sur ce vêtement.{PRINT_PLACEMENT ? ` Emplacement : ${PRINT_PLACEMENT}.` : ""} Supplément de <strong className="font-medium text-fg">{eur(PERSONALISATION_FEE)}</strong> par article personnalisé.</p>
+            <p className="mb-3 text-sm text-muted">Ajoutez un prénom, une phrase ou votre propre fichier sur ce produit.{PRINT_PLACEMENT ? ` Emplacement : ${PRINT_PLACEMENT}.` : ""} Supplément de <strong className="font-medium text-fg">{eur(PERSONALISATION_FEE)}</strong> par article personnalisé.</p>
             <div className="flex flex-wrap gap-2" role="radiogroup" aria-label="Type de personnalisation">
               {([["", "Sans"], ["prenom", "Un prénom"], ["phrase", "Une phrase"], ["logo", "Un fichier PNG"]] as const).map(([v, l]) => (
                 <button key={v} role="radio" aria-checked={cType === v} onClick={() => { setCType(v); setCText(""); setPng(null); setErr(""); }}

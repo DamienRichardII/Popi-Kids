@@ -162,6 +162,9 @@ function categoriesOf(slug: string, base: string): string[] {
   return [...out];
 }
 
+/** Produits personnalisables, selon CMR/Ayoub : sweats Urban et Clasica, t-shirts Stafford, sacs Marabu et Bingo. */
+export const PERSONALISABLES = ["urban", "clasica", "stafford", "marabu", "bingo"];
+
 const PRODUCTS: Product[] = ROWS.map(([slug, name, price, category, reference, photos, available], i) => ({
   id: `p${i + 1}`,
   slug,
@@ -175,8 +178,7 @@ const PRODUCTS: Product[] = ROWS.map(([slug, name, price, category, reference, p
   composition: WOO[slug]?.c ?? undefined,
   reference,
   available: available !== false,
-  // Références fournisseur CA… (t-shirts), PO… (polos), SU… (sweat-shirts) : à confirmer avec POPI KIDS
-  customizable: category === "vetements" && /^(CA|SU)/.test(reference),
+  customizable: PERSONALISABLES.includes(slug),
   isDemo: false,
 }));
 
@@ -200,7 +202,7 @@ export type Query = {
 export const inStock = (p: Product) => (p.sizes.length ? p.sizes.some((s) => s.stock > 0) : p.available !== false);
 
 export async function getProducts(q: Query = {}): Promise<Product[]> {
-  let list = PRODUCTS.filter((p) => !q.category || p.categories.includes(q.category));
+  let list = PRODUCTS.filter((p) => !q.category || (q.category === "personnalisables" ? !!p.customizable : p.categories.includes(q.category)));
   if (q.q) list = list.filter((p) => p.name.toLowerCase().includes(q.q!.toLowerCase()));
   if (q.size?.length) list = list.filter((p) => p.sizes.some((s) => q.size!.includes(s.label) && s.stock > 0));
   if (q.color?.length) list = list.filter((p) => p.colors.some((c) => q.color!.includes(c.name)));
@@ -213,7 +215,10 @@ export async function getProducts(q: Query = {}): Promise<Product[]> {
   return list;
 }
 export async function getProduct(slug: string) { return PRODUCTS.find((p) => p.slug === slug) ?? null; }
-export async function getCategory(slug: string) { return CATEGORIES.find((c) => c.slug === slug) ?? null; }
+export async function getCategory(slug: string) {
+  if (slug === "personnalisables") return { slug, name: "Personnalisables", description: "Sweats Urban et Clasica, t-shirts Stafford, sacs Marabu et Bingo : ajoutez un prénom, une phrase ou votre fichier.", image: "prod-urban-1" };
+  return CATEGORIES.find((c) => c.slug === slug) ?? null;
+}
 /** Aucune donnée de ventes : sélection = premier produit disponible de chaque catégorie (pas de "meilleures ventes" inventées). */
 export async function getBestSellers() {
   return CATEGORIES.map((c) => PRODUCTS.find((p) => p.categories.includes(c.slug) && inStock(p))).filter((p): p is Product => !!p);
