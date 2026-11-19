@@ -2,13 +2,15 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import type { CartLine } from "@/lib/types";
 import { sweatDiscount } from "@/lib/offers";
+import { personalisationTotal } from "@/lib/personalisation";
 
 type Ctx = {
-  lines: CartLine[]; count: number; subtotal: number; discount: number; total: number; open: boolean; hydrated: boolean;
+  lines: CartLine[]; count: number; subtotal: number; personalisation: number; discount: number; total: number; open: boolean; hydrated: boolean;
   setOpen: (v: boolean) => void;
   add: (l: CartLine) => void;
   setQty: (key: string, qty: number) => void;
   remove: (key: string) => void;
+  clear: () => void;
   favs: string[]; toggleFav: (id: string) => void;
 };
 const CartCtx = createContext<Ctx | null>(null);
@@ -43,15 +45,17 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const setQty = useCallback((key: string, qty: number) =>
     setLines((cur) => cur.flatMap((x) => (lineKey(x) !== key ? [x] : qty <= 0 ? [] : [{ ...x, qty: Math.min(10, qty) }]))), []);
   const remove = useCallback((key: string) => setLines((cur) => cur.filter((x) => lineKey(x) !== key)), []);
+  const clear = useCallback(() => setLines([]), []);
   const toggleFav = useCallback((id: string) => setFavs((c) => (c.includes(id) ? c.filter((x) => x !== id) : [...c, id])), []);
 
   const value = useMemo<Ctx>(() => ({
-    lines, open, hydrated, setOpen, add, setQty, remove, favs, toggleFav,
+    lines, open, hydrated, setOpen, add, setQty, remove, clear, favs, toggleFav,
     count: lines.reduce((n, l) => n + l.qty, 0),
     subtotal: lines.reduce((n, l) => n + l.qty * l.price, 0),
+    personalisation: personalisationTotal(lines),
     discount: sweatDiscount(lines),
-    total: lines.reduce((n, l) => n + l.qty * l.price, 0) - sweatDiscount(lines),
-  }), [lines, open, hydrated, add, setQty, remove, favs, toggleFav]);
+    total: lines.reduce((n, l) => n + l.qty * l.price, 0) + personalisationTotal(lines) - sweatDiscount(lines),
+  }), [lines, open, hydrated, add, setQty, remove, clear, favs, toggleFav]);
 
   return <CartCtx.Provider value={value}>{children}</CartCtx.Provider>;
 }

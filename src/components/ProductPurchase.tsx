@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Heart, Minus, Plus } from "lucide-react";
 import { eur, inStock } from "@/lib/commerce";
 import { SITE } from "@/lib/site";
-import { PRINT_COLORS, PRINT_FONTS } from "@/lib/personalisation";
+import { PERSONALISATION_FEE, PRINT_COLORS, PRINT_FONTS, PRINT_PLACEMENT } from "@/lib/personalisation";
 import { inspectPng, PNG_MAX_BYTES, type PngCheck } from "@/lib/png";
 import type { Product } from "@/lib/types";
 import { useCart } from "./CartProvider";
@@ -87,6 +87,7 @@ export default function ProductPurchase({ product: p, gallery }: { product: Prod
         {p.customizable && (
           <fieldset className="mt-6 rounded-xl border border-line p-4">
             <legend className="px-2 text-sm font-medium">Personnalisation</legend>
+            <p className="mb-3 text-sm text-muted">Ajoutez un prénom, une phrase ou votre propre fichier sur ce vêtement.{PRINT_PLACEMENT ? ` Emplacement : ${PRINT_PLACEMENT}.` : ""} Supplément de <strong className="font-medium text-fg">{eur(PERSONALISATION_FEE)}</strong> par article personnalisé.</p>
             <div className="flex flex-wrap gap-2" role="radiogroup" aria-label="Type de personnalisation">
               {([["", "Sans"], ["prenom", "Un prénom"], ["phrase", "Une phrase"], ["logo", "Un fichier PNG"]] as const).map(([v, l]) => (
                 <button key={v} role="radio" aria-checked={cType === v} onClick={() => { setCType(v); setCText(""); setPng(null); setErr(""); }}
@@ -134,6 +135,7 @@ export default function ProductPurchase({ product: p, gallery }: { product: Prod
                 <p className="mt-2 text-xs text-muted">Le fichier est vérifié sur votre appareil. Après la commande, envoyez-le à {SITE.contactEmail} en indiquant votre numéro de commande.</p>
               </div>
             )}
+            {cType && <p className="mt-3 text-sm font-medium">Prix avec personnalisation : {eur(p.price + PERSONALISATION_FEE)}</p>}
             <p className="mt-2 text-xs text-muted">Impression DTF (pas de broderie).</p>
           </fieldset>
         )}

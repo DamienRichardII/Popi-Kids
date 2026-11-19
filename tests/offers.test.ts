@@ -22,3 +22,12 @@ describe("offre 4ᵉ article offert", () => {
     for (const b of BUNDLES) for (const s of b.slugs) expect(await getProduct(s)).not.toBeNull();
   });
 });
+
+import { PERSONALISATION_FEE, personalisationTotal } from "@/lib/personalisation";
+describe("supplément de personnalisation", () => {
+  it("5 € par article personnalisé, rien sans personnalisation", () => {
+    expect(PERSONALISATION_FEE).toBe(500);
+    expect(personalisationTotal([{ qty: 2, custom: { type: "prenom" } }, { qty: 3 }])).toBe(1000);
+    expect(personalisationTotal([{ qty: 3 }])).toBe(0);
+  });
+});

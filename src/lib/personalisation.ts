@@ -88,3 +88,13 @@ export const PRINT_COLORS = [
 
 export type PrintFontId = (typeof PRINT_FONTS)[number]["id"];
 export const fontLabel = (id?: string) => PRINT_FONTS.find((f) => f.id === id)?.label ?? "";
+
+/** Supplément de personnalisation par article, en centimes (demande client : 5 €). */
+export const PERSONALISATION_FEE = 500;
+/** Emplacement de l'impression (ex. « poitrine, côté cœur ») : à fournir par CMR, affiché sur la fiche produit s'il est renseigné. */
+export const PRINT_PLACEMENT: string | null = null;
+
+/** Totaux du panier : prix des articles, supplément de personnalisation (par article personnalisé), remise d'offre à part. */
+export function personalisationTotal(lines: { qty: number; custom?: unknown }[]): number {
+  return lines.reduce((n, l) => n + (l.custom ? l.qty * PERSONALISATION_FEE : 0), 0);
+}
