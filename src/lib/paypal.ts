@@ -1,7 +1,7 @@
 import type { PricedOrder } from "./order";
 
 /** Serveur uniquement. Clés lues dans les variables d'environnement (jamais dans le code). Sandbox par défaut : PAYPAL_ENV=live pour la production. */
-const live = () => process.env.PAYPAL_ENV === "live";
+const live = () => (process.env.PAYPAL_ENV ?? "").trim() === "live";
 const BASE = () => (live() ? "https://api-m.paypal.com" : "https://api-m.sandbox.paypal.com");
 export const paypalConfigured = () => Boolean(process.env.PAYPAL_CLIENT_ID && process.env.PAYPAL_CLIENT_SECRET);
 export const paypalEnv = () => (live() ? "live" : "sandbox");
@@ -9,9 +9,14 @@ export const paypalEnv = () => (live() ? "live" : "sandbox");
 const eur = (cents: number) => (cents / 100).toFixed(2);
 
 async function token(): Promise<string> {
-  const auth = Buffer.from(`${process.env.PAYPAL_CLIENT_ID}:${process.env.PAYPAL_CLIENT_SECRET}`).toString("base64");
+  const auth = Buffer.from(`${(process.env.PAYPAL_CLIENT_ID ?? "").trim()}:${(process.env.PAYPAL_CLIENT_SECRET ?? "").trim()}`).toString("base64");
   const r = await fetch(`${BASE()}/v1/oauth2/token`, { method: "POST", headers: { Authorization: `Basic ${auth}`, "Content-Type": "application/x-www-form-urlencoded" }, body: "grant_type=client_credentials", cache: "no-store" });
-  if (!r.ok) throw new Error("PayPal : authentification refusée.");
+  if (!r.ok) {
+    // Diagnostic serveur (Vercel > Logs) : jamais de clé dans le message.
+    const d = await r.json().catch(() => ({}));
+    console.error("[paypal] auth refusée", { http: r.status, env: paypalEnv(), error: d.error, description: d.error_description, idLen: (process.env.PAYPAL_CLIENT_ID ?? "").length, secretLen: (process.env.PAYPAL_CLIENT_SECRET ?? "").length });
+    throw new Error("PayPal : authentification refusée.");
+  }
   return (await r.json()).access_token as string;
 }
 
