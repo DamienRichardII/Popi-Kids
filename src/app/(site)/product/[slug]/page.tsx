@@ -34,6 +34,7 @@ export default async function ProductPage({ params }: P) {
         <Link href="/">Accueil</Link> / <Link href="/shop">Boutique</Link> / <span aria-current="page" className="text-fg">{p.name}</span>
       </nav>
       <ProductPurchase product={p}
+        colorGalleries={p.colorImages ? Object.fromEntries(Object.entries(p.colorImages).map(([c, ks]) => [c, ks.map((k, i) => <Visual key={k} assetKey={k} alt={`${p.name} ${c} – photo ${i + 1}`} className="h-full w-full" sizes="(min-width:1024px) 50vw, 100vw" />)])) : undefined}
         gallery={p.images.map((k, i) => <Visual key={k} assetKey={k} alt={`${p.name} – photo ${i + 1}`} className="h-full w-full" sizes="(min-width:1024px) 50vw, 100vw" priority={i === 0} />)} />
       <section className="mt-20"><h2 className="section-title mb-6 text-3xl">Produits similaires</h2>
         <ProductGrid products={related} empty={<p className="text-muted">Aucun produit similaire pour le moment.</p>} /></section>

@@ -9,7 +9,7 @@ import { inspectPng, PNG_MAX_BYTES, type PngCheck } from "@/lib/png";
 import type { Product } from "@/lib/types";
 import { useCart } from "./CartProvider";
 
-export default function ProductPurchase({ product: p, gallery }: { product: Product; gallery: React.ReactNode[] }) {
+export default function ProductPurchase({ product: p, gallery: baseGallery, colorGalleries }: { product: Product; gallery: React.ReactNode[]; colorGalleries?: Record<string, React.ReactNode[]> }) {
   const { add, favs, toggleFav } = useCart();
   const router = useRouter();
   const [img, setImg] = useState(0);
@@ -30,6 +30,7 @@ export default function ProductPurchase({ product: p, gallery }: { product: Prod
     const r = inspectPng(new Uint8Array(await f.arrayBuffer()));
     setPng(r); if (r.ok) setCText(f.name);
   };
+  const gallery = colorGalleries?.[color] ?? baseGallery;
   const fav = favs.includes(p.id);
   const noOptions = p.sizes.length === 0;
   const stock = noOptions ? 10 : p.sizes.find((s) => s.label === size)?.stock ?? 0;
@@ -40,7 +41,7 @@ export default function ProductPurchase({ product: p, gallery }: { product: Prod
     if (stock < 1) { setErr("Cette taille n'est plus disponible."); return; }
     if (cType && !cText.trim()) { setErr(cType === "prenom" ? "Indiquez le prénom à ajouter." : cType === "phrase" ? "Indiquez la phrase à imprimer." : "Ajoutez votre fichier PNG (fond transparent, 600 dpi)."); return; }
     setErr("");
-    add({ productId: p.id, slug: p.slug, name: p.name, price: p.price, color, size, qty: Math.min(qty, stock), image: p.images[0] ?? "", ...(cType ? { custom: { type: cType, text: cText.trim(), ...(cType !== "logo" ? { font: cFont, color: cColor } : {}) } } : {}) });
+    add({ productId: p.id, slug: p.slug, name: p.name, price: p.price, color, size, qty: Math.min(qty, stock), image: p.colorImages?.[color]?.[0] ?? p.images[0] ?? "", ...(cType ? { custom: { type: cType, text: cText.trim(), ...(cType !== "logo" ? { font: cFont, color: cColor } : {}) } } : {}) });
     if (then === "buy") router.push("/checkout"); else { setAdded(true); setTimeout(() => setAdded(false), 1800); }
   };
 
@@ -68,7 +69,7 @@ export default function ProductPurchase({ product: p, gallery }: { product: Prod
 
         {p.colors.length > 0 && <fieldset className="mt-6"><legend className="mb-2 text-sm font-medium">Couleur : <span className="font-normal text-muted">{color}</span></legend>
           <div className="flex gap-3">{p.colors.map((c) => (
-            <button key={c.name} onClick={() => setColor(c.name)} aria-label={c.name} aria-pressed={color === c.name}
+            <button key={c.name} onClick={() => { setColor(c.name); setImg(0); }} aria-label={c.name} aria-pressed={color === c.name}
               className={`h-9 w-9 rounded-full border ${color === c.name ? "ring-2 ring-accent-strong ring-offset-2 ring-offset-bg" : "border-line"}`} style={{ background: c.hex }} />
           ))}</div></fieldset>}
 
@@ -121,7 +122,7 @@ export default function ProductPurchase({ product: p, gallery }: { product: Prod
                   style={{ background: ["Blanc", "Vintage blanc", "Angora naturel"].includes(cColor) ? "#2b2b2b" : "#f3ece0", color: PRINT_COLORS.find((c) => c.name === cColor)?.hex, fontFamily: PRINT_FONTS.find((f) => f.id === cFont)?.css, fontWeight: cFont === "arrondie" ? 700 : 400 }}>
                   {cText || (cType === "prenom" ? "Prénom" : "Votre phrase")}
                 </div>
-                <p className="text-xs text-muted">Aperçu indicatif : le rendu final dépend du tissu et de la couleur du vêtement.</p>
+                <p className="text-xs text-muted">Aperçu indicatif : le rendu final dépend du tissu et de la couleur du produit.</p>
               </div>
             )}
             {cType === "logo" && (

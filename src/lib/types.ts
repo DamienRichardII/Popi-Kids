@@ -12,6 +12,8 @@ export type Product = {
   sizes: Size[];
   /** Clés d'assets (voir lib/assets.ts). Jamais d'URL externe. */
   images: string[];
+  /** Photos propres à une couleur (ex. sac Bingo : un modèle animal par couleur). */
+  colorImages?: Record<string, string[]>;
   description: string;
   composition?: string;
   isNew?: boolean;

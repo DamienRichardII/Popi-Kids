@@ -165,6 +165,17 @@ function categoriesOf(slug: string, base: string): string[] {
 /** Produits personnalisables, selon CMR/Ayoub : sweats Urban et Clasica, t-shirts Stafford, sacs Marabu et Bingo. */
 export const PERSONALISABLES = ["urban", "clasica", "stafford", "marabu", "bingo"];
 
+/** Sac Bingo : un modèle différent par couleur (photos fournies par CMR). Jaune = lion (photos d'origine). */
+const COLOR_IMAGES: Record<string, Record<string, string[]>> = {
+  bingo: {
+    "Jaune": ["prod-bingo-1", "prod-bingo-2", "prod-bingo-3", "prod-bingo-4"],
+    "Vert fougère": ["prod-bingo-vert-fougere-1"],
+    "Bleu royal clair": ["prod-bingo-bleu-royal-clair-1"],
+    "Beige": ["prod-bingo-beige-1"],
+    "Rose clair": ["prod-bingo-rose-clair-1"],
+  },
+};
+
 const PRODUCTS: Product[] = ROWS.map(([slug, name, price, category, reference, photos, available], i) => ({
   id: `p${i + 1}`,
   slug,
@@ -172,6 +183,7 @@ const PRODUCTS: Product[] = ROWS.map(([slug, name, price, category, reference, p
   price,
   categories: categoriesOf(slug, category),
   colors: WOO[slug]?.k ?? [],
+  colorImages: COLOR_IMAGES[slug],
   sizes: [],
   images: Array.from({ length: photos }, (_, k) => `prod-${slug}-${k + 1}`),
   description: WOO[slug]?.d ?? "Description à fournir par POPI KIDS.",
