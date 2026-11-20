@@ -21,7 +21,7 @@ const ESSENTIALS = [
 /** La magie des fêtes : accès vers les rayons existants, aucune promotion inventée. */
 const FETES = [
   { title: "Personnalisés", text: "Un prénom, une phrase ou un logo sur les sweats, t-shirts et sacs.", image: "fete-1", href: "/collections/personnalisables", cta: "Personnaliser" },
-  { title: "Idées cadeaux", text: "Jeux, lunch boxes, gourdes et sacs à offrir.", image: "fete-2", href: "/collections/jeux", cta: "Découvrir" },
+  { title: "Idées cadeaux", text: "Jeux, lunch boxes, gourdes et sacs à offrir.", image: "fete-2", href: "/collections/idees-cadeaux", cta: "Découvrir" },
   { title: "Looks d'hiver", text: "Sweats, vestes et tenues pour affronter le froid.", image: "fete-3", href: "/collections/vestes-manteaux", cta: "Voir les vestes" },
 ] as const;
 

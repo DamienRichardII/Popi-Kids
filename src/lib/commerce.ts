@@ -163,6 +163,9 @@ function categoriesOf(slug: string, base: string): string[] {
 }
 
 /** Produits personnalisables, selon CMR/Ayoub : sweats Urban et Clasica, t-shirts Stafford, sacs Marabu et Bingo. */
+/** Idées cadeaux : jeux, boîtes à lunch, gourdes et sacs (rayons concernés). */
+const IDEES_CADEAUX = ["jeux", "lunch-boxes", "accessoires"];
+
 export const PERSONALISABLES = ["urban", "clasica", "stafford", "marabu", "bingo"];
 
 /** Sac Bingo : un modèle différent par couleur (photos fournies par CMR). Jaune = lion (photos d'origine). */
@@ -214,7 +217,8 @@ export type Query = {
 export const inStock = (p: Product) => (p.sizes.length ? p.sizes.some((s) => s.stock > 0) : p.available !== false);
 
 export async function getProducts(q: Query = {}): Promise<Product[]> {
-  let list = PRODUCTS.filter((p) => !q.category || (q.category === "personnalisables" ? !!p.customizable : p.categories.includes(q.category)));
+  let list = PRODUCTS.filter((p) => !q.category || (q.category === "personnalisables" ? !!p.customizable : q.category === "idees-cadeaux" ? p.categories.some((c) => IDEES_CADEAUX.includes(c)) : p.categories.includes(q.category)));
+  if (q.category === "idees-cadeaux") list = [...list].sort((a, b) => Number(!!b.customizable) - Number(!!a.customizable));
   if (q.q) list = list.filter((p) => p.name.toLowerCase().includes(q.q!.toLowerCase()));
   if (q.size?.length) list = list.filter((p) => p.sizes.some((s) => q.size!.includes(s.label) && s.stock > 0));
   if (q.color?.length) list = list.filter((p) => p.colors.some((c) => q.color!.includes(c.name)));
@@ -228,6 +232,7 @@ export async function getProducts(q: Query = {}): Promise<Product[]> {
 }
 export async function getProduct(slug: string) { return PRODUCTS.find((p) => p.slug === slug) ?? null; }
 export async function getCategory(slug: string) {
+  if (slug === "idees-cadeaux") return { slug, name: "Idées cadeaux", description: "Jeux, boîtes à lunch, gourdes et sacs à offrir.", image: "fete-2" };
   if (slug === "personnalisables") return { slug, name: "Personnalisables", description: "Sweats Urban et Clasica, t-shirts Stafford, sacs Marabu et Bingo : ajoutez un prénom, une phrase ou votre fichier.", image: "prod-urban-1" };
   return CATEGORIES.find((c) => c.slug === slug) ?? null;
 }
