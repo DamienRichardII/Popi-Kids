@@ -42,14 +42,22 @@ export function buildOrder(o: PricedOrder, ref: string) {
 export async function createOrder(o: PricedOrder, ref: string): Promise<{ id: string }> {
   const r = await fetch(`${BASE()}/v2/checkout/orders`, { method: "POST", cache: "no-store",
     headers: { Authorization: `Bearer ${await token()}`, "Content-Type": "application/json", "PayPal-Request-Id": ref }, body: JSON.stringify(buildOrder(o, ref)) });
-  if (!r.ok) throw new Error("PayPal : création de la commande impossible.");
+  if (!r.ok) {
+    const d = await r.json().catch(() => ({}));
+    console.error("[paypal] création refusée", { http: r.status, name: d.name, message: d.message, details: d.details });
+    throw new Error("PayPal : création de la commande impossible.");
+  }
   return { id: (await r.json()).id as string };
 }
 
 export async function captureOrder(id: string): Promise<{ status: string; id: string; reference?: string }> {
   if (!/^[A-Z0-9]{10,30}$/.test(id)) throw new Error("Commande invalide.");
   const r = await fetch(`${BASE()}/v2/checkout/orders/${id}/capture`, { method: "POST", cache: "no-store", headers: { Authorization: `Bearer ${await token()}`, "Content-Type": "application/json" } });
-  if (!r.ok) throw new Error("PayPal : paiement non finalisé.");
+  if (!r.ok) {
+    const d = await r.json().catch(() => ({}));
+    console.error("[paypal] capture refusée", { http: r.status, name: d.name, message: d.message, details: d.details });
+    throw new Error("PayPal : paiement non finalisé.");
+  }
   const d = await r.json();
   return { status: d.status as string, id: d.id as string, reference: d.purchase_units?.[0]?.custom_id as string | undefined };
 }
